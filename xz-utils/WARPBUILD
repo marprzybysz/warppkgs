@@ -1,0 +1,18 @@
+pkgname=xz-utils
+pkgver=5.6.2
+description="XZ/LZMA compression library and tools"
+arch=x86_64
+license=Public-Domain
+deps=glibc
+makedeps=gcc,make
+source=https://github.com/tukaani-project/xz/releases/download/v5.6.2/xz-5.6.2.tar.xz
+sha256=a69f4f660c299f5a3325e166f81dd4a98e30c12ec8267555caac34ebdc9ca671
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

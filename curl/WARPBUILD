@@ -1,0 +1,21 @@
+pkgname=curl
+pkgver=8.9.1
+description="URL transfer library and tool"
+arch=x86_64
+license=MIT
+deps=glibc,openssl,zlib
+makedeps=gcc,make,pkg-config
+source=https://curl.se/download/curl-8.9.1.tar.xz
+sha256=291124a007ee5f13f90bf56ada442cb20d86a0254de5da23a88bd09acb0fcc2a
+
+build() {
+    ./configure --prefix=/usr         \
+                --with-openssl        \
+                --enable-threaded-resolver \
+                --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

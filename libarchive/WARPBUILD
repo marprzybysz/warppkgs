@@ -1,0 +1,18 @@
+pkgname=libarchive
+pkgver=3.7.4
+description="Multi-format archive and compression library"
+arch=x86_64
+license=BSD-2-Clause
+deps=glibc,zlib,bzip2,xz-utils,lz4,zstd,openssl
+makedeps=gcc,make,pkg-config
+source=https://github.com/libarchive/libarchive/releases/download/v3.7.4/libarchive-3.7.4.tar.xz
+sha256=f887755c434a736cb8ec9b3acfc57ca20a28f36bec2b4e5b106e8a85e6a0b8f2
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

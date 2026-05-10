@@ -1,0 +1,23 @@
+pkgname=elfutils
+pkgver=0.191
+description="ELF handling libraries and tools"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,zlib,bzip2,xz-utils,zstd
+makedeps=gcc,make,pkg-config
+source=https://sourceware.org/elfutils/ftp/0.191/elfutils-0.191.tar.bz2
+sha256=df76db71366d1d708365fc7a6c60ca48398f14367eb2b8954efc8897147ad871
+
+build() {
+    ./configure --prefix=/usr     \
+                --disable-debuginfod \
+                --enable-libdebuginfod=dummy
+    make $MAKEFLAGS
+}
+
+package() {
+    make -C libelf DESTDIR="$DESTDIR" install
+    make -C libdw DESTDIR="$DESTDIR" install
+    install -m644 config/libelf.pc "$DESTDIR/usr/lib/pkgconfig/"
+    install -m644 config/libdw.pc "$DESTDIR/usr/lib/pkgconfig/"
+}

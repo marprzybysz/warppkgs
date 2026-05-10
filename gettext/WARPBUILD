@@ -1,0 +1,18 @@
+pkgname=gettext
+pkgver=0.22.5
+description="GNU internationalization tools and libraries"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,libxcrypt,ncurses,acl
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/gettext/gettext-0.22.5.tar.xz
+sha256=fe10c37353213d78a5b83d48af231e005c4da84db5ce88037d88355938259640
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

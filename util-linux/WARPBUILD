@@ -1,0 +1,31 @@
+pkgname=util-linux
+pkgver=2.40.2
+description="Essential system utilities"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,ncurses,zlib
+makedeps=gcc,make,pkg-config
+source=https://www.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-2.40.2.tar.xz
+sha256=d78b37a66f5922d70edf3bdfb01a6b33d34ed3c3cafd6628203b2a2b67c8e8b3
+
+build() {
+    ./configure --prefix=/usr         \
+                --bindir=/usr/bin     \
+                --libdir=/usr/lib     \
+                --runstatedir=/run    \
+                --sbindir=/usr/sbin   \
+                --disable-chfn-chsh   \
+                --disable-login       \
+                --disable-nologin     \
+                --disable-su          \
+                --disable-setpriv     \
+                --disable-runuser     \
+                --disable-pylibmount  \
+                --disable-static      \
+                --without-python
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

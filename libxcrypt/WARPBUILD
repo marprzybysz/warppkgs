@@ -1,0 +1,22 @@
+pkgname=libxcrypt
+pkgver=4.4.36
+description="Extended crypt library for DES, MD5, Blowfish, SHA"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc
+makedeps=gcc,make
+source=https://github.com/besser82/libxcrypt/releases/download/v4.4.36/libxcrypt-4.4.36.tar.xz
+sha256=e5e1f4caee0a01de2aee26e3138807d6d3ca2b85e55a1016c34e2eb15e32f0bd
+
+build() {
+    ./configure --prefix=/usr         \
+                --enable-hashes=strong,glibc \
+                --enable-obsolete-api=no     \
+                --disable-static             \
+                --disable-failure-tokens
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

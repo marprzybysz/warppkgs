@@ -1,0 +1,27 @@
+pkgname=kmod
+pkgver=33
+description="Kernel module tools and library"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,zlib,xz-utils,zstd,openssl
+makedeps=gcc,make,pkg-config
+source=https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-33.tar.xz
+sha256=dc768b7a7bae0b8682c04e515a8e5f92c8e13d5ea7ce3f1fe4085b4d3a708492
+
+build() {
+    ./configure --prefix=/usr     \
+                --sysconfdir=/etc \
+                --with-openssl    \
+                --with-xz         \
+                --with-zstd       \
+                --with-zlib
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+    for tool in depmod insmod modinfo modprobe rmmod; do
+        ln -sf ../bin/kmod "$DESTDIR/usr/sbin/$tool"
+    done
+    ln -sf kmod "$DESTDIR/usr/bin/lsmod"
+}

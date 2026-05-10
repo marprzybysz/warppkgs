@@ -1,0 +1,27 @@
+pkgname=e2fsprogs
+pkgver=1.47.1
+description="Ext2/3/4 filesystem tools"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,util-linux
+makedeps=gcc,make,pkg-config
+source=https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.47.1/e2fsprogs-1.47.1.tar.gz
+sha256=5a33dc047fd47284bca4bb10c13cfe7896377ae3d01cb81a05d406025d99e0d1
+
+build() {
+    mkdir -p build && cd build
+    ../configure --prefix=/usr    \
+                 --sysconfdir=/etc \
+                 --enable-elf-shlibs \
+                 --disable-libblkid  \
+                 --disable-libuuid   \
+                 --disable-uuidd     \
+                 --disable-fsck
+    make $MAKEFLAGS
+}
+
+package() {
+    cd build
+    make DESTDIR="$DESTDIR" install
+    rm -f "$DESTDIR"/usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
+}

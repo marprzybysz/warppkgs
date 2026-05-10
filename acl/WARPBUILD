@@ -1,0 +1,18 @@
+pkgname=acl
+pkgver=2.3.2
+description="Access Control Lists library and tools"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,attr
+makedeps=gcc,make
+source=https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz
+sha256=5f2bdbad629707aa7d85c623f994aa8a1d2dec55a73de5205bac0bf6058a2f7c
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

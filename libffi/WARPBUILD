@@ -1,0 +1,18 @@
+pkgname=libffi
+pkgver=3.4.6
+description="Foreign Function Interface library"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make
+source=https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz
+sha256=b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e
+
+build() {
+    ./configure --prefix=/usr --disable-static --with-gcc-arch=native
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

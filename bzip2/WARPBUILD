@@ -1,0 +1,21 @@
+pkgname=bzip2
+pkgver=1.0.8
+description="Block-sorting compression library and tools"
+arch=x86_64
+license=bzip2
+deps=glibc
+makedeps=gcc,make
+source=https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz
+sha256=ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269
+
+build() {
+    make -f Makefile-libbz2_so $MAKEFLAGS
+    make clean
+    make $MAKEFLAGS
+}
+
+package() {
+    make PREFIX="$DESTDIR/usr" install
+    cp -a libbz2.so* "$DESTDIR/usr/lib/"
+    ln -sf libbz2.so.1.0.8 "$DESTDIR/usr/lib/libbz2.so"
+}

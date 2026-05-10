@@ -1,0 +1,21 @@
+pkgname=python3
+pkgver=3.12.5
+description="Python 3 interpreter"
+arch=x86_64
+license=PSF-2.0
+deps=glibc,openssl,zlib,bzip2,xz-utils,readline,ncurses,libffi,expat,gdbm
+makedeps=gcc,make,pkg-config
+source=https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tar.xz
+sha256=fa8a2e12c5e620b09f53e65bcd87550d2e5a1e2e04bf8ba991dcc55113876397
+
+build() {
+    ./configure --prefix=/usr   \
+                --enable-shared \
+                --with-system-expat \
+                --enable-optimizations
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

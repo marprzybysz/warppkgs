@@ -1,0 +1,19 @@
+pkgname=pkgconf
+pkgver=2.3.0
+description="Package compiler and linker metadata toolkit"
+arch=x86_64
+license=ISC
+deps=glibc
+makedeps=gcc,make
+source=https://distfiles.ariadne.space/pkgconf/pkgconf-2.3.0.tar.xz
+sha256=3a9080ac51d03615e7c1910a0a2a8df08424892b5f13b0571ca9a3b2e38770d4
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+    ln -sf pkgconf "$DESTDIR/usr/bin/pkg-config"
+}

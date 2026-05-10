@@ -1,0 +1,18 @@
+pkgname=attr
+pkgver=2.5.2
+description="Extended attributes library and tools"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc
+makedeps=gcc,make
+source=https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.gz
+sha256=39bf67452fa41d0948c2197601053f48b3d78a029389734332a6309a680c6c87
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

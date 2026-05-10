@@ -1,0 +1,21 @@
+pkgname=tcl
+pkgver=8.6.14
+description="Tcl scripting language"
+arch=x86_64
+license=Tcl
+deps=glibc,zlib
+makedeps=gcc,make
+source=https://downloads.sourceforge.net/tcl/tcl8.6.14-src.tar.gz
+sha256=5880225babf7954c58d4e1ce0c48f51c4d8295b71b2367a14e9f7c7e3e2d6b11
+
+build() {
+    cd unix
+    ./configure --prefix=/usr --mandir=/usr/share/man
+    make $MAKEFLAGS
+}
+
+package() {
+    cd unix
+    make DESTDIR="$DESTDIR" install
+    ln -sf tclsh8.6 "$DESTDIR/usr/bin/tclsh"
+}

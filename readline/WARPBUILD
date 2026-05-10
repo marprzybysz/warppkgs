@@ -1,0 +1,20 @@
+pkgname=readline
+pkgver=8.2
+description="GNU command-line editing library"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,ncurses
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz
+sha256=3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331571d0e0062f74
+
+build() {
+    ./configure --prefix=/usr    \
+                --disable-static \
+                --with-curses
+    make SHLIB_LIBS="-lncursesw" $MAKEFLAGS
+}
+
+package() {
+    make SHLIB_LIBS="-lncursesw" DESTDIR="$DESTDIR" install
+}

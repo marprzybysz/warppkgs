@@ -1,0 +1,20 @@
+pkgname=sysklogd
+pkgver=2.6.1
+description="System logging daemons"
+arch=x86_64
+license=GPL-2.0
+deps=glibc
+makedeps=gcc,make
+source=https://github.com/troglobit/sysklogd/releases/download/v2.6.1/sysklogd-2.6.1.tar.gz
+sha256=4fa88acfa1e4b5b1bf9e46b5cbfb4b9de3c7d16c06b8ea97a6b36a5c0cb7e75c
+
+build() {
+    ./configure --prefix=/usr    \
+                --sysconfdir=/etc \
+                --without-logger
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

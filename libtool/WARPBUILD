@@ -1,0 +1,18 @@
+pkgname=libtool
+pkgver=2.4.7
+description="GNU generic library support script"
+arch=x86_64
+license=GPL-2.0
+deps=glibc
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/libtool/libtool-2.4.7.tar.xz
+sha256=4f7f217f057ce655ff22559ad221a0fd8ef84ad1fc5fcb6990cecc333aa1635
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,22 @@
+pkgname=openrc
+pkgver=0.54.2
+description="Dependency-based init system"
+arch=x86_64
+license=BSD-2-Clause
+deps=glibc
+makedeps=gcc,make,meson,ninja
+source=https://github.com/OpenRC/openrc/archive/0.54.2.tar.gz
+sha256=
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        -Dbranding="Flow Linux" \
+        -Dpam=false
+    ninja -C build
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

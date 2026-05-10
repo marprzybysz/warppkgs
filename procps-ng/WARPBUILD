@@ -1,0 +1,20 @@
+pkgname=procps-ng
+pkgver=4.0.4
+description="Utilities for monitoring your system and processes"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,ncurses
+makedeps=gcc,make,pkg-config
+source=https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-4.0.4.tar.xz
+sha256=22b2b2a2b2bdf51beae0e2e7c5c3f1d33c3eb5c5e23c1e5b0e27790a7d83b4e5
+
+build() {
+    ./configure --prefix=/usr     \
+                --disable-static  \
+                --disable-kill
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

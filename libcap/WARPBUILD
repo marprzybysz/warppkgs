@@ -1,0 +1,18 @@
+pkgname=libcap
+pkgver=2.70
+description="POSIX capabilities library"
+arch=x86_64
+license=BSD-3-Clause
+deps=glibc
+makedeps=gcc,make
+source=https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.70.tar.xz
+sha256=23a6ef8aadaf1e3c875f633ee6b9d19e54ad3d853e682f49462e7c0a29a36c6a
+
+build() {
+    sed -i '/install -m.*STA/d' libcap/Makefile
+    make prefix=/usr lib=lib $MAKEFLAGS
+}
+
+package() {
+    make prefix=/usr lib=lib DESTDIR="$DESTDIR" install
+}
