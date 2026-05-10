@@ -1,0 +1,8 @@
+name=tmux
+version=3.5a
+description=Terminal multiplexer
+arch=x86_64
+license=ISC
+provides=tmux
+deps=glibc ncurses libevent
+source=warp

@@ -1,0 +1,8 @@
+name=libevent
+version=2.1.12
+description=Event notification library
+arch=x86_64
+license=BSD-3-Clause
+provides=libevent libevent_core libevent_extra libevent_pthreads libevent_openssl
+deps=glibc openssl
+source=system
