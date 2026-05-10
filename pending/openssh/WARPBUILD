@@ -1,0 +1,44 @@
+pkgname=openssh
+pkgver=9.9p1
+description="Secure shell client, server, and key management tools"
+arch=x86_64
+license=BSD
+deps=glibc,openssl,zlib,libxcrypt
+makedeps=gcc,make,pkg-config
+source=https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.9p1.tar.gz
+sha256=
+
+build() {
+    ./configure --prefix=/usr          \
+                --sysconfdir=/etc/ssh  \
+                --with-privsep-path=/var/lib/sshd \
+                --with-default-path=/usr/bin \
+                --with-pid-dir=/run
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+
+    mkdir -p "$DESTDIR/etc/openrc/init.d"
+    cat > "$DESTDIR/etc/openrc/init.d/sshd" << 'INITEOF'
+#!/sbin/openrc-run
+
+name="OpenSSH"
+description="OpenSSH Daemon"
+command="/usr/sbin/sshd"
+command_args="-D"
+command_background=true
+pidfile="/run/sshd.pid"
+
+depend() {
+    need net
+    use logger
+}
+
+start_pre() {
+    /usr/bin/ssh-keygen -A
+}
+INITEOF
+    chmod 755 "$DESTDIR/etc/openrc/init.d/sshd"
+}

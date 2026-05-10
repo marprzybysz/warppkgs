@@ -1,0 +1,17 @@
+pkgname=vine
+pkgver=6.0.2
+description="Vi-like text editor, lightweight and fast"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,ncurses
+makedeps=gcc,make
+source=https://github.com/vlang/vinern/releases/download/v6.0.2/vine-6.0.2.tar.gz
+sha256=
+
+build() {
+    make PREFIX=/usr $MAKEFLAGS
+}
+
+package() {
+    make PREFIX=/usr DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,8 @@
+name=openssh
+version=9.9p1
+description=Secure shell client, server, and key management tools
+arch=x86_64
+license=BSD
+provides=ssh sshd ssh-keygen ssh-agent scp sftp
+deps=glibc,openssl,zlib,libxcrypt
+source=warp

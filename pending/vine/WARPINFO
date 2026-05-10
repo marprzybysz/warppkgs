@@ -1,0 +1,8 @@
+name=vine
+version=6.0.2
+description=Vi-like text editor, lightweight and fast
+arch=x86_64
+license=GPL-2.0
+provides=vine
+deps=glibc,ncurses
+source=warp
