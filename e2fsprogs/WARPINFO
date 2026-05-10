@@ -1,0 +1,8 @@
+name=e2fsprogs
+version=1.47.1
+description=Ext2/3/4 filesystem tools
+arch=x86_64
+license=GPL-2.0
+provides=libext2fs libe2p libcom_err libss
+deps=glibc util-linux
+source=system

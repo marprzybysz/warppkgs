@@ -1,0 +1,8 @@
+name=expect
+version=5.45.4
+description=Tool for automating interactive programs
+arch=x86_64
+license=Public-Domain
+provides=libexpect5.45.4
+deps=glibc tcl
+source=system

@@ -1,0 +1,8 @@
+name=tcl
+version=8.6.14
+description=Tcl scripting language
+arch=x86_64
+license=Tcl
+provides=libtcl8.6
+deps=glibc zlib
+source=system

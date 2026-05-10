@@ -1,0 +1,8 @@
+name=libtool
+version=2.4.7
+description=GNU generic library support script
+arch=x86_64
+license=GPL-2.0
+provides=libltdl
+deps=glibc
+source=system

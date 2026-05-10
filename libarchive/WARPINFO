@@ -1,0 +1,8 @@
+name=libarchive
+version=3.7.4
+description=Multi-format archive and compression library
+arch=x86_64
+license=BSD-2-Clause
+provides=libarchive
+deps=glibc zlib bzip2 xz-utils lz4 zstd openssl
+source=system

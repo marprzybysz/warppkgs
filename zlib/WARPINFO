@@ -1,0 +1,8 @@
+name=zlib
+version=1.3.1
+description=Compression library
+arch=x86_64
+license=Zlib
+provides=libz
+deps=glibc
+source=system

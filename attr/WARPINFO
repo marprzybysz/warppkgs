@@ -1,0 +1,8 @@
+name=attr
+version=2.5.2
+description=Extended attributes library and tools
+arch=x86_64
+license=LGPL-2.1
+provides=libattr
+deps=glibc
+source=system

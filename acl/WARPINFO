@@ -1,0 +1,8 @@
+name=acl
+version=2.3.2
+description=Access Control Lists library and tools
+arch=x86_64
+license=LGPL-2.1
+provides=libacl
+deps=glibc attr
+source=system

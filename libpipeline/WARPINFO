@@ -1,0 +1,8 @@
+name=libpipeline
+version=1.5.7
+description=Pipeline manipulation library
+arch=x86_64
+license=GPL-3.0
+provides=libpipeline
+deps=glibc
+source=system

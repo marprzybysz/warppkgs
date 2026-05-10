@@ -1,0 +1,8 @@
+name=openrc
+version=0.54.2
+description=Dependency-based init system
+arch=x86_64
+license=BSD-2-Clause
+provides=librc libeinfo
+deps=glibc
+source=system

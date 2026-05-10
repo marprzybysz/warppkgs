@@ -1,0 +1,8 @@
+name=gettext
+version=0.22.5
+description=GNU internationalization tools and libraries
+arch=x86_64
+license=GPL-3.0
+provides=libgettextlib libgettextsrc libgettextpo libtextstyle libasprintf
+deps=glibc libxcrypt ncurses acl
+source=system

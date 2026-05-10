@@ -1,0 +1,8 @@
+name=procps-ng
+version=4.0.4
+description=Utilities for monitoring your system and processes
+arch=x86_64
+license=GPL-2.0
+provides=libproc2
+deps=glibc ncurses
+source=system

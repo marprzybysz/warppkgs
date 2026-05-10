@@ -1,0 +1,8 @@
+name=binutils
+version=2.43.1
+description=GNU binary tools — linker, assembler, utilities
+arch=x86_64
+license=GPL-3.0
+provides=libopcodes libbfd libctf libctf-nobfd libsframe libgprofng
+deps=glibc zlib
+source=system

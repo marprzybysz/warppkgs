@@ -1,0 +1,8 @@
+name=bash
+version=5.2
+description=GNU Bourne-Again Shell
+arch=x86_64
+license=GPL-3.0
+provides=bash
+deps=glibc readline ncurses
+source=system

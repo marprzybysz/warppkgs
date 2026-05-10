@@ -1,0 +1,8 @@
+name=lz4
+version=1.10.0
+description=Fast LZ compression library
+arch=x86_64
+license=BSD-2-Clause
+provides=liblz4
+deps=glibc
+source=system

@@ -1,0 +1,8 @@
+name=zstd
+version=1.5.6
+description=Zstandard fast compression library
+arch=x86_64
+license=BSD-3-Clause
+provides=libzstd
+deps=glibc
+source=system

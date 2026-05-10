@@ -1,0 +1,8 @@
+name=elfutils
+version=0.191
+description=ELF handling libraries and tools
+arch=x86_64
+license=GPL-3.0
+provides=libelf libdw
+deps=glibc zlib bzip2 xz-utils zstd
+source=system

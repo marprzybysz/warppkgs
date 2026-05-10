@@ -1,0 +1,8 @@
+name=util-linux
+version=2.40.2
+description=Essential system utilities
+arch=x86_64
+license=GPL-2.0
+provides=libblkid libfdisk libuuid libmount libsmartcols
+deps=glibc ncurses zlib
+source=system

@@ -1,0 +1,8 @@
+name=expat
+version=2.6.2
+description=XML parsing library
+arch=x86_64
+license=MIT
+provides=libexpat
+deps=glibc
+source=system

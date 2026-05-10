@@ -1,0 +1,8 @@
+name=readline
+version=8.2
+description=GNU command-line editing library
+arch=x86_64
+license=GPL-3.0
+provides=libreadline libhistory
+deps=glibc ncurses
+source=system

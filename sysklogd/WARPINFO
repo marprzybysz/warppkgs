@@ -1,0 +1,8 @@
+name=sysklogd
+version=2.6.1
+description=System logging daemons
+arch=x86_64
+license=GPL-2.0
+provides=libsyslog
+deps=glibc
+source=system

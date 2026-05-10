@@ -1,0 +1,8 @@
+name=xz-utils
+version=5.6.2
+description=XZ/LZMA compression library and tools
+arch=x86_64
+license=Public-Domain
+provides=liblzma
+deps=glibc
+source=system

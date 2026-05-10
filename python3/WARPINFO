@@ -1,0 +1,8 @@
+name=python3
+version=3.12.5
+description=Python 3 interpreter
+arch=x86_64
+license=PSF-2.0
+provides=libpython3
+deps=glibc openssl zlib bzip2 xz-utils readline ncurses libffi expat gdbm
+source=system

@@ -1,0 +1,8 @@
+name=pkgconf
+version=2.3.0
+description=Package compiler and linker metadata toolkit
+arch=x86_64
+license=ISC
+provides=libpkgconf
+deps=glibc
+source=system

@@ -1,0 +1,8 @@
+name=libcap
+version=2.70
+description=POSIX capabilities library
+arch=x86_64
+license=BSD-3-Clause
+provides=libcap libpsx
+deps=glibc
+source=system

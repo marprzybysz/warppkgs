@@ -1,0 +1,8 @@
+name=ncurses
+version=6.5
+description=Terminal handling library
+arch=x86_64
+license=MIT
+provides=libncursesw libncurses++w libformw libmenuw libpanelw
+deps=glibc
+source=system

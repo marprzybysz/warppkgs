@@ -1,0 +1,8 @@
+name=eudev
+version=3.2.14
+description=Device manager for the Linux kernel
+arch=x86_64
+license=GPL-2.0
+provides=libudev
+deps=glibc kmod util-linux
+source=system

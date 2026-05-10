@@ -1,0 +1,8 @@
+name=flex
+version=2.6.4
+description=Fast lexical analyzer generator
+arch=x86_64
+license=BSD-2-Clause
+provides=libfl
+deps=glibc
+source=system

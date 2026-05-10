@@ -1,0 +1,8 @@
+name=gcc-runtime
+version=14.2.0
+description=GCC runtime libraries
+arch=x86_64
+license=GPL-3.0
+provides=libgcc_s libstdc++ libgomp libssp libatomic libitm libhwasan libcc1 libquadmath
+deps=glibc
+source=system

@@ -1,0 +1,8 @@
+name=mpfr
+version=4.2.1
+description=Multiple-precision floating-point library
+arch=x86_64
+license=LGPL-3.0
+provides=libmpfr
+deps=glibc gmp
+source=system

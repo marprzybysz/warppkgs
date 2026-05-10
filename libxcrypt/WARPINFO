@@ -1,0 +1,8 @@
+name=libxcrypt
+version=4.4.36
+description=Extended crypt library for DES, MD5, Blowfish, SHA
+arch=x86_64
+license=LGPL-2.1
+provides=libcrypt
+deps=glibc
+source=system

@@ -1,0 +1,8 @@
+name=kmod
+version=33
+description=Kernel module tools and library
+arch=x86_64
+license=LGPL-2.1
+provides=libkmod
+deps=glibc zlib xz-utils zstd openssl
+source=system

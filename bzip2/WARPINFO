@@ -1,0 +1,8 @@
+name=bzip2
+version=1.0.8
+description=Block-sorting compression library and tools
+arch=x86_64
+license=bzip2
+provides=libbz2
+deps=glibc
+source=system

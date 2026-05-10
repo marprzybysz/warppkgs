@@ -1,0 +1,8 @@
+name=file
+version=5.45
+description=File type identification tool and library
+arch=x86_64
+license=BSD-2-Clause
+provides=libmagic
+deps=glibc zlib bzip2 xz-utils
+source=system

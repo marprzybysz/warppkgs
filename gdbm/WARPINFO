@@ -1,0 +1,8 @@
+name=gdbm
+version=1.24
+description=GNU database manager
+arch=x86_64
+license=GPL-3.0
+provides=libgdbm libgdbm_compat
+deps=glibc readline
+source=system
