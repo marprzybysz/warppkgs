@@ -1,0 +1,8 @@
+name=libXt
+version=1.3.0
+description=X11 Toolkit Intrinsics library
+arch=x86_64
+license=MIT
+provides=libXt
+deps=glibc,libX11,libSM,libICE
+source=warp

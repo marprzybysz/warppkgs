@@ -1,0 +1,8 @@
+name=glib
+version=2.82.2
+description=Low-level core library for GNOME and GTK
+arch=x86_64
+license=LGPL-2.1
+provides=libglib-2.0 libgobject-2.0 libgio-2.0 libgmodule-2.0 libgthread-2.0
+deps=glibc,pcre2,libffi,zlib,util-linux
+source=warp

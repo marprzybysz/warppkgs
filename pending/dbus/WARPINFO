@@ -1,0 +1,8 @@
+name=dbus
+version=1.14.10
+description=Message bus system for IPC
+arch=x86_64
+license=AFL-2.1
+provides=libdbus-1 dbus-daemon dbus-send dbus-monitor
+deps=glibc,expat
+source=warp

@@ -1,0 +1,8 @@
+name=zig
+version=0.13.0
+description=General-purpose programming language and compiler
+arch=x86_64
+license=MIT
+provides=zig
+deps=glibc
+source=warp

@@ -1,0 +1,20 @@
+pkgname=glib
+pkgver=2.82.2
+description="Low-level core library for GNOME and GTK"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,pcre2,libffi,zlib,util-linux
+makedeps=gcc,meson,ninja,pkg-config,python3
+source=https://download.gnome.org/sources/glib/2.82/glib-2.82.2.tar.xz
+sha256=
+
+build() {
+    meson setup build --prefix=/usr    \
+        -Dman-pages=disabled           \
+        -Dtests=false
+    ninja -C build
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

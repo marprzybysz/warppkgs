@@ -1,0 +1,8 @@
+name=icu
+version=75.1
+description=International Components for Unicode
+arch=x86_64
+license=ICU
+provides=libicuuc libicui18n libicudata libicuio
+deps=glibc,gcc-runtime
+source=warp

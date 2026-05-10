@@ -1,0 +1,28 @@
+pkgname=qt5-base
+pkgver=5.15.16
+description="Qt5 base framework — core, gui, widgets, network"
+arch=x86_64
+license=LGPL-3.0
+deps=glibc,gcc-runtime,openssl,zlib,libpng,freetype,fontconfig,icu,pcre2,dbus,libxkbcommon,mesa,libX11,libXext,libxcb
+makedeps=gcc,g++,make,pkg-config,perl,python3
+source=https://download.qt.io/archive/qt/5.15/5.15.16/submodules/qtbase-everywhere-opensource-src-5.15.16.tar.xz
+sha256=
+
+build() {
+    ./configure -prefix /usr          \
+                -opensource -confirm-license \
+                -system-zlib          \
+                -system-libpng        \
+                -system-freetype      \
+                -system-pcre          \
+                -openssl-linked       \
+                -dbus-linked          \
+                -xcb                  \
+                -nomake examples      \
+                -nomake tests
+    make $MAKEFLAGS
+}
+
+package() {
+    make INSTALL_ROOT="$DESTDIR" install
+}

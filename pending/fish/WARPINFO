@@ -1,0 +1,8 @@
+name=fish
+version=3.7.1
+description=Smart and user-friendly command line shell
+arch=x86_64
+license=GPL-2.0
+provides=fish fish_indent fish_key_reader
+deps=glibc,ncurses,gcc-runtime
+source=warp

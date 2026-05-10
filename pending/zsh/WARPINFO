@@ -1,0 +1,8 @@
+name=zsh
+version=5.9.1
+description=Powerful shell with scripting language
+arch=x86_64
+license=MIT
+provides=zsh
+deps=glibc,ncurses,libcap,gdbm
+source=warp

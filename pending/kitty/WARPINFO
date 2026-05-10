@@ -1,0 +1,8 @@
+name=kitty
+version=0.37.0
+description=GPU-based terminal emulator with image support
+arch=x86_64
+license=GPL-3.0
+provides=kitty kitten
+deps=glibc,python3,fontconfig,freetype,ncurses,openssl,zlib
+source=warp

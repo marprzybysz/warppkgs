@@ -1,0 +1,19 @@
+pkgname=zig
+pkgver=0.13.0
+description="General-purpose programming language and compiler"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=
+source=https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz
+sha256=
+
+build() {
+    true
+}
+
+package() {
+    mkdir -p "$DESTDIR/usr/lib/zig" "$DESTDIR/usr/bin"
+    cp -a . "$DESTDIR/usr/lib/zig/"
+    ln -sf ../lib/zig/zig "$DESTDIR/usr/bin/zig"
+}

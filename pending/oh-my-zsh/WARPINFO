@@ -1,0 +1,8 @@
+name=oh-my-zsh
+version=2024.11
+description=Framework for managing zsh configuration
+arch=any
+license=MIT
+provides=oh-my-zsh
+deps=zsh,git
+source=warp

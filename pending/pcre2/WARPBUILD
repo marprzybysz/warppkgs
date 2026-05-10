@@ -1,0 +1,24 @@
+pkgname=pcre2
+pkgver=10.44
+description="Perl Compatible Regular Expressions library"
+arch=x86_64
+license=BSD-3-Clause
+deps=glibc,zlib,bzip2,readline
+makedeps=gcc,cmake,ninja
+source=https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.44/pcre2-10.44.tar.bz2
+sha256=
+
+build() {
+    cmake -B build -G Ninja           \
+        -DCMAKE_BUILD_TYPE=Release    \
+        -DCMAKE_INSTALL_PREFIX=/usr   \
+        -DBUILD_STATIC_LIBS=OFF       \
+        -DPCRE2_BUILD_PCRE2_16=ON     \
+        -DPCRE2_BUILD_PCRE2_32=ON     \
+        -DPCRE2_SUPPORT_UNICODE=ON
+    ninja -C build
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

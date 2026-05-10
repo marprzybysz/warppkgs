@@ -1,0 +1,8 @@
+name=starship
+version=1.21.1
+description=Minimal, fast, and customizable cross-shell prompt
+arch=x86_64
+license=ISC
+provides=starship
+deps=glibc,gcc-runtime
+source=warp

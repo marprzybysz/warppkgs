@@ -1,0 +1,8 @@
+name=ghostty
+version=1.1.0
+description=Fast, native terminal emulator by Mitchell Hashimoto
+arch=x86_64
+license=MIT
+provides=ghostty
+deps=glibc,gcc-runtime,fontconfig,freetype
+source=warp

@@ -1,0 +1,20 @@
+pkgname=fish
+pkgver=3.7.1
+description="Smart and user-friendly command line shell"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,ncurses
+makedeps=gcc,g++,cmake,ninja,pkg-config
+source=https://github.com/fish-shell/fish-shell/releases/download/3.7.1/fish-3.7.1.tar.xz
+sha256=
+
+build() {
+    cmake -B build -G Ninja        \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    ninja -C build
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

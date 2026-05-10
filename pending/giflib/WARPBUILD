@@ -1,0 +1,17 @@
+pkgname=giflib
+pkgver=5.2.2
+description="GIF image format library"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make
+source=https://sourceforge.net/projects/giflib/files/giflib-5.2.2.tar.gz
+sha256=
+
+build() {
+    make PREFIX=/usr $MAKEFLAGS
+}
+
+package() {
+    make PREFIX=/usr DESTDIR="$DESTDIR" install
+}

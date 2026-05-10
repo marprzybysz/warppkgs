@@ -1,0 +1,8 @@
+name=mesa
+version=24.3.1
+description=Open-source OpenGL, Vulkan, and graphics drivers
+arch=x86_64
+license=MIT
+provides=libGL libEGL libGLESv2 libgbm libglapi
+deps=glibc,zlib,expat,libX11,libXext,libxcb,libXrender,libdrm,llvm-libs,elfutils
+source=warp

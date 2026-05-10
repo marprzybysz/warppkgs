@@ -1,0 +1,24 @@
+pkgname=windowmaker
+pkgver=0.96.0
+description="Window Maker — NeXTSTEP-style window manager for X11"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,libX11,libXext,libXft,libXinerama,libXpm,libXmu,libXt,fontconfig,freetype,libpng,libtiff,giflib,libjpeg-turbo
+makedeps=gcc,make,pkg-config,autoconf,automake,libtool
+source=https://github.com/window-maker/wmaker/releases/download/wmaker-0.96.0/WindowMaker-0.96.0.tar.gz
+sha256=
+
+build() {
+    ./configure --prefix=/usr        \
+                --sysconfdir=/etc    \
+                --enable-xinerama   \
+                --enable-usermenu   \
+                --enable-modelock   \
+                --with-pixmapdir=/usr/share/pixmaps \
+                --with-gnustepdir=/usr/lib/GNUstep
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

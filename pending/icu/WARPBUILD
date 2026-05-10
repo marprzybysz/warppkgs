@@ -1,0 +1,20 @@
+pkgname=icu
+pkgver=75.1
+description="International Components for Unicode"
+arch=x86_64
+license=ICU
+deps=glibc,gcc-runtime
+makedeps=gcc,g++,make,python3
+source=https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-src.tgz
+sha256=
+
+build() {
+    cd source
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    cd source
+    make DESTDIR="$DESTDIR" install
+}

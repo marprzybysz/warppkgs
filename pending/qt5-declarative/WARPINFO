@@ -1,0 +1,8 @@
+name=qt5-declarative
+version=5.15.16
+description=Qt5 QML and Quick framework
+arch=x86_64
+license=LGPL-3.0
+provides=libQt5Qml libQt5Quick
+deps=glibc,gcc-runtime,qt5-base
+source=warp

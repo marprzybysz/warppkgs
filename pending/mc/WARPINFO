@@ -1,0 +1,8 @@
+name=mc
+version=4.8.32
+description=Midnight Commander — visual file manager
+arch=x86_64
+license=GPL-3.0
+provides=mc mcdiff mcview mcedit
+deps=glibc,ncurses,glib,libssh2
+source=warp

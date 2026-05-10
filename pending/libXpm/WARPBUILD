@@ -1,0 +1,18 @@
+pkgname=libXpm
+pkgver=3.5.17
+description="X11 Pixmap library"
+arch=x86_64
+license=MIT
+deps=glibc,libX11,libXext,libXt
+makedeps=gcc,make,pkg-config
+source=https://xorg.freedesktop.org/archive/individual/lib/libXpm-3.5.17.tar.xz
+sha256=
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

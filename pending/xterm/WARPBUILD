@@ -1,0 +1,22 @@
+pkgname=xterm
+pkgver=395
+description="Standard terminal emulator for X11"
+arch=x86_64
+license=MIT
+deps=glibc,libX11,libXft,ncurses,freetype,fontconfig
+makedeps=gcc,make,pkg-config
+source=https://invisible-mirror.net/archives/xterm/xterm-395.tgz
+sha256=
+
+build() {
+    ./configure --prefix=/usr       \
+                --with-freetype2    \
+                --with-xft          \
+                --enable-wide-chars \
+                --enable-256-color
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

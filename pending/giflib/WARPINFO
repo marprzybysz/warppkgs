@@ -1,0 +1,8 @@
+name=giflib
+version=5.2.2
+description=GIF image format library
+arch=x86_64
+license=MIT
+provides=libgif
+deps=glibc
+source=warp

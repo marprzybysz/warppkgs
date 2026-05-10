@@ -1,0 +1,8 @@
+name=pcre2
+version=10.44
+description=Perl Compatible Regular Expressions library
+arch=x86_64
+license=BSD-3-Clause
+provides=libpcre2-8 libpcre2-16 libpcre2-32 libpcre2-posix
+deps=glibc,zlib,bzip2,readline
+source=warp

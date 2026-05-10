@@ -1,0 +1,23 @@
+pkgname=dbus
+pkgver=1.14.10
+description="Message bus system for IPC"
+arch=x86_64
+license=AFL-2.1
+deps=glibc,expat
+makedeps=gcc,make,pkg-config
+source=https://dbus.freedesktop.org/releases/dbus/dbus-1.14.10.tar.xz
+sha256=
+
+build() {
+    ./configure --prefix=/usr          \
+                --sysconfdir=/etc      \
+                --localstatedir=/var   \
+                --runstatedir=/run     \
+                --disable-static       \
+                --enable-user-session
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

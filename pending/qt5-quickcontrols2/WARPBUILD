@@ -1,0 +1,18 @@
+pkgname=qt5-quickcontrols2
+pkgver=5.15.16
+description="Qt5 Quick Controls 2 UI framework"
+arch=x86_64
+license=LGPL-3.0
+deps=qt5-base,qt5-declarative
+makedeps=gcc,g++,make
+source=https://download.qt.io/archive/qt/5.15/5.15.16/submodules/qtquickcontrols2-everywhere-opensource-src-5.15.16.tar.xz
+sha256=
+
+build() {
+    qmake
+    make $MAKEFLAGS
+}
+
+package() {
+    make INSTALL_ROOT="$DESTDIR" install
+}

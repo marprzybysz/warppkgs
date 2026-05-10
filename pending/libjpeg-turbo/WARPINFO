@@ -1,0 +1,8 @@
+name=libjpeg-turbo
+version=3.0.4
+description=JPEG image codec with SIMD acceleration
+arch=x86_64
+license=BSD-3-Clause
+provides=libjpeg libturbojpeg
+deps=glibc
+source=warp

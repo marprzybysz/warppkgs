@@ -1,0 +1,8 @@
+name=alacritty
+version=0.14.0
+description=GPU-accelerated terminal emulator
+arch=x86_64
+license=Apache-2.0
+provides=alacritty
+deps=glibc,gcc-runtime,fontconfig,freetype
+source=warp

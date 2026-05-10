@@ -1,0 +1,18 @@
+pkgname=cool-retro-term
+pkgver=1.2.0
+description="Retro-looking terminal emulator mimicking old CRT screens"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,gcc-runtime,qt5-base,qt5-declarative,qt5-graphicaleffects,qt5-quickcontrols2
+makedeps=gcc,g++,make,qt5-base
+source=https://github.com/Swordfish90/cool-retro-term/releases/download/1.2.0/cool-retro-term-1.2.0.tar.gz
+sha256=
+
+build() {
+    qmake PREFIX=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make INSTALL_ROOT="$DESTDIR" install
+}

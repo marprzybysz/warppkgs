@@ -1,0 +1,24 @@
+pkgname=mesa
+pkgver=24.3.1
+description="Open-source OpenGL, Vulkan, and graphics drivers"
+arch=x86_64
+license=MIT
+deps=glibc,zlib,expat,libX11,libXext,libxcb,libXrender,elfutils
+makedeps=gcc,g++,meson,ninja,pkg-config,python3,flex,bison
+source=https://archive.mesa3d.org/mesa-24.3.1.tar.xz
+sha256=
+
+build() {
+    meson setup build --prefix=/usr   \
+        -Dplatforms=x11               \
+        -Dgallium-drivers=swrast      \
+        -Dvulkan-drivers=             \
+        -Dglx=dri                     \
+        -Degl=enabled                 \
+        -Dllvm=disabled
+    ninja -C build
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,8 @@
+name=libxkbcommon
+version=1.7.0
+description=Keymap handling library for toolkits and window systems
+arch=x86_64
+license=MIT
+provides=libxkbcommon libxkbcommon-x11
+deps=glibc,libxcb,xorgproto
+source=warp

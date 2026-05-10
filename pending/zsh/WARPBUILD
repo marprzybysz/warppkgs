@@ -1,0 +1,22 @@
+pkgname=zsh
+pkgver=5.9.1
+description="Powerful shell with scripting language"
+arch=x86_64
+license=MIT
+deps=glibc,ncurses,libcap,gdbm
+makedeps=gcc,make,pkg-config
+source=https://www.zsh.org/pub/zsh-5.9.1.tar.xz
+sha256=
+
+build() {
+    ./configure --prefix=/usr       \
+                --enable-etcdir=/etc/zsh \
+                --enable-multibyte  \
+                --enable-zsh-secure-free \
+                --with-tcsetpgrp
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

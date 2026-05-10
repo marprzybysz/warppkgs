@@ -1,0 +1,19 @@
+pkgname=alacritty
+pkgver=0.14.0
+description="GPU-accelerated terminal emulator"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,fontconfig,freetype
+makedeps=rust,cmake,pkg-config
+source=https://github.com/alacritty/alacritty/archive/refs/tags/v0.14.0.tar.gz
+sha256=
+
+build() {
+    cargo build --release
+}
+
+package() {
+    install -Dm755 target/release/alacritty "$DESTDIR/usr/bin/alacritty"
+    install -Dm644 extra/alacritty.man "$DESTDIR/usr/share/man/man1/alacritty.1" 2>/dev/null || true
+    install -Dm644 extra/completions/alacritty.bash "$DESTDIR/usr/share/bash-completion/completions/alacritty" 2>/dev/null || true
+}

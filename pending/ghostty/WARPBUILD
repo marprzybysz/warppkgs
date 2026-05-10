@@ -1,0 +1,18 @@
+pkgname=ghostty
+pkgver=1.1.0
+description="Fast, native terminal emulator by Mitchell Hashimoto"
+arch=x86_64
+license=MIT
+deps=glibc,fontconfig,freetype
+makedeps=zig
+source=https://github.com/ghostty-org/ghostty/archive/refs/tags/v1.1.0.tar.gz
+sha256=
+
+build() {
+    zig build -Doptimize=ReleaseFast
+}
+
+package() {
+    install -Dm755 zig-out/bin/ghostty "$DESTDIR/usr/bin/ghostty"
+    install -Dm644 zig-out/share/ghostty/terminfo/ghostty.terminfo "$DESTDIR/usr/share/terminfo/g/ghostty" 2>/dev/null || true
+}

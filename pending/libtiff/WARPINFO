@@ -1,0 +1,8 @@
+name=libtiff
+version=4.7.0
+description=TIFF image format library
+arch=x86_64
+license=MIT
+provides=libtiff
+deps=glibc,zlib,libjpeg-turbo,xz-utils,zstd
+source=warp

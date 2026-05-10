@@ -1,0 +1,19 @@
+pkgname=oh-my-zsh
+pkgver=2024.11
+description="Framework for managing zsh configuration"
+arch=any
+license=MIT
+deps=zsh,git
+makedeps=
+source=https://github.com/ohmyzsh/ohmyzsh/archive/refs/heads/master.tar.gz
+sha256=
+
+build() {
+    true
+}
+
+package() {
+    mkdir -p "$DESTDIR/usr/share/oh-my-zsh"
+    cp -a . "$DESTDIR/usr/share/oh-my-zsh/"
+    rm -rf "$DESTDIR/usr/share/oh-my-zsh/.git"
+}

@@ -1,0 +1,8 @@
+name=libXpm
+version=3.5.17
+description=X11 Pixmap library
+arch=x86_64
+license=MIT
+provides=libXpm
+deps=glibc,libX11,libXext,libXt
+source=warp

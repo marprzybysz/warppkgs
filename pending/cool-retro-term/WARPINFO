@@ -1,0 +1,8 @@
+name=cool-retro-term
+version=1.2.0
+description=Retro-looking terminal emulator mimicking old CRT screens
+arch=x86_64
+license=GPL-3.0
+provides=cool-retro-term
+deps=glibc,gcc-runtime,qt5-base,qt5-declarative,qt5-graphicaleffects,qt5-quickcontrols2
+source=warp

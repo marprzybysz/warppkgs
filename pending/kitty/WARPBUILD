@@ -1,0 +1,17 @@
+pkgname=kitty
+pkgver=0.37.0
+description="GPU-based terminal emulator with image support"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,python3,fontconfig,freetype,ncurses,openssl,zlib
+makedeps=gcc,go,pkg-config
+source=https://github.com/kovidgoyal/kitty/releases/download/v0.37.0/kitty-0.37.0.tar.xz
+sha256=
+
+build() {
+    python3 setup.py linux-package --prefix=/usr
+}
+
+package() {
+    cp -a linux-package/* "$DESTDIR/"
+}

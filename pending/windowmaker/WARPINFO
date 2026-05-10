@@ -1,0 +1,8 @@
+name=windowmaker
+version=0.96.0
+description=Window Maker — NeXTSTEP-style window manager for X11
+arch=x86_64
+license=GPL-2.0
+provides=wmaker wmaker.inst WPrefs.app wmsetbg
+deps=glibc,libX11,libXext,libXft,libXinerama,libXpm,libXmu,libXt,fontconfig,freetype,libpng,libtiff,giflib,libjpeg-turbo
+source=warp

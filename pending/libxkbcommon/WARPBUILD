@@ -1,0 +1,20 @@
+pkgname=libxkbcommon
+pkgver=1.7.0
+description="Keymap handling library for toolkits and window systems"
+arch=x86_64
+license=MIT
+deps=glibc,libxcb,xorgproto
+makedeps=gcc,meson,ninja,pkg-config
+source=https://xkbcommon.org/download/libxkbcommon-1.7.0.tar.xz
+sha256=
+
+build() {
+    meson setup build --prefix=/usr    \
+        -Denable-docs=false            \
+        -Denable-wayland=false
+    ninja -C build
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

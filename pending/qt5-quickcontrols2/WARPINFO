@@ -1,0 +1,8 @@
+name=qt5-quickcontrols2
+version=5.15.16
+description=Qt5 Quick Controls 2 UI framework
+arch=x86_64
+license=LGPL-3.0
+provides=libQt5QuickControls2 libQt5QuickTemplates2
+deps=qt5-base,qt5-declarative
+source=warp
