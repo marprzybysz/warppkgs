@@ -1,0 +1,8 @@
+name=iptables
+version=1.8.11
+description=Linux packet filtering and NAT tool
+arch=x86_64
+license=GPL-2.0
+provides=iptables ip6tables iptables-save iptables-restore
+deps=glibc,libmnl,libnftnl
+source=warp

@@ -1,0 +1,8 @@
+name=sudo
+version=1.9.16
+description=Execute commands as another user
+arch=x86_64
+license=ISC
+provides=sudo sudoedit visudo
+deps=glibc,libxcrypt,zlib
+source=warp

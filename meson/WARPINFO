@@ -1,0 +1,8 @@
+name=meson
+version=1.5.1
+description=High-performance build system
+arch=any
+license=Apache-2.0
+provides=meson
+deps=python3
+source=system

@@ -1,0 +1,8 @@
+name=freetype
+version=2.13.3
+description=Font rendering library
+arch=x86_64
+license=FTL
+provides=libfreetype
+deps=glibc,zlib,bzip2,libpng
+source=warp

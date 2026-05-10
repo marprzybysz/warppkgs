@@ -1,0 +1,8 @@
+name=kbd
+version=2.6.4
+description=Keyboard and console font tools
+arch=x86_64
+license=GPL-2.0
+provides=loadkeys setfont dumpkeys
+deps=glibc
+source=system

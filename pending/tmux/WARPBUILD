@@ -6,7 +6,7 @@ license=ISC
 deps=glibc,ncurses,libevent
 makedeps=gcc,make,pkg-config
 source=https://github.com/tmux/tmux/releases/download/3.5a/tmux-3.5a.tar.gz
-sha256=8b0dc66efc2092ce23fb548e23ae05a2ebb79faa53abaf61b7778e498d8b41e5
+sha256=16216bd0877170dfcc64157085ba9013610b12b082548c7c9542cc0103198951
 
 build() {
     ./configure --prefix=/usr

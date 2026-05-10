@@ -1,0 +1,8 @@
+name=gzip
+version=1.13
+description=GNU compression utility
+arch=x86_64
+license=GPL-3.0
+provides=gzip gunzip zcat
+deps=glibc
+source=system

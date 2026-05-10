@@ -1,0 +1,8 @@
+name=less
+version=661
+description=Terminal pager
+arch=x86_64
+license=GPL-3.0
+provides=less lessecho lesskey
+deps=glibc,ncurses
+source=system

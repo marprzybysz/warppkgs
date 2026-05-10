@@ -1,0 +1,8 @@
+name=ninja
+version=1.12.1
+description=Small build system with a focus on speed
+arch=x86_64
+license=Apache-2.0
+provides=ninja
+deps=glibc,gcc-runtime
+source=system

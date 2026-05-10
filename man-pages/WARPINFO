@@ -1,0 +1,8 @@
+name=man-pages
+version=6.9.1
+description=Linux man pages
+arch=any
+license=GPL-2.0
+provides=man-pages
+deps=
+source=system

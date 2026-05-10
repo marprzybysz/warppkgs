@@ -1,0 +1,18 @@
+pkgname=tar
+pkgver=1.35
+description="GNU archiving utility"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,acl,attr
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/tar/tar-1.35.tar.xz
+sha256=7edb8886a3dc69420a1446e1e2a9c2c57e0bc1527f2eac3239e36de217da0c04
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

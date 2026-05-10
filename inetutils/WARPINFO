@@ -1,0 +1,8 @@
+name=inetutils
+version=2.5
+description=GNU network utilities (hostname, ping, telnet, ftp)
+arch=x86_64
+license=GPL-3.0
+provides=hostname ping ping6 ftp telnet traceroute
+deps=glibc,readline,ncurses
+source=system

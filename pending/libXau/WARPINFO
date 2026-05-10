@@ -1,0 +1,8 @@
+name=libXau
+version=1.0.11
+description=X11 Authorization Protocol library
+arch=x86_64
+license=MIT
+provides=libXau
+deps=glibc,xorgproto
+source=warp

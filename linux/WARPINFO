@@ -1,0 +1,8 @@
+name=linux
+version=6.10.5
+description=Linux kernel and headers
+arch=x86_64
+license=GPL-2.0
+provides=linux-headers
+deps=
+source=system

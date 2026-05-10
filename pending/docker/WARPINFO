@@ -1,0 +1,8 @@
+name=docker
+version=27.4.1
+description=Container runtime engine, CLI, and tools
+arch=x86_64
+license=Apache-2.0
+provides=docker dockerd containerd runc docker-compose
+deps=glibc,iptables,libseccomp,libdevmapper,e2fsprogs
+source=warp

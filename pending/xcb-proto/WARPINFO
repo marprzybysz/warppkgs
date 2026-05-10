@@ -1,0 +1,8 @@
+name=xcb-proto
+version=1.17.0
+description=X11 XCB protocol descriptions
+arch=any
+license=MIT
+provides=xcb-proto
+deps=python3
+source=warp

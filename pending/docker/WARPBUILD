@@ -1,0 +1,36 @@
+pkgname=docker
+pkgver=27.4.1
+description="Container runtime engine, CLI, and tools"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,iptables,libseccomp
+makedeps=go,make,bash
+source=https://download.docker.com/linux/static/stable/x86_64/docker-27.4.1.tgz
+sha256=
+
+build() {
+    true
+}
+
+package() {
+    mkdir -p "$DESTDIR/usr/bin"
+    cp docker dockerd containerd containerd-shim-runc-v2 ctr runc docker-init docker-proxy "$DESTDIR/usr/bin/"
+
+    mkdir -p "$DESTDIR/etc/openrc/init.d"
+    cat > "$DESTDIR/etc/openrc/init.d/docker" << 'INITEOF'
+#!/sbin/openrc-run
+
+name="Docker"
+description="Docker container runtime"
+command="/usr/bin/dockerd"
+command_background=true
+pidfile="/run/docker.pid"
+start_stop_daemon_args="--stdout /var/log/docker.log --stderr /var/log/docker.log"
+
+depend() {
+    need net
+    after firewall
+}
+INITEOF
+    chmod 755 "$DESTDIR/etc/openrc/init.d/docker"
+}

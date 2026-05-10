@@ -1,0 +1,21 @@
+pkgname=linux
+pkgver=6.10.5
+description="Linux kernel and headers"
+arch=x86_64
+license=GPL-2.0
+deps=
+makedeps=gcc,make,bc,flex,bison,elfutils,openssl,perl
+source=https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.5.tar.xz
+sha256=
+
+build() {
+    make mrproper
+    make headers
+}
+
+package() {
+    mkdir -p "$DESTDIR/usr/include"
+    find usr/include -type f -name '*.h' | while read f; do
+        install -Dm644 "$f" "$DESTDIR/$f"
+    done
+}

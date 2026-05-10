@@ -1,0 +1,8 @@
+name=libpng
+version=1.6.44
+description=PNG reference library
+arch=x86_64
+license=Libpng
+provides=libpng libpng16
+deps=glibc,zlib
+source=warp

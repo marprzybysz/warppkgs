@@ -1,0 +1,8 @@
+name=neofetch
+version=7.1.0
+description=CLI system information tool written in bash
+arch=any
+license=MIT
+provides=neofetch
+deps=bash
+source=warp

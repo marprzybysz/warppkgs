@@ -1,0 +1,8 @@
+name=groff
+version=1.23.0
+description=GNU troff typesetting system
+arch=x86_64
+license=GPL-3.0
+provides=groff troff nroff tbl eqn
+deps=glibc,perl
+source=system

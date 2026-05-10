@@ -1,0 +1,8 @@
+name=libxcb
+version=1.17.0
+description=X11 C Bindings library
+arch=x86_64
+license=MIT
+provides=libxcb libxcb-composite libxcb-damage libxcb-dpms libxcb-glx libxcb-randr libxcb-render libxcb-shape libxcb-shm libxcb-sync libxcb-xfixes libxcb-xinerama libxcb-xinput libxcb-xkb
+deps=glibc,xcb-proto,libXau,libXdmcp
+source=warp

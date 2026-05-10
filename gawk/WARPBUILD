@@ -1,0 +1,18 @@
+pkgname=gawk
+pkgver=5.3.0
+description="GNU AWK pattern scanning and processing language"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,readline
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/gawk/gawk-5.3.0.tar.xz
+sha256=ca9c16d3f11d0a600f9b6b3d72732be4675d1516de6e893e3194e47c1fbe591a
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

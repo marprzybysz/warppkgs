@@ -1,0 +1,8 @@
+name=which
+version=2.21
+description=Shows the full path of shell commands
+arch=x86_64
+license=GPL-3.0
+provides=which
+deps=glibc
+source=system

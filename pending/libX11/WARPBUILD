@@ -1,0 +1,18 @@
+pkgname=libX11
+pkgver=1.8.10
+description="X11 client-side library"
+arch=x86_64
+license=MIT
+deps=glibc,libxcb,xorgproto,xtrans
+makedeps=gcc,make,pkg-config
+source=https://xorg.freedesktop.org/archive/individual/lib/libX11-1.8.10.tar.xz
+sha256=
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,18 @@
+pkgname=grep
+pkgver=3.11
+description="GNU regular expression matcher"
+arch=x86_64
+license=GPL-3.0
+deps=glibc
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/grep/grep-3.11.tar.xz
+sha256=1db2aedde89d0dea42b16d9528f894c8d15dae4e190b59aecc78f5a951276eab
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

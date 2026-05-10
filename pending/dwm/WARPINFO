@@ -1,0 +1,8 @@
+name=dwm
+version=6.5
+description=Dynamic window manager for X11 from suckless.org
+arch=x86_64
+license=MIT
+provides=dwm
+deps=glibc,libX11,libXft,libXinerama,fontconfig,freetype
+source=warp

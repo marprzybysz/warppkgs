@@ -1,0 +1,8 @@
+name=diffutils
+version=3.10
+description=GNU file comparison utilities
+arch=x86_64
+license=GPL-3.0
+provides=diff diff3 sdiff cmp
+deps=glibc
+source=system

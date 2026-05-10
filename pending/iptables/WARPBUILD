@@ -1,0 +1,20 @@
+pkgname=iptables
+pkgver=1.8.11
+description="Linux packet filtering and NAT tool"
+arch=x86_64
+license=GPL-2.0
+deps=glibc
+makedeps=gcc,make,pkg-config
+source=https://www.netfilter.org/projects/iptables/files/iptables-1.8.11.tar.xz
+sha256=
+
+build() {
+    ./configure --prefix=/usr     \
+                --disable-nftables \
+                --enable-libipq
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

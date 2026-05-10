@@ -1,0 +1,8 @@
+name=tar
+version=1.35
+description=GNU archiving utility
+arch=x86_64
+license=GPL-3.0
+provides=tar
+deps=glibc,acl,attr
+source=system

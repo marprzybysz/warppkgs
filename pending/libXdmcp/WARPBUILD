@@ -1,0 +1,18 @@
+pkgname=libXdmcp
+pkgver=1.1.5
+description="X11 Display Manager Control Protocol library"
+arch=x86_64
+license=MIT
+deps=glibc,xorgproto
+makedeps=gcc,make,pkg-config
+source=https://xorg.freedesktop.org/archive/individual/lib/libXdmcp-1.1.5.tar.xz
+sha256=
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

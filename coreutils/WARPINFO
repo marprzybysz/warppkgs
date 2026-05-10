@@ -1,0 +1,8 @@
+name=coreutils
+version=9.5
+description=GNU core utilities (ls, cp, mv, cat, etc.)
+arch=x86_64
+license=GPL-3.0
+provides=ls cp mv rm cat echo mkdir chmod chown date head tail sort uniq wc tr
+deps=glibc,acl,attr,libcap
+source=system

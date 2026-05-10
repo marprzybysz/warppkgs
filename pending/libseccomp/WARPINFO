@@ -1,0 +1,8 @@
+name=libseccomp
+version=2.5.5
+description=Enhanced seccomp (mode 2) library
+arch=x86_64
+license=LGPL-2.1
+provides=libseccomp
+deps=glibc
+source=warp

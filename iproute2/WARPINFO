@@ -1,0 +1,8 @@
+name=iproute2
+version=6.10.0
+description=IP routing and network configuration tools
+arch=x86_64
+license=GPL-2.0
+provides=ip ss bridge tc
+deps=glibc,elfutils
+source=system

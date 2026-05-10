@@ -1,0 +1,18 @@
+pkgname=gzip
+pkgver=1.13
+description="GNU compression utility"
+arch=x86_64
+license=GPL-3.0
+deps=glibc
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/gzip/gzip-1.13.tar.xz
+sha256=7454eb6935db17c6655576c2e1b0fabefd38b4d0936e0f87f48cd062571c4e88
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

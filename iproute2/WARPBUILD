@@ -1,0 +1,17 @@
+pkgname=iproute2
+pkgver=6.10.0
+description="IP routing and network configuration tools"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,elfutils
+makedeps=gcc,make,pkg-config,bison,flex
+source=https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.10.0.tar.xz
+sha256=
+
+build() {
+    make PREFIX=/usr $MAKEFLAGS
+}
+
+package() {
+    make PREFIX=/usr DESTDIR="$DESTDIR" install
+}

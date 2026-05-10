@@ -1,0 +1,8 @@
+name=shadow
+version=4.16.0
+description=User and group account management tools
+arch=x86_64
+license=BSD-3-Clause
+provides=useradd userdel usermod groupadd groupdel passwd chage
+deps=glibc,libxcrypt,acl,attr
+source=system

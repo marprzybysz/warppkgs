@@ -1,0 +1,18 @@
+pkgname=bc
+pkgver=6.7.6
+description="Arbitrary precision calculator language"
+arch=x86_64
+license=BSD-2-Clause
+deps=glibc
+makedeps=gcc,make
+source=https://github.com/gavinhoward/bc/releases/download/6.7.6/bc-6.7.6.tar.xz
+sha256=
+
+build() {
+    CC=gcc ./configure --prefix=/usr -G -O3 -r
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

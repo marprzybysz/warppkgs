@@ -1,0 +1,8 @@
+name=xorgproto
+version=2024.1
+description=X.Org protocol headers
+arch=any
+license=MIT
+provides=xorgproto
+deps=
+source=warp

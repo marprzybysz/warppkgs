@@ -1,0 +1,18 @@
+pkgname=m4
+pkgver=1.4.19
+description="GNU macro processor"
+arch=x86_64
+license=GPL-3.0
+deps=glibc
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/m4/m4-1.4.19.tar.xz
+sha256=63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

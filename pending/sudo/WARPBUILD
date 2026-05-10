@@ -1,0 +1,22 @@
+pkgname=sudo
+pkgver=1.9.16
+description="Execute commands as another user"
+arch=x86_64
+license=ISC
+deps=glibc,libxcrypt,zlib
+makedeps=gcc,make
+source=https://www.sudo.ws/dist/sudo-1.9.16.tar.gz
+sha256=
+
+build() {
+    ./configure --prefix=/usr          \
+                --libexecdir=/usr/lib  \
+                --with-all-insults     \
+                --with-env-editor      \
+                --with-passprompt="[sudo] password for %p: "
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

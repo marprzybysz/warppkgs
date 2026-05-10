@@ -1,0 +1,8 @@
+name=texinfo
+version=7.1
+description=GNU documentation system
+arch=x86_64
+license=GPL-3.0
+provides=makeinfo texi2any info install-info
+deps=glibc,perl,ncurses
+source=system

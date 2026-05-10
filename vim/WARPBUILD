@@ -1,0 +1,19 @@
+pkgname=vim
+pkgver=9.1.0660
+description="Vi IMproved text editor"
+arch=x86_64
+license=Vim
+deps=glibc,ncurses,acl
+makedeps=gcc,make
+source=https://github.com/vim/vim/archive/refs/tags/v9.1.0660.tar.gz
+sha256=
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+    ln -sf vim "$DESTDIR/usr/bin/vi"
+}

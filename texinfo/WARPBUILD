@@ -1,0 +1,18 @@
+pkgname=texinfo
+pkgver=7.1
+description="GNU documentation system"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,perl,ncurses
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/texinfo/texinfo-7.1.tar.xz
+sha256=deeec9f19f159e046fdf8ad22a3b5c813be1e6bb801c3ef7e310e2640076db49
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,8 @@
+name=fastfetch
+version=2.34.0
+description=Fast system information tool written in C
+arch=x86_64
+license=MIT
+provides=fastfetch flashfetch
+deps=glibc,gcc-runtime
+source=warp

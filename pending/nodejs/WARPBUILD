@@ -1,0 +1,21 @@
+pkgname=nodejs
+pkgver=22.12.0
+description="JavaScript runtime built on V8 engine (includes npm)"
+arch=x86_64
+license=MIT
+deps=glibc,openssl,zlib
+makedeps=gcc,g++,make,python3,pkg-config
+source=https://nodejs.org/dist/v22.12.0/node-v22.12.0.tar.xz
+sha256=a643145b9f12a8189de1e853d042543f25e2e82f153f8e44b920058d03e8ad36
+
+build() {
+    ./configure --prefix=/usr      \
+                --shared-openssl   \
+                --shared-zlib      \
+                --with-intl=none
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

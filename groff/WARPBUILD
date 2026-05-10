@@ -1,0 +1,18 @@
+pkgname=groff
+pkgver=1.23.0
+description="GNU troff typesetting system"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,perl
+makedeps=gcc,g++,make
+source=https://ftp.gnu.org/gnu/groff/groff-1.23.0.tar.gz
+sha256=6b9757f592b7518b5435b68e7597aa7c54db0f18230e0c0c0c8d4ade53f4e778
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

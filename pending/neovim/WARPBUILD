@@ -1,0 +1,22 @@
+pkgname=neovim
+pkgver=0.10.3
+description="Hyperextensible Vim-based text editor"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,gcc-runtime
+makedeps=gcc,g++,make,cmake,ninja,pkg-config,gettext
+source=https://github.com/neovim/neovim/archive/refs/tags/v0.10.3.tar.gz
+sha256=
+
+build() {
+    make CMAKE_BUILD_TYPE=Release \
+         CMAKE_INSTALL_PREFIX=/usr \
+         USE_BUNDLED=ON \
+         $MAKEFLAGS
+}
+
+package() {
+    make CMAKE_INSTALL_PREFIX=/usr \
+         DESTDIR="$DESTDIR" \
+         install
+}

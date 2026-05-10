@@ -1,0 +1,18 @@
+pkgname=dwm
+pkgver=6.5
+description="Dynamic window manager for X11 from suckless.org"
+arch=x86_64
+license=MIT
+deps=glibc,libX11,libXft,libXinerama,fontconfig,freetype
+makedeps=gcc,make,pkg-config
+source=https://dl.suckless.org/dwm/dwm-6.5.tar.gz
+sha256=21d79ebfa9edd5181e48edc68003ce580e4a4060c3e15daab040e3deb3734ec0
+
+build() {
+    sed -i 's|/usr/local|/usr|g' config.mk
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" PREFIX=/usr install
+}

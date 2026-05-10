@@ -1,0 +1,8 @@
+name=nodejs
+version=22.12.0
+description=JavaScript runtime built on V8 engine (includes npm)
+arch=x86_64
+license=MIT
+provides=node npm npx
+deps=glibc,openssl,zlib,libstdc++
+source=warp

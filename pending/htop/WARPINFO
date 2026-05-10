@@ -1,0 +1,8 @@
+name=htop
+version=3.3.0
+description=Interactive process viewer
+arch=x86_64
+license=GPL-2.0
+provides=htop
+deps=glibc,ncurses
+source=warp

@@ -1,0 +1,8 @@
+name=perl
+version=5.40.0
+description=Practical Extraction and Report Language
+arch=x86_64
+license=Artistic-1.0
+provides=perl
+deps=glibc,gdbm,libxcrypt
+source=system

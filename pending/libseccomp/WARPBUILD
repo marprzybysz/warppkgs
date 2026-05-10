@@ -1,0 +1,18 @@
+pkgname=libseccomp
+pkgver=2.5.5
+description="Enhanced seccomp (mode 2) library"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc
+makedeps=gcc,make
+source=https://github.com/seccomp/libseccomp/releases/download/v2.5.5/libseccomp-2.5.5.tar.gz
+sha256=248a2c8a4d9b9858aa6baf52712c34afefcf9c9e94b7f996e49571c2571571a0
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

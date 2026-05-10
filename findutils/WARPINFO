@@ -1,0 +1,8 @@
+name=findutils
+version=4.10.0
+description=GNU find, xargs, and locate
+arch=x86_64
+license=GPL-3.0
+provides=find xargs locate updatedb
+deps=glibc
+source=system

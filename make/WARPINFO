@@ -1,0 +1,8 @@
+name=make
+version=4.4.1
+description=GNU make build automation tool
+arch=x86_64
+license=GPL-3.0
+provides=make
+deps=glibc
+source=system

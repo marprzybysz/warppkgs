@@ -1,0 +1,17 @@
+pkgname=man-pages
+pkgver=6.9.1
+description="Linux man pages"
+arch=any
+license=GPL-2.0
+deps=
+makedeps=make
+source=https://www.kernel.org/pub/linux/docs/man-pages/man-pages-6.9.1.tar.xz
+sha256=
+
+build() {
+    true
+}
+
+package() {
+    make DESTDIR="$DESTDIR" prefix=/usr install
+}

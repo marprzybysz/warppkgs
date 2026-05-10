@@ -1,0 +1,18 @@
+pkgname=findutils
+pkgver=4.10.0
+description="GNU find, xargs, and locate"
+arch=x86_64
+license=GPL-3.0
+deps=glibc
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/findutils/findutils-4.10.0.tar.xz
+sha256=1387e0b67ff247571c7c6a9f670f91a004cd22c515666adda9e87e6107e09e8c
+
+build() {
+    ./configure --prefix=/usr --localstatedir=/var/lib/locate
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

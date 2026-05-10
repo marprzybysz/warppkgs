@@ -1,0 +1,8 @@
+name=intltool
+version=0.51.0
+description=Internationalization tool for XML-based files
+arch=any
+license=GPL-2.0
+provides=intltool-extract intltool-merge intltool-update
+deps=perl
+source=system

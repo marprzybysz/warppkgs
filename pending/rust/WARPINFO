@@ -1,0 +1,8 @@
+name=rust
+version=1.83.0
+description=Rust programming language compiler and cargo package manager
+arch=x86_64
+license=MIT
+provides=rustc cargo rustdoc
+deps=glibc,gcc-runtime,zlib,openssl,curl
+source=warp

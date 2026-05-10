@@ -1,0 +1,18 @@
+pkgname=xorgproto
+pkgver=2024.1
+description="X.Org protocol headers"
+arch=any
+license=MIT
+deps=
+makedeps=gcc,make,meson,ninja
+source=https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2024.1.tar.xz
+sha256=
+
+build() {
+    meson setup build --prefix=/usr
+    ninja -C build
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

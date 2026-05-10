@@ -1,0 +1,8 @@
+name=bc
+version=6.7.6
+description=Arbitrary precision calculator language
+arch=x86_64
+license=BSD-2-Clause
+provides=bc dc
+deps=glibc
+source=system

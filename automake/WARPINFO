@@ -1,0 +1,8 @@
+name=automake
+version=1.17
+description=GNU Automake build system tool
+arch=any
+license=GPL-2.0
+provides=automake aclocal
+deps=autoconf,perl
+source=system

@@ -1,0 +1,8 @@
+name=autoconf
+version=2.72
+description=GNU Autoconf build system generator
+arch=any
+license=GPL-3.0
+provides=autoconf autoheader autoreconf
+deps=m4,perl
+source=system

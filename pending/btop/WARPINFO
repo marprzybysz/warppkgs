@@ -1,0 +1,8 @@
+name=btop
+version=1.4.0
+description=Resource monitor with a modern terminal UI
+arch=x86_64
+license=Apache-2.0
+provides=btop
+deps=glibc,gcc-runtime
+source=warp

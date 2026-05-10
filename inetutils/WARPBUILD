@@ -1,0 +1,27 @@
+pkgname=inetutils
+pkgver=2.5
+description="GNU network utilities (hostname, ping, telnet, ftp)"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,readline,ncurses
+makedeps=gcc,make
+source=https://ftp.gnu.org/gnu/inetutils/inetutils-2.5.tar.xz
+sha256=87697d60a31e10b5cb86a9f0651e1ec7bee98320d048c0739431aac3d5764f89
+
+build() {
+    ./configure --prefix=/usr       \
+                --bindir=/usr/bin   \
+                --localstatedir=/var \
+                --disable-logger    \
+                --disable-whois     \
+                --disable-rcp       \
+                --disable-rexec     \
+                --disable-rlogin    \
+                --disable-rsh       \
+                --disable-servers
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

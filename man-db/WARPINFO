@@ -1,0 +1,8 @@
+name=man-db
+version=2.12.1
+description=Man page viewer and database
+arch=x86_64
+license=GPL-2.0
+provides=man apropos whatis mandb
+deps=glibc,groff,less,libpipeline,gdbm
+source=system

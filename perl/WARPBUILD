@@ -1,0 +1,27 @@
+pkgname=perl
+pkgver=5.40.0
+description="Practical Extraction and Report Language"
+arch=x86_64
+license=Artistic-1.0
+deps=glibc,gdbm,libxcrypt
+makedeps=gcc,make
+source=https://www.cpan.org/src/5.0/perl-5.40.0.tar.xz
+sha256=d5325b8f47c89ef6c484e3dded1b2afbbde8a91ac9e64ef7a6fbc2525a0c28a3
+
+build() {
+    sh Configure -des                        \
+        -D prefix=/usr                       \
+        -D vendorprefix=/usr                 \
+        -D privlib=/usr/lib/perl5/5.40/core  \
+        -D archlib=/usr/lib/perl5/5.40/core  \
+        -D sitelib=/usr/lib/perl5/5.40/site  \
+        -D sitearch=/usr/lib/perl5/5.40/site \
+        -D vendorlib=/usr/lib/perl5/5.40/vendor \
+        -D vendorarch=/usr/lib/perl5/5.40/vendor \
+        -D useshrplib -D usethreads
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

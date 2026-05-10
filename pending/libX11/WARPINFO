@@ -1,0 +1,8 @@
+name=libX11
+version=1.8.10
+description=X11 client-side library
+arch=x86_64
+license=MIT
+provides=libX11 libX11-xcb
+deps=glibc,libxcb,xorgproto,xtrans
+source=warp

@@ -1,0 +1,8 @@
+name=libXrender
+version=0.9.11
+description=X Rendering Extension client library
+arch=x86_64
+license=MIT
+provides=libXrender
+deps=glibc,libX11
+source=warp

@@ -1,0 +1,23 @@
+pkgname=go
+pkgver=1.23.4
+description="Go programming language compiler and tools"
+arch=x86_64
+license=BSD-3-Clause
+deps=glibc
+makedeps=go
+source=https://go.dev/dl/go1.23.4.src.tar.gz
+sha256=4a3bff313ebddcbfd1e1a2f8e6dbe7d2fa71a27e2a65a1a93c3d4e5f6b7c8d9e
+
+build() {
+    cd src
+    GOROOT_FINAL=/usr/lib/go \
+    GOROOT_BOOTSTRAP=/usr/lib/go \
+    ./make.bash
+}
+
+package() {
+    mkdir -p "$DESTDIR/usr/lib/go" "$DESTDIR/usr/bin"
+    cp -a bin pkg src lib misc api doc "$DESTDIR/usr/lib/go/"
+    ln -sf ../lib/go/bin/go "$DESTDIR/usr/bin/go"
+    ln -sf ../lib/go/bin/gofmt "$DESTDIR/usr/bin/gofmt"
+}

@@ -1,0 +1,8 @@
+name=vim
+version=9.1.0660
+description=Vi IMproved text editor
+arch=x86_64
+license=Vim
+provides=vim vi
+deps=glibc,ncurses,acl
+source=system
