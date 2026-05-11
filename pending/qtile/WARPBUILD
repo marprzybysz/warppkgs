@@ -1,0 +1,19 @@
+pkgname=qtile
+pkgver=0.29.0
+description="Hackable tiling window manager written in Python"
+arch=x86_64
+license=MIT
+deps=python3,libX11,libxcb,xcb-proto,libXext,glib,dbus,pango,cairo
+makedeps=python3,gcc,pkg-config
+source=https://github.com/qtile/qtile/archive/refs/tags/v0.29.0.tar.gz
+sha256=
+
+build() {
+    pip3 install --root="$DESTDIR" --prefix=/usr --no-deps \
+        cffi cairocffi xcffib 2>/dev/null || true
+    pip3 install --root="$DESTDIR" --prefix=/usr --no-deps .
+}
+
+package() {
+    true
+}
