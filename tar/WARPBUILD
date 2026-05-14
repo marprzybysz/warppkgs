@@ -6,7 +6,7 @@ license=GPL-3.0
 deps=glibc,acl,attr
 makedeps=gcc,make
 source=https://ftp.gnu.org/gnu/tar/tar-1.35.tar.xz
-sha256=7edb8886a3dc69420a1446e1e2a9c2c57e0bc1527f2eac3239e36de217da0c04
+sha256=4d62ff37342ec7aed748535323930c7cf94acf71c3591882b26a7ea50f3edc16
 
 build() {
     ./configure --prefix=/usr
