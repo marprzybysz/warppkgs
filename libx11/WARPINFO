@@ -1,0 +1,7 @@
+name=libx11
+version=1.8.10
+description=X11 client-side library
+arch=x86_64
+license=MIT
+deps=glibc,libxcb
+source=https://xorg.freedesktop.org/releases/individual/lib/libX11-1.8.10.tar.xz

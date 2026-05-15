@@ -1,0 +1,7 @@
+name=qtile
+version=0.29.0
+description=Full-featured, hackable tiling window manager written in Python
+arch=x86_64
+license=MIT
+deps=glibc,python3,libx11,libxcb,cairo,pango,glib
+source=https://github.com/qtile/qtile/archive/refs/tags/v0.29.0.tar.gz

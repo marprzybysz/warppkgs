@@ -1,0 +1,18 @@
+pkgname=libxinerama
+pkgver=1.1.5
+description="X Xinerama extension library"
+arch=x86_64
+license=MIT
+deps=glibc,libx11
+makedeps=gcc,make,pkgconf
+source=https://xorg.freedesktop.org/releases/individual/lib/libXinerama-1.1.5.tar.xz
+sha256=2b3b3dad9347db41dca56beb7db5878f283bde1142f04d9f8e478af435dfdc53
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

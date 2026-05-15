@@ -1,0 +1,18 @@
+pkgname=dwm
+pkgver=6.5
+description="Dynamic window manager for X"
+arch=x86_64
+license=MIT
+deps=glibc,libx11,libxft,libxinerama,fontconfig,freetype
+makedeps=gcc,make,pkgconf
+source=https://dl.suckless.org/dwm/dwm-6.5.tar.gz
+sha256=21d79ebfa9f2fb93141836c2666cb81f4784c69d64e7f1b2352f9b970ba09729
+
+build() {
+    sed -i "s|PREFIX = /usr/local|PREFIX = /usr|" config.mk
+    make $MAKEFLAGS
+}
+
+package() {
+    make PREFIX="$DESTDIR/usr" install
+}

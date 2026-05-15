@@ -1,0 +1,18 @@
+pkgname=libxft
+pkgver=2.3.8
+description="X FreeType library"
+arch=x86_64
+license=MIT
+deps=glibc,libx11,freetype,fontconfig
+makedeps=gcc,make,pkgconf
+source=https://xorg.freedesktop.org/releases/individual/lib/libXft-2.3.8.tar.xz
+sha256=5e8c3c4bc2d4c0a40aef6b4b38ed2fb74301640da29f6528154b5009b1c6dd49
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,7 @@
+name=libxft
+version=2.3.8
+description=X FreeType library
+arch=x86_64
+license=MIT
+deps=glibc,libx11,freetype,fontconfig
+source=https://xorg.freedesktop.org/releases/individual/lib/libXft-2.3.8.tar.xz
