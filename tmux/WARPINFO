@@ -1,0 +1,7 @@
+name=tmux
+version=3.5a
+description=Terminal multiplexer
+arch=x86_64
+license=ISC
+deps=glibc,ncurses,libevent
+source=https://github.com/tmux/tmux/releases/download/3.5a/tmux-3.5a.tar.gz
