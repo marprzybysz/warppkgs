@@ -3,19 +3,26 @@ pkgver=0.29.0
 description="Full-featured, hackable tiling window manager written in Python"
 arch=x86_64
 license=MIT
-deps=glibc,python3,libx11,libxcb,cairo,pango,glib
+deps=glibc,python3,libx11,libxcb,cairo,pango
 makedeps=gcc,python3,pkgconf,xcb-proto
 source=https://github.com/qtile/qtile/archive/refs/tags/v0.29.0.tar.gz
 sha256=8756dbd13a2db705b74915396ed9c7966f445624dbb0b99c63afc088b16bd8f3
 
 build() {
-    pip install --no-build-isolation --prefix=/usr \
+    # Install Python dependencies bundled into the package
+    pip install --no-build-isolation \
+        --prefix=/usr \
+        --root="$DESTDIR" \
         xcffib cffi cairocffi dbus-next \
-        python-xlib pyxdg iwlib psutil
+        python-xlib pyxdg psutil
+
+    # Build qtile itself
+    pip install --no-build-isolation --no-deps \
+        --prefix=/usr \
+        --root="$DESTDIR" \
+        .
 }
 
 package() {
-    pip install --no-build-isolation --no-deps \
-        --prefix="$DESTDIR/usr" \
-        --no-compile .
+    :
 }
