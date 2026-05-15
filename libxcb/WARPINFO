@@ -1,0 +1,7 @@
+name=libxcb
+version=1.17.0
+description=X protocol C-language Binding
+arch=x86_64
+license=MIT
+deps=glibc,xcb-proto,libxau,libxdmcp
+source=https://xorg.freedesktop.org/releases/individual/lib/libxcb-1.17.0.tar.xz

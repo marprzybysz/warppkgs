@@ -1,0 +1,7 @@
+name=xcb-util
+version=0.4.1
+description=XCB utility functions
+arch=x86_64
+license=MIT
+deps=glibc,libxcb
+source=https://xorg.freedesktop.org/releases/individual/lib/xcb-util-0.4.1.tar.xz

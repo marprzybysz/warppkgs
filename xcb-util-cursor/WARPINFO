@@ -1,0 +1,7 @@
+name=xcb-util-cursor
+version=0.1.4
+description=XCB cursor library
+arch=x86_64
+license=MIT
+deps=glibc,libxcb,xcb-util
+source=https://xorg.freedesktop.org/releases/individual/lib/xcb-util-cursor-0.1.4.tar.xz

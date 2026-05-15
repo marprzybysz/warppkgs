@@ -1,0 +1,18 @@
+pkgname=pango
+pkgver=1.54.0
+description="Library for layout and rendering of text"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,glib,cairo,freetype,fontconfig,harfbuzz
+makedeps=gcc,meson,ninja,pkgconf
+source=https://ftp.gnome.org/pub/gnome/sources/pango/1.54/pango-1.54.0.tar.xz
+sha256=28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb
+
+build() {
+    meson setup --prefix=/usr --buildtype=release build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

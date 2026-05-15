@@ -1,0 +1,18 @@
+pkgname=xcb-util-keysyms
+pkgver=0.4.1
+description="XCB key symbol conversion"
+arch=x86_64
+license=MIT
+deps=glibc,libxcb
+makedeps=gcc,make,pkgconf
+source=https://xorg.freedesktop.org/releases/individual/lib/xcb-util-keysyms-0.4.1.tar.xz
+sha256=7c260a5294412aed429df1da2f8afd3bd07b7cba3fec772fba15a613a6d5c638
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

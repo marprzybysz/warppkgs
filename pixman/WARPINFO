@@ -1,0 +1,7 @@
+name=pixman
+version=0.43.4
+description=Pixel manipulation library
+arch=x86_64
+license=MIT
+deps=glibc
+source=https://www.cairographics.org/releases/pixman-0.43.4.tar.gz

@@ -1,0 +1,18 @@
+pkgname=libxcb
+pkgver=1.17.0
+description="X protocol C-language Binding"
+arch=x86_64
+license=MIT
+deps=glibc,xcb-proto,libxau,libxdmcp
+makedeps=gcc,make,pkgconf,xcb-proto
+source=https://xorg.freedesktop.org/releases/individual/lib/libxcb-1.17.0.tar.xz
+sha256=599ebf9996710fea71622e6e184f3a8ad5b43d0e5fa8c4e407123c88a59a6d55
+
+build() {
+    ./configure --prefix=/usr --disable-static --enable-xinput
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

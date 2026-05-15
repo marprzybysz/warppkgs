@@ -1,0 +1,7 @@
+name=pango
+version=1.54.0
+description=Library for layout and rendering of text
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,glib,cairo,freetype,fontconfig,harfbuzz
+source=https://ftp.gnome.org/pub/gnome/sources/pango/1.54/pango-1.54.0.tar.xz

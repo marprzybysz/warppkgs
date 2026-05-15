@@ -1,0 +1,18 @@
+pkgname=xcb-util
+pkgver=0.4.1
+description="XCB utility functions"
+arch=x86_64
+license=MIT
+deps=glibc,libxcb
+makedeps=gcc,make,pkgconf
+source=https://xorg.freedesktop.org/releases/individual/lib/xcb-util-0.4.1.tar.xz
+sha256=8a9eed75021ee734d7fc0fdf3a65c3bba51dfefe4ae51a9b414a60c70b2d1ed8
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

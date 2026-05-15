@@ -1,0 +1,7 @@
+name=xcb-proto
+version=1.17.0
+description=XML-XCB protocol descriptions
+arch=x86_64
+license=MIT
+deps=python3
+source=https://xorg.freedesktop.org/releases/individual/proto/xcb-proto-1.17.0.tar.xz

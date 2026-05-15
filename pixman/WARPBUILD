@@ -1,0 +1,18 @@
+pkgname=pixman
+pkgver=0.43.4
+description="Pixel manipulation library"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,meson,ninja,pkgconf
+source=https://www.cairographics.org/releases/pixman-0.43.4.tar.gz
+sha256=a0624db90180c7ddb79fc7a9151093dc37c646d8c38d3f232f767cf64b85a226
+
+build() {
+    meson setup --prefix=/usr --buildtype=release build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

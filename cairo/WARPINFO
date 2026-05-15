@@ -1,0 +1,7 @@
+name=cairo
+version=1.18.2
+description=2D graphics library with support for multiple output devices
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,pixman,libx11,libxcb,freetype,fontconfig,glib,zlib
+source=https://www.cairographics.org/releases/cairo-1.18.2.tar.xz

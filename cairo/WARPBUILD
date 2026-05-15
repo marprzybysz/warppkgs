@@ -1,0 +1,19 @@
+pkgname=cairo
+pkgver=1.18.2
+description="2D graphics library with support for multiple output devices"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,pixman,libx11,libxcb,freetype,fontconfig,glib,zlib
+makedeps=gcc,meson,ninja,pkgconf
+source=https://www.cairographics.org/releases/cairo-1.18.2.tar.xz
+sha256=a62b9bb42425e844cc3d6ddde043ff39dbabedd1542eba57a2eb79f85889d45a
+
+build() {
+    meson setup --prefix=/usr --buildtype=release \
+        -Dxlib=enabled -Dxcb=enabled -Dtee=enabled build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}
