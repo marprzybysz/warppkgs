@@ -1,0 +1,29 @@
+pkgname=gtk3
+pkgver=3.24.43
+description="GTK3 graphical toolkit"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,glib,gdk-pixbuf,pango,cairo,harfbuzz,fontconfig,freetype,libxkbcommon,atk,at-spi2-core,libx11,libxext,libxrender,libxcomposite,libxdamage,libxfixes,dbus
+makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection
+source=https://ftp.gnome.org/pub/gnome/sources/gtk+/3.24/gtk+-3.24.43.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dx11_backend=true \
+        -Dwayland_backend=false \
+        -Dbroadway_backend=false \
+        -Dintrospection=false \
+        -Ddemos=false \
+        -Dexamples=false \
+        -Dtests=false \
+        -Dinstall-tests=false \
+        -Dman=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}
