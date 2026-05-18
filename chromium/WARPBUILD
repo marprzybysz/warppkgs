@@ -3,7 +3,7 @@ pkgver=131.0.6778.204
 description="Open-source web browser (Chromium)"
 arch=x86_64
 license=BSD
-deps=glibc,gtk4,nss,alsa-lib,pipewire,mesa,libxkbcommon,dbus,at-spi2-core,cups,libdrm,wayland,fontconfig,freetype,harfbuzz,libx11,libxext,libxcomposite,libxdamage,libxfixes,libxrandr,elogind,curl
+deps=glibc,gtk4,nss,alsa-lib,pipewire,mesa,libxkbcommon,dbus,at-spi2-core,cups,libdrm,fontconfig,freetype,harfbuzz,libx11,libxext,libxcomposite,libxdamage,libxfixes,elogind,curl
 makedeps=clang,python3,nodejs,pkg-config,ninja,gn
 source=https://commondatastorage.googleapis.com/chromium-browser-official/chromium-131.0.6778.204.tar.xz
 sha256=VERIFY
@@ -29,9 +29,9 @@ build() {
         use_system_freetype=true
         use_system_libdrm=true
         use_system_minigbm=false
-        ozone_platform_wayland=true
+        ozone_platform_wayland=false
         ozone_platform_x11=true
-        ozone_platform="wayland"
+        ozone_platform="x11"
         chrome_pgo_phase=0
     '
     ninja -C out/Release chrome chrome_sandbox chromedriver $MAKEFLAGS

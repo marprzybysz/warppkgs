@@ -3,7 +3,7 @@ pkgver=2.22.0
 description="Video Acceleration API (hardware decode/encode)"
 arch=x86_64
 license=MIT
-deps=glibc,mesa,libdrm,libx11,libxext,wayland
+deps=glibc,mesa,libdrm,libx11,libxext
 makedeps=gcc,meson,ninja,pkg-config
 source=https://github.com/intel/libva/releases/download/2.22.0/libva-2.22.0.tar.bz2
 sha256=VERIFY
@@ -13,7 +13,7 @@ build() {
         --prefix=/usr \
         --buildtype=release \
         -Dwith_x11=yes \
-        -Dwith_wayland=yes
+        -Dwith_wayland=no
     ninja -C build $MAKEFLAGS
 }
 

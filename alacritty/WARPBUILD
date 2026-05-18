@@ -3,13 +3,13 @@ pkgver=0.14.0
 description="GPU-accelerated terminal emulator (Rust)"
 arch=x86_64
 license=Apache-2.0
-deps=glibc,freetype,fontconfig,libxkbcommon,libxcb,wayland,mesa
+deps=glibc,freetype,fontconfig,libxkbcommon,libxcb,mesa
 makedeps=rust,cmake,pkg-config
 source=https://github.com/alacritty/alacritty/archive/refs/tags/v0.14.0.tar.gz
 sha256=VERIFY
 
 build() {
-    cargo build --release --no-default-features --features=wayland,x11
+    cargo build --release --no-default-features --features=x11
 }
 
 package() {
