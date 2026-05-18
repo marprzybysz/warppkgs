@@ -29,7 +29,7 @@ build() {
         use_system_freetype=true
         use_system_libdrm=true
         use_system_minigbm=false
-        ozone_platform_wayland=false
+        ozone_platform_wayland=true
         ozone_platform_x11=true
         ozone_platform="x11"
         chrome_pgo_phase=0
