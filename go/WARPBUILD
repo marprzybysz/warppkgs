@@ -1,0 +1,22 @@
+pkgname=go
+pkgver=1.23.3
+description="Go programming language toolchain"
+arch=x86_64
+license=BSD
+deps=glibc
+makedeps=
+source=https://go.dev/dl/go1.23.3.linux-amd64.tar.gz
+sha256=VERIFY
+
+build() {
+    # Go ships pre-built binaries
+    :
+}
+
+package() {
+    mkdir -p "$DESTDIR/usr/local"
+    cp -r . "$DESTDIR/usr/local/go"
+    mkdir -p "$DESTDIR/usr/bin"
+    ln -sf /usr/local/go/bin/go   "$DESTDIR/usr/bin/go"
+    ln -sf /usr/local/go/bin/gofmt "$DESTDIR/usr/bin/gofmt"
+}

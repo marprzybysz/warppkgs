@@ -1,0 +1,20 @@
+pkgname=blueprint-compiler
+pkgver=0.14.0
+description="Markup language compiler for GTK4 UI files (makedep for ghostty)"
+arch=x86_64
+license=LGPL-3.0
+deps=python3,gtk4
+makedeps=meson,ninja,python3
+source=https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/v0.14.0/blueprint-compiler-v0.14.0.tar.gz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

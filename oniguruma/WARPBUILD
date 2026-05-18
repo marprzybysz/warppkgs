@@ -1,0 +1,18 @@
+pkgname=oniguruma
+pkgver=6.9.9
+description="Regular expressions library (used by ghostty, jq, php)"
+arch=x86_64
+license=BSD
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool
+source=https://github.com/kkos/oniguruma/releases/download/v6.9.9/onig-6.9.9.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}
