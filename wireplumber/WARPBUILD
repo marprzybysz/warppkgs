@@ -1,0 +1,24 @@
+pkgname=wireplumber
+pkgver=0.5.7
+description="PipeWire session manager"
+arch=x86_64
+license=MIT
+deps=glibc,pipewire,glib,dbus,lua
+makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection
+source=https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.7/wireplumber-0.5.7.tar.gz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Ddocs=disabled \
+        -Dtests=disabled \
+        -Dsystemd=disabled \
+        -Delogind=enabled
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

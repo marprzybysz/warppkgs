@@ -1,0 +1,18 @@
+pkgname=alsa-lib
+pkgver=1.2.12
+description="ALSA sound library"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool,python3
+source=https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.12.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

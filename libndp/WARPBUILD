@@ -1,0 +1,18 @@
+pkgname=libndp
+pkgver=1.9
+description="Neighbor Discovery Protocol library (dep NetworkManager)"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool
+source=https://libndp.org/files/libndp-1.9.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

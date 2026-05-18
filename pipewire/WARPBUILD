@@ -1,0 +1,30 @@
+pkgname=pipewire
+pkgver=1.2.6
+description="Low-latency audio/video router (PulseAudio + JACK replacement)"
+arch=x86_64
+license=MIT
+deps=glibc,alsa-lib,dbus,glib,libcap,eudev
+makedeps=gcc,meson,ninja,pkg-config,python3
+source=https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.2.6/pipewire-1.2.6.tar.gz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dsession-managers=[] \
+        -Dtests=disabled \
+        -Dexamples=disabled \
+        -Ddocs=disabled \
+        -Dalsa=enabled \
+        -Dpipewire-alsa=enabled \
+        -Dpipewire-pulse=enabled \
+        -Dpipewire-jack=disabled \
+        -Dbluez5=disabled \
+        -Dsystemd=disabled
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

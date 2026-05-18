@@ -1,0 +1,29 @@
+pkgname=nss
+pkgver=3.106
+description="Network Security Services (SSL/TLS lib, dep Chromium)"
+arch=x86_64
+license=MPL-2.0
+deps=glibc,zlib,sqlite
+makedeps=gcc,make,perl,python3
+source=https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_106_RTM/src/nss-3.106.tar.gz
+sha256=VERIFY
+
+build() {
+    cd nss
+    make $MAKEFLAGS BUILD_OPT=1 \
+        NSPR_INCLUDE_DIR=/usr/include/nspr \
+        USE_SYSTEM_ZLIB=1 \
+        NSS_USE_SYSTEM_SQLITE=1 \
+        USE_64=1 \
+        NSS_ENABLE_WERROR=0
+}
+
+package() {
+    cd nss
+    install -Dm755 ../dist/Linux*.OBJ/lib/libnspr4.so  "$DESTDIR/usr/lib/libnspr4.so"  || true
+    install -Dm755 ../dist/Linux*.OBJ/lib/libnss3.so   "$DESTDIR/usr/lib/libnss3.so"
+    install -Dm755 ../dist/Linux*.OBJ/lib/libssl3.so   "$DESTDIR/usr/lib/libssl3.so"
+    install -Dm755 ../dist/Linux*.OBJ/lib/libsmime3.so "$DESTDIR/usr/lib/libsmime3.so"
+    install -Dm755 ../dist/Linux*.OBJ/bin/certutil      "$DESTDIR/usr/bin/certutil"
+    cp -r ../dist/public/nss/* "$DESTDIR/usr/include/nss/"
+}

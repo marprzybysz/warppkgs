@@ -1,0 +1,18 @@
+pkgname=libxrender
+pkgver=0.9.11
+description="X Render extension library"
+arch=x86_64
+license=MIT
+deps=glibc,libx11
+makedeps=gcc,make,pkg-config
+source=https://xorg.freedesktop.org/releases/individual/lib/libXrender-0.9.11.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

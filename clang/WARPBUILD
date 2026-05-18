@@ -1,0 +1,27 @@
+pkgname=clang
+pkgver=19.1.4
+description="LLVM C/C++ compiler frontend (makedep dla Chromium)"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,zlib,zstd
+makedeps=gcc,cmake,ninja,python3
+source=https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.4/llvm-project-19.1.4.src.tar.xz
+sha256=VERIFY
+
+build() {
+    cmake -GNinja \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DLLVM_ENABLE_PROJECTS="clang;lld" \
+          -DLLVM_TARGETS_TO_BUILD="X86" \
+          -DLLVM_INCLUDE_BENCHMARKS=OFF \
+          -DLLVM_INCLUDE_EXAMPLES=OFF \
+          -DLLVM_INCLUDE_TESTS=OFF \
+          -DCLANG_INCLUDE_TESTS=OFF \
+          -B build llvm
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

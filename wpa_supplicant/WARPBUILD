@@ -1,0 +1,43 @@
+pkgname=wpa_supplicant
+pkgver=2.11
+description="WiFi authentication client"
+arch=x86_64
+license=BSD
+deps=glibc,openssl,dbus,libnl
+makedeps=gcc,make,pkg-config
+source=https://w1.fi/releases/wpa_supplicant-2.11.tar.gz
+sha256=VERIFY
+
+build() {
+    cd wpa_supplicant
+    cat > .config << 'EOF'
+CONFIG_BACKEND=file
+CONFIG_CTRL_IFACE=y
+CONFIG_CTRL_IFACE_DBUS_NEW=y
+CONFIG_CTRL_IFACE_DBUS_INTRO=y
+CONFIG_IEEE8021X_EAPOL=y
+CONFIG_EAP_MD5=y
+CONFIG_EAP_MSCHAPV2=y
+CONFIG_EAP_TLS=y
+CONFIG_EAP_PEAP=y
+CONFIG_EAP_TTLS=y
+CONFIG_EAP_GTC=y
+CONFIG_EAP_OTP=y
+CONFIG_WPS=y
+CONFIG_WPA_CLI_EDIT=y
+CONFIG_LIBNL32=y
+CONFIG_TLS=openssl
+CONFIG_READLINE=y
+EOF
+    make $MAKEFLAGS
+}
+
+package() {
+    cd wpa_supplicant
+    install -Dm755 wpa_supplicant "$DESTDIR/usr/sbin/wpa_supplicant"
+    install -Dm755 wpa_cli        "$DESTDIR/usr/sbin/wpa_cli"
+    install -Dm644 dbus/fi.w1.wpa_supplicant1.service \
+        "$DESTDIR/usr/share/dbus-1/system-services/fi.w1.wpa_supplicant1.service"
+    install -Dm644 dbus/dbus-wpa_supplicant.conf \
+        "$DESTDIR/etc/dbus-1/system.d/wpa_supplicant.conf"
+}

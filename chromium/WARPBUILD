@@ -1,0 +1,60 @@
+pkgname=chromium
+pkgver=131.0.6778.204
+description="Open-source web browser (Chromium)"
+arch=x86_64
+license=BSD
+deps=glibc,gtk4,nss,alsa-lib,pipewire,mesa,libxkbcommon,dbus,at-spi2-core,cups,libdrm,wayland,fontconfig,freetype,harfbuzz,libx11,libxext,libxcomposite,libxdamage,libxfixes,libxrandr,elogind,curl
+makedeps=clang,python3,nodejs,pkg-config,ninja,gn
+source=https://commondatastorage.googleapis.com/chromium-browser-official/chromium-131.0.6778.204.tar.xz
+sha256=VERIFY
+
+build() {
+    # Chromium wymaga clang — gcc nie jest wspierany
+    export CC=clang
+    export CXX=clang++
+    export AR=llvm-ar
+    export NM=llvm-nm
+
+    gn gen out/Release --args='
+        is_official_build=true
+        is_clang=true
+        use_sysroot=false
+        target_cpu="x64"
+        use_cups=true
+        use_kerberos=false
+        enable_widevine=false
+        use_pulseaudio=false
+        rtc_use_pipewire=true
+        use_system_harfbuzz=true
+        use_system_freetype=true
+        use_system_libdrm=true
+        use_system_minigbm=false
+        ozone_platform_wayland=true
+        ozone_platform_x11=true
+        ozone_platform="wayland"
+        chrome_pgo_phase=0
+    '
+    ninja -C out/Release chrome chrome_sandbox chromedriver $MAKEFLAGS
+}
+
+package() {
+    install -Dm755 out/Release/chrome              "$DESTDIR/usr/lib/chromium/chromium"
+    install -Dm755 out/Release/chrome_sandbox      "$DESTDIR/usr/lib/chromium/chrome-sandbox"
+    install -Dm755 out/Release/chromedriver        "$DESTDIR/usr/bin/chromedriver"
+    install -Dm644 out/Release/*.pak               -t "$DESTDIR/usr/lib/chromium/"
+    install -Dm644 out/Release/*.bin               -t "$DESTDIR/usr/lib/chromium/" 2>/dev/null || true
+    install -Dm644 out/Release/icudtl.dat          "$DESTDIR/usr/lib/chromium/icudtl.dat"
+    cp -r out/Release/locales                       "$DESTDIR/usr/lib/chromium/locales"
+    install -Dm644 out/Release/chrome.desktop \
+        "$DESTDIR/usr/share/applications/chromium.desktop" 2>/dev/null || \
+    cat > "$DESTDIR/usr/share/applications/chromium.desktop" << 'EOF'
+[Desktop Entry]
+Name=Chromium
+Exec=/usr/lib/chromium/chromium %U
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;
+EOF
+    ln -sf /usr/lib/chromium/chromium "$DESTDIR/usr/bin/chromium"
+}

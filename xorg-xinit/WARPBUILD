@@ -1,0 +1,19 @@
+pkgname=xorg-xinit
+pkgver=1.4.2
+description="X.Org initialisation program (startx)"
+arch=x86_64
+license=MIT
+deps=glibc,xorg-server,libx11
+makedeps=gcc,make,pkg-config
+source=https://xorg.freedesktop.org/releases/individual/app/xinit-1.4.2.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --with-xinitdir=/etc/X11/xinit
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

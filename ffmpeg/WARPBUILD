@@ -1,0 +1,35 @@
+pkgname=ffmpeg
+pkgver=7.1
+description="Complete multimedia framework (decode, encode, stream, filter)"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,alsa-lib,zlib,bzip2,xz-utils,libva,libx11,libxext,libxfixes,freetype,fontconfig,libvpx,opus,x264,zstd
+makedeps=gcc,make,pkg-config,nasm,python3
+source=https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure \
+        --prefix=/usr \
+        --disable-debug \
+        --disable-static \
+        --enable-shared \
+        --enable-gpl \
+        --enable-version3 \
+        --enable-alsa \
+        --enable-libfreetype \
+        --enable-libfontconfig \
+        --enable-libvpx \
+        --enable-libopus \
+        --enable-libx264 \
+        --enable-vaapi \
+        --enable-xlib \
+        --disable-htmlpages \
+        --disable-podpages \
+        --disable-txtpages
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,22 @@
+pkgname=xwayland
+pkgver=24.1.4
+description="X server for running X11 apps under Wayland"
+arch=x86_64
+license=MIT
+deps=glibc,libxcb,libx11,libxext,libxfixes,wayland,mesa,pixman,libxkbcommon,libdrm
+makedeps=gcc,meson,ninja,pkg-config,python3,xcb-proto,wayland-protocols
+source=https://xorg.freedesktop.org/releases/individual/xserver/xwayland-24.1.4.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dglamor=true \
+        -Dxdmcp=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}
