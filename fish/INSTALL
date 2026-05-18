@@ -1,0 +1,9 @@
+#!/bin/bash
+# Po instalacji fish — podepnij warp completions jeśli warp jest zainstalowany
+
+COMP_SRC="/usr/share/warp/completions/warp.fish"
+COMP_DST="/usr/share/fish/vendor_completions.d/warp.fish"
+
+if [[ -f "$COMP_SRC" ]] && [[ ! -f "$COMP_DST" ]]; then
+    install -Dm644 "$COMP_SRC" "$COMP_DST"
+fi

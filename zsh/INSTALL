@@ -1,0 +1,20 @@
+#!/bin/bash
+# Po instalacji zsh — podepnij warp completions i skonfiguruj compinit
+
+COMP_SRC="/usr/share/warp/completions/warp.zsh"
+COMP_DST="/usr/share/zsh/site-functions/_warp"
+ZSHRC="/etc/zsh/zshrc"
+
+if [[ -f "$COMP_SRC" ]] && [[ ! -f "$COMP_DST" ]]; then
+    install -Dm644 "$COMP_SRC" "$COMP_DST"
+fi
+
+# Dodaj compinit do /etc/zsh/zshrc jeśli jeszcze nie ma
+if [[ ! -f "$ZSHRC" ]] || ! grep -q "compinit" "$ZSHRC"; then
+    mkdir -p "$(dirname "$ZSHRC")"
+    cat >> "$ZSHRC" <<'EOF'
+
+# WARP: enable tab completions
+autoload -Uz compinit && compinit
+EOF
+fi
