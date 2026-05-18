@@ -1,0 +1,18 @@
+pkgname=nasm
+pkgver=2.16.03
+description="Netwide Assembler (makedep dla Firefox/Zen/libjpeg-turbo)"
+arch=x86_64
+license=BSD
+deps=glibc
+makedeps=gcc,make
+source=https://www.nasm.us/pub/nasm/releasebuilds/2.16.03/nasm-2.16.03.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}
