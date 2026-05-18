@@ -1,0 +1,23 @@
+pkgname=gdk-pixbuf
+pkgver=2.42.12
+description="Image loading library"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,glib,libpng,libjpeg-turbo,shared-mime-info
+makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection
+source=https://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.12.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dtests=false \
+        -Dinstalled_tests=false \
+        -Dman=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

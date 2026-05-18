@@ -1,0 +1,22 @@
+pkgname=gnome-terminal
+pkgver=3.54.0
+description="GNOME terminal emulator"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,glib,gtk4,libadwaita,vte,dbus
+makedeps=gcc,meson,ninja,pkg-config,python3,itstool
+source=https://ftp.gnome.org/pub/gnome/sources/gnome-terminal/3.54/gnome-terminal-3.54.0.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Ddocs=false \
+        -Dnautilus_extension=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

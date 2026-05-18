@@ -1,0 +1,22 @@
+pkgname=gnome-session
+pkgver=46.0
+description="GNOME session manager"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,glib,gtk4,dbus,elogind,at-spi2-core
+makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,xtrans
+source=https://ftp.gnome.org/pub/gnome/sources/gnome-session/46/gnome-session-46.0.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dsystemd_journal=false \
+        -Ddocumentation=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

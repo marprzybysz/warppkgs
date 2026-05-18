@@ -1,0 +1,23 @@
+pkgname=gnome-shell
+pkgver=47.1
+description="GNOME Shell desktop environment"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,mutter,glib,gtk4,libadwaita,dbus,polkit,elogind,at-spi2-core,gdk-pixbuf
+makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,sassc
+source=https://ftp.gnome.org/pub/gnome/sources/gnome-shell/47/gnome-shell-47.1.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dtests=false \
+        -Dextensions-tool=false \
+        -Dbrowser_plugin=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

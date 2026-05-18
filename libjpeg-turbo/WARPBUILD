@@ -1,0 +1,22 @@
+pkgname=libjpeg-turbo
+pkgver=3.0.4
+description="JPEG image codec with SIMD acceleration"
+arch=x86_64
+license=IJG
+deps=glibc
+makedeps=gcc,cmake,make,nasm
+source=https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.0.4/libjpeg-turbo-3.0.4.tar.gz
+sha256=VERIFY
+
+build() {
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_INSTALL_LIBDIR=lib \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DENABLE_STATIC=OFF \
+          -B build
+    cmake --build build --parallel $(nproc)
+}
+
+package() {
+    DESTDIR="$DESTDIR" cmake --install build
+}

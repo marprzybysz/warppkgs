@@ -1,0 +1,29 @@
+pkgname=gtk4
+pkgver=4.16.7
+description="GTK4 graphical toolkit"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,glib,gdk-pixbuf,pango,cairo,harfbuzz,fontconfig,freetype,libxkbcommon,wayland,libpng,libjpeg-turbo,dbus
+makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,wayland-protocols
+source=https://ftp.gnome.org/pub/gnome/sources/gtk/4.16/gtk-4.16.7.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dbuild-demos=false \
+        -Dbuild-tests=false \
+        -Dbuild-testsuite=false \
+        -Dbuild-examples=false \
+        -Dx11-backend=true \
+        -Dwayland-backend=true \
+        -Dbroadway-backend=false \
+        -Dintrospection=disabled \
+        -Ddocumentation=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

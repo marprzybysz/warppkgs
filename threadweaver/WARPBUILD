@@ -1,0 +1,22 @@
+pkgname=threadweaver
+pkgver=6.7.0
+description="Job scheduling framework"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,qt6-base
+makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
+source=https://download.kde.org/stable/frameworks/6.7/threadweaver-6.7.0.tar.xz
+sha256=VERIFY
+
+build() {
+    cmake -GNinja \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DBUILD_TESTING=OFF \
+          -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

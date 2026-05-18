@@ -1,0 +1,26 @@
+pkgname=dbus
+pkgver=1.15.8
+description="D-Bus message bus system"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,expat
+makedeps=gcc,meson,ninja,pkg-config,python3
+source=https://dbus.freedesktop.org/releases/dbus/dbus-1.15.8.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --buildtype=release \
+        -Dsystem_socket=/run/dbus/system_bus_socket \
+        -Dsystem_pid_file=/run/dbus/pid \
+        -Dselinux=disabled \
+        -Dtests=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

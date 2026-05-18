@@ -1,0 +1,23 @@
+pkgname=at-spi2-core
+pkgver=2.54.0
+description="Assistive Technology Service Provider Interface"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,glib,dbus,libxkbcommon
+makedeps=gcc,meson,ninja,pkg-config,gobject-introspection
+source=https://ftp.gnome.org/pub/gnome/sources/at-spi2-core/2.54/at-spi2-core-2.54.0.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dintrospection=disabled \
+        -Ddocs=false \
+        -Dtests=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

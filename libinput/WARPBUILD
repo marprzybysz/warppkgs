@@ -1,0 +1,23 @@
+pkgname=libinput
+pkgver=1.26.2
+description="Input device library for Wayland compositors"
+arch=x86_64
+license=MIT
+deps=glibc,eudev,libevdev,mtdev
+makedeps=gcc,meson,ninja,pkg-config,python3
+source=https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.26.2/libinput-1.26.2.tar.gz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dtests=false \
+        -Ddocumentation=false \
+        -Ddebug-gui=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

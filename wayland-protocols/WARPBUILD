@@ -1,0 +1,21 @@
+pkgname=wayland-protocols
+pkgver=1.37
+description="Wayland protocol extensions"
+arch=x86_64
+license=MIT
+deps=wayland
+makedeps=meson,ninja,pkg-config,python3
+source=https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.37/downloads/wayland-protocols-1.37.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dtests=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,11 @@
+pkgname=kde-minimal
+pkgver=6.2.5
+description="Minimalne srodowisko KDE Plasma: SDDM + Plasma + Konsole + Dolphin"
+arch=x86_64
+license=GPL-2.0
+deps=sddm,plasma-workspace,kwin,konsole,dolphin,elogind,dbus,polkit,qt6-base,qt6-declarative,qt6-wayland
+makedeps=
+
+build() { :; }
+
+package() { :; }

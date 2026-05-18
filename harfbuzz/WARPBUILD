@@ -1,0 +1,23 @@
+pkgname=harfbuzz
+pkgver=10.0.1
+description="Text shaping library"
+arch=x86_64
+license=MIT
+deps=glibc,glib,freetype,graphite
+makedeps=gcc,meson,ninja,pkg-config,python3
+source=https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-10.0.1.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dgraphite2=enabled \
+        -Dtests=disabled \
+        -Ddocs=disabled
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

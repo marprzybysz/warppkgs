@@ -1,0 +1,11 @@
+pkgname=gnome-minimal
+pkgver=47.1
+description="Minimalne srodowisko GNOME: SDDM + gnome-shell + Nautilus + gnome-terminal"
+arch=x86_64
+license=GPL-2.0
+deps=sddm,gnome-shell,gnome-session,nautilus,gnome-terminal,elogind,dbus,polkit,gtk4,libadwaita
+makedeps=
+
+build() { :; }
+
+package() { :; }

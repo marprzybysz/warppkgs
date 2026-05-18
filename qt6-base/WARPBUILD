@@ -1,0 +1,31 @@
+pkgname=qt6-base
+pkgver=6.8.1
+description="Qt6 core framework (QtCore, QtGui, QtWidgets, QtNetwork)"
+arch=x86_64
+license=LGPL-3.0
+deps=glibc,zlib,libpng,libjpeg-turbo,freetype,fontconfig,dbus,libxkbcommon,libxcb,openssl,pcre2,harfbuzz,mesa,wayland
+makedeps=gcc,cmake,ninja,pkg-config,python3,perl,libx11,xcb-proto
+source=https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qtbase-everywhere-src-6.8.1.tar.xz
+sha256=VERIFY
+
+build() {
+    cmake -GNinja \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DQT_BUILD_EXAMPLES=OFF \
+          -DQT_BUILD_TESTS=OFF \
+          -DFEATURE_system_zlib=ON \
+          -DFEATURE_system_pcre2=ON \
+          -DFEATURE_system_freetype=ON \
+          -DFEATURE_system_harfbuzz=ON \
+          -DFEATURE_system_libjpeg=ON \
+          -DFEATURE_system_libpng=ON \
+          -DFEATURE_dbus=ON \
+          -DFEATURE_wayland=OFF \
+          -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

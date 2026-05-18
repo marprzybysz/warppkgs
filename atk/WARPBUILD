@@ -1,0 +1,21 @@
+pkgname=atk
+pkgver=2.38.0
+description="Accessibility toolkit (ATK)"
+arch=x86_64
+license=LGPL-2.0
+deps=glibc,glib
+makedeps=gcc,meson,ninja,pkg-config,gobject-introspection
+source=https://ftp.gnome.org/pub/gnome/sources/atk/2.38/atk-2.38.0.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dintrospection=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

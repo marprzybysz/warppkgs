@@ -1,0 +1,24 @@
+pkgname=vte
+pkgver=0.78.0
+description="Virtual terminal emulator library for GTK4"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,gtk4,glib,pango,cairo,pcre2,fribidi
+makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,vala,gperf
+source=https://ftp.gnome.org/pub/gnome/sources/vte/0.78/vte-0.78.0.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dintrospection=false \
+        -Dvapi=false \
+        -Ddocs=false \
+        -Dtests=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

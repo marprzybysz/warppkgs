@@ -1,0 +1,24 @@
+pkgname=nautilus
+pkgver=47.1
+description="GNOME file manager"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,glib,gtk4,libadwaita,gdk-pixbuf,at-spi2-core,libsecret,dbus
+makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection
+source=https://ftp.gnome.org/pub/gnome/sources/nautilus/47/nautilus-47.1.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dintrospection=false \
+        -Ddocs=false \
+        -Dtests=none \
+        -Dpackagekit=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

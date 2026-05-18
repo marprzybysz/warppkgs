@@ -1,0 +1,24 @@
+pkgname=libsecret
+pkgver=0.21.4
+description="GLib library for storing secrets"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,glib,dbus
+makedeps=gcc,meson,ninja,pkg-config,gobject-introspection,vala
+source=https://ftp.gnome.org/pub/gnome/sources/libsecret/0.21/libsecret-0.21.4.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dintrospection=false \
+        -Dvapi=false \
+        -Dgtk_doc=false \
+        -Dmanpage=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

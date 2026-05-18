@@ -1,0 +1,30 @@
+pkgname=mesa
+pkgver=24.2.7
+description="OpenGL, Vulkan and other graphics API implementations"
+arch=x86_64
+license=MIT
+deps=glibc,libdrm,libxcb,libxkbcommon,wayland,zstd,expat,llvm
+makedeps=gcc,meson,ninja,pkg-config,python3,libxml2,glslang,wayland-protocols
+source=https://mesa.freedesktop.org/archive/mesa-24.2.7.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dgallium-drivers=radeonsi,nouveau,virgl,softpipe,llvmpipe,svga \
+        -Dvulkan-drivers=amd,nouveau,swrast \
+        -Dosmesa=true \
+        -Dglx=dri \
+        -Degl=enabled \
+        -Dgles1=enabled \
+        -Dgles2=enabled \
+        -Dllvm=enabled \
+        -Dplatforms=x11,wayland \
+        -Dglvnd=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,23 @@
+pkgname=glib
+pkgver=2.82.2
+description="GLib - core application building blocks for GNOME"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,zlib,libffi,pcre2,util-linux
+makedeps=gcc,meson,ninja,pkg-config,python3,gettext
+source=https://ftp.gnome.org/pub/gnome/sources/glib/2.82/glib-2.82.2.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dselinux=disabled \
+        -Dxattr=false \
+        -Dtests=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,25 @@
+pkgname=polkit
+pkgver=124
+description="Application-level authorization toolkit"
+arch=x86_64
+license=LGPL-2.0
+deps=glibc,glib,dbus,pam,duktape
+makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection
+source=https://github.com/polkit-org/polkit/archive/refs/tags/124.tar.gz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --buildtype=release \
+        -Dsession_tracking=elogind \
+        -Dman=false \
+        -Dtests=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

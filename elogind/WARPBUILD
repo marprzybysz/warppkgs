@@ -1,0 +1,28 @@
+pkgname=elogind
+pkgver=255.5
+description="Standalone logind for OpenRC (systemd-logind replacement)"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,eudev,libcap,dbus,acl,libxcrypt
+makedeps=gcc,meson,ninja,pkg-config,python3,gperf,gettext
+source=https://github.com/elogind/elogind/archive/refs/tags/v255.5.tar.gz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --buildtype=release \
+        -Dpam=true \
+        -Dacl=true \
+        -Dsmack=false \
+        -Dselinux=false \
+        -Dman=false \
+        -Dhtmldocs=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}
