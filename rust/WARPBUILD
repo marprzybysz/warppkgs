@@ -1,0 +1,18 @@
+pkgname=rust
+pkgver=1.82.0
+description="Rust programming language toolchain (rustc + cargo)"
+arch=x86_64
+license=MIT
+deps=glibc,openssl,zlib
+makedeps=gcc,make,python3,curl
+source=https://static.rust-lang.org/dist/rust-1.82.0-x86_64-unknown-linux-gnu.tar.xz
+sha256=VERIFY
+
+build() {
+    # Rust ships pre-built binaries — no compilation needed
+    :
+}
+
+package() {
+    ./install.sh --prefix="$DESTDIR/usr" --disable-ldconfig
+}

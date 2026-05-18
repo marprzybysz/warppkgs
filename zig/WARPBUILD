@@ -1,0 +1,19 @@
+pkgname=zig
+pkgver=0.13.0
+description="Zig programming language and build system"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=
+source=https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz
+sha256=VERIFY
+
+build() {
+    # Zig ships pre-built binaries
+    :
+}
+
+package() {
+    install -Dm755 zig "$DESTDIR/usr/bin/zig"
+    cp -r lib "$DESTDIR/usr/lib/zig"
+}

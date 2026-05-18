@@ -1,0 +1,23 @@
+pkgname=wezterm
+pkgver=20240203
+description="GPU-accelerated terminal emulator with multiplexer (Rust)"
+arch=x86_64
+license=MIT
+deps=glibc,freetype,fontconfig,libxkbcommon,libxcb,wayland,mesa,openssl,zlib,dbus,libx11,xcb-util,xcb-util-keysyms,xcb-util-wm
+makedeps=rust,cmake,pkg-config,python3
+source=https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22-src.tar.gz
+sha256=VERIFY
+
+build() {
+    cargo build --release
+}
+
+package() {
+    install -Dm755 target/release/wezterm       "$DESTDIR/usr/bin/wezterm"
+    install -Dm755 target/release/wezterm-mux-server \
+                                                 "$DESTDIR/usr/bin/wezterm-mux-server"
+    install -Dm755 target/release/wezterm-gui   "$DESTDIR/usr/bin/wezterm-gui"
+    install -Dm644 assets/wezterm.desktop        "$DESTDIR/usr/share/applications/wezterm.desktop"
+    install -Dm644 assets/wezterm-nautilus.py    "$DESTDIR/usr/share/nautilus-python/extensions/wezterm-nautilus.py" || true
+    install -Dm644 assets/icon/terminal.png      "$DESTDIR/usr/share/pixmaps/wezterm.png"
+}

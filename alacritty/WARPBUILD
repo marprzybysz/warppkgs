@@ -1,0 +1,27 @@
+pkgname=alacritty
+pkgver=0.14.0
+description="GPU-accelerated terminal emulator (Rust)"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,freetype,fontconfig,libxkbcommon,libxcb,wayland,mesa
+makedeps=rust,cmake,pkg-config
+source=https://github.com/alacritty/alacritty/archive/refs/tags/v0.14.0.tar.gz
+sha256=VERIFY
+
+build() {
+    cargo build --release --no-default-features --features=wayland,x11
+}
+
+package() {
+    install -Dm755 target/release/alacritty "$DESTDIR/usr/bin/alacritty"
+    install -Dm644 extra/linux/Alacritty.desktop \
+        "$DESTDIR/usr/share/applications/Alacritty.desktop"
+    install -Dm644 extra/logo/alacritty-term.svg \
+        "$DESTDIR/usr/share/pixmaps/Alacritty.svg"
+    install -Dm644 extra/completions/alacritty.bash \
+        "$DESTDIR/usr/share/bash-completion/completions/alacritty"
+    install -Dm644 extra/completions/_alacritty \
+        "$DESTDIR/usr/share/zsh/site-functions/_alacritty"
+    install -Dm644 extra/completions/alacritty.fish \
+        "$DESTDIR/usr/share/fish/vendor_completions.d/alacritty.fish"
+}

@@ -1,0 +1,19 @@
+pkgname=kitty
+pkgver=0.36.4
+description="GPU-accelerated terminal emulator"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,freetype,fontconfig,harfbuzz,libpng,libjpeg-turbo,libxkbcommon,libx11,libxcb,wayland,mesa,ncurses,zlib,openssl,dbus
+makedeps=gcc,python3,make,pkg-config,go
+source=https://github.com/kovidgoyal/kitty/releases/download/v0.36.4/kitty-0.36.4.tar.xz
+sha256=VERIFY
+
+build() {
+    python3 setup.py linux-package \
+        --prefix=/usr \
+        --update-check-interval=0
+}
+
+package() {
+    cp -r linux-package/* "$DESTDIR/usr/"
+}
