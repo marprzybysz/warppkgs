@@ -1,0 +1,22 @@
+pkgname=cmake
+pkgver=3.30.5
+description="Cross-platform build system"
+arch=x86_64
+license=BSD
+deps=glibc,openssl,zlib,libarchive,curl,expat,zstd
+makedeps=gcc,make
+source=https://github.com/Kitware/CMake/releases/download/v3.30.5/cmake-3.30.5.tar.gz
+sha256=9f55e1a40508f2f29b7e065fa08c29f82c402fa0402da839fffe64a26a907412
+
+build() {
+    ./bootstrap --prefix=/usr \
+                --system-libs \
+                --no-system-jsoncpp \
+                --no-system-librhash \
+                --parallel=$(nproc)
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,26 @@
+pkgname=pcre2
+pkgver=10.44
+description="Perl-compatible regular expressions library v2"
+arch=x86_64
+license=BSD
+deps=glibc,zlib,bzip2
+makedeps=gcc,make
+source=https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.44/pcre2-10.44.tar.bz2
+sha256=d34f02e113cf7193a1ebf2770d3ac527088d28e5c5f6e1d66b0e9e032c3f5db0
+
+build() {
+    ./configure --prefix=/usr \
+                --enable-unicode \
+                --enable-jit \
+                --enable-pcre2-16 \
+                --enable-pcre2-32 \
+                --enable-pcre2grep-libz \
+                --enable-pcre2grep-libbz2 \
+                --enable-pcre2test-libreadline \
+                --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

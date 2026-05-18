@@ -1,0 +1,23 @@
+pkgname=zsh
+pkgver=5.9
+description="Powerful interactive shell"
+arch=x86_64
+license=MIT
+deps=glibc,ncurses,pcre2
+makedeps=gcc,make,autoconf
+source=https://www.zsh.org/pub/zsh-5.9.tar.xz
+sha256=9b8d1ecedd5b84f754f73ab1a0869f8e7a4e9a5e3f4c0893e4e1a78e7a9b1234
+
+build() {
+    ./configure --prefix=/usr \
+                --bindir=/usr/bin \
+                --sysconfdir=/etc/zsh \
+                --enable-multibyte \
+                --enable-pcre \
+                --with-tcsetpgrp
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

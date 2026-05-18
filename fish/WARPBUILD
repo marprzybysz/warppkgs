@@ -1,0 +1,22 @@
+pkgname=fish
+pkgver=3.7.1
+description="Friendly Interactive SHell"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,ncurses,pcre2
+makedeps=gcc,cmake,ninja,gettext
+source=https://github.com/fish-shell/fish-shell/releases/download/3.7.1/fish-3.7.1.tar.xz
+sha256=614c9f5643cd0799df391395c458023e6e82b0a8c9d5a47af6f1d5fe1f6cbac8
+
+build() {
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+          -Wno-dev \
+          -B build
+    cmake --build build --parallel $(nproc)
+}
+
+package() {
+    DESTDIR="$DESTDIR" cmake --install build
+}
