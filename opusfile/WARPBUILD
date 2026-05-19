@@ -1,0 +1,18 @@
+pkgname=opusfile
+pkgver=0.12
+description="Opus file reading library"
+arch=x86_64
+license=BSD
+deps=glibc,opus,libogg,openssl
+makedeps=gcc,make,pkg-config,autoconf,automake,libtool
+source=https://downloads.xiph.org/releases/opus/opusfile-0.12.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

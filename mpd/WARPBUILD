@@ -1,0 +1,26 @@
+pkgname=mpd
+pkgver=0.23.15
+description="Music Player Daemon — serwer audio sterowany przez klientów (mpc, ncmpcpp)"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,alsa-lib,pipewire,libvorbis,libmad,flac,curl,sqlite,boost
+makedeps=gcc,meson,ninja,pkg-config,python3
+source=https://github.com/MusicPlayerDaemon/MPD/archive/refs/tags/v0.23.15.tar.gz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dalsa=enabled \
+        -Dpipewire=enabled \
+        -Dsystemd=disabled \
+        -Ddocumentation=disabled
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+    install -dm755 "$DESTDIR/var/lib/mpd/music"
+    install -dm755 "$DESTDIR/var/lib/mpd/playlists"
+}

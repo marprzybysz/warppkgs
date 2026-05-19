@@ -1,0 +1,20 @@
+pkgname=cmus
+pkgver=2.11.0
+description="C* Music Player — TUI music player z vi-like keybindings"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,alsa-lib,ncurses,libvorbis,libmad,flac,opusfile
+makedeps=gcc,make,pkg-config,python3
+source=https://github.com/cmus/cmus/archive/refs/tags/v2.11.0.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure prefix=/usr \
+                CONFIG_ALSA=y \
+                CONFIG_PULSE=n
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

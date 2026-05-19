@@ -1,0 +1,19 @@
+pkgname=alsa-utils
+pkgver=1.2.12
+description="Narzędzia ALSA: amixer, aplay, arecord, alsamixer (TUI mixer)"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,alsa-lib,ncurses
+makedeps=gcc,make,pkg-config,autoconf,automake
+source=https://www.alsa-project.org/files/pub/utils/alsa-utils-1.2.12.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --disable-alsaconf
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

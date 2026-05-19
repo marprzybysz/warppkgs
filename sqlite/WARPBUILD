@@ -1,0 +1,21 @@
+pkgname=sqlite
+pkgver=3.47.0
+description="Embedded SQL database engine — używany przez MPD, Firefox, wiele innych"
+arch=x86_64
+license=public-domain
+deps=glibc,readline,zlib
+makedeps=gcc,make
+source=https://www.sqlite.org/2024/sqlite-autoconf-3470000.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --enable-fts5 \
+                --enable-json1 \
+                CFLAGS="$CFLAGS -DSQLITE_ENABLE_FTS3=1 -DSQLITE_ENABLE_RTREE=1"
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

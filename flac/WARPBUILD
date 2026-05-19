@@ -1,0 +1,22 @@
+pkgname=flac
+pkgver=1.4.3
+description="Free Lossless Audio Codec — biblioteka i narzędzia CLI"
+arch=x86_64
+license=BSD
+deps=glibc,libogg
+makedeps=gcc,cmake,ninja,pkg-config
+source=https://downloads.xiph.org/releases/flac/flac-1.4.3.tar.xz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_DOCS=OFF
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

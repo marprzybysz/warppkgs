@@ -1,0 +1,18 @@
+pkgname=libmad
+pkgver=0.15.1b
+description="High-quality MPEG audio decoder library (MP3)"
+arch=x86_64
+license=GPL-2.0
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool
+source=https://sourceforge.net/projects/mad/files/libmad/0.15.1b/libmad-0.15.1b.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,22 @@
+pkgname=ncmpcpp
+pkgver=0.9.2
+description="TUI frontend dla MPD — rozbudowany interfejs z biblioteką i wizualizacją"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,mpd,libmpdclient,ncurses,readline,boost,curl
+makedeps=gcc,make,pkg-config,autoconf,automake
+source=https://github.com/ncmpcpp/ncmpcpp/releases/download/0.9.2/ncmpcpp-0.9.2.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --enable-visualizer \
+                --enable-outputs \
+                --enable-clock \
+                --with-curl
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}
