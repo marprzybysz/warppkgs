@@ -1,0 +1,18 @@
+pkgname=xf86-video-amdgpu
+pkgver=23.0.0
+description="Xorg DDX driver for AMD GPUs (amdgpu kernel driver)"
+arch=x86_64
+license=MIT
+deps=glibc,xorg-server,libdrm,mesa
+makedeps=gcc,make,pkg-config,autoconf,automake,libtool,xorg-server
+source=https://xorg.freedesktop.org/releases/individual/driver/xf86-video-amdgpu-23.0.0.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

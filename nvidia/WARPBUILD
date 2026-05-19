@@ -1,0 +1,27 @@
+pkgname=nvidia
+pkgver=570.144
+description="Proprietary NVIDIA GPU driver (userspace + kernel module via DKMS)"
+arch=x86_64
+license=custom
+deps=glibc,libglvnd,elogind,dbus
+makedeps=gcc,make,linux-headers
+source=https://download.nvidia.com/XFree86/Linux-x86_64/570.144/NVIDIA-Linux-x86_64-570.144.run
+sha256=VERIFY
+
+build() {
+    sh NVIDIA-Linux-x86_64-${pkgver}.run --extract-only
+    cd NVIDIA-Linux-x86_64-${pkgver}
+}
+
+package() {
+    cd NVIDIA-Linux-x86_64-${pkgver}
+    install -Dm755 nvidia_drv.so     "$DESTDIR/usr/lib/xorg/modules/drivers/nvidia_drv.so"
+    install -Dm755 libGL.so.1        "$DESTDIR/usr/lib/libGL.so.1"
+    install -Dm755 libEGL.so.1       "$DESTDIR/usr/lib/libEGL.so.1"
+    install -Dm755 libGLESv2.so.2    "$DESTDIR/usr/lib/libGLESv2.so.2"
+    install -Dm755 libGLX_nvidia.so.0 "$DESTDIR/usr/lib/libGLX_nvidia.so.0"
+    install -Dm755 libnvidia-glcore.so.${pkgver} "$DESTDIR/usr/lib/libnvidia-glcore.so.${pkgver}"
+    install -Dm755 nvidia-smi        "$DESTDIR/usr/bin/nvidia-smi"
+    install -Dm755 nvidia-settings   "$DESTDIR/usr/bin/nvidia-settings"
+    # kernel module — wymaga DKMS lub ręcznego make w katalogu kernel/
+}

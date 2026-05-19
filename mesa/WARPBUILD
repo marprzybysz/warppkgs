@@ -12,8 +12,8 @@ build() {
     meson setup build \
         --prefix=/usr \
         --buildtype=release \
-        -Dgallium-drivers=radeonsi,nouveau,virgl,softpipe,llvmpipe,svga \
-        -Dvulkan-drivers=amd,nouveau,swrast \
+        -Dgallium-drivers=radeonsi,iris,nouveau,virgl,softpipe,llvmpipe,svga \
+        -Dvulkan-drivers=amd,intel,nouveau,swrast \
         -Dosmesa=true \
         -Dglx=dri \
         -Degl=enabled \

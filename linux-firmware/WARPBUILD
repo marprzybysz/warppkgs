@@ -1,0 +1,17 @@
+pkgname=linux-firmware
+pkgver=20250211
+description="Firmware blobs dla GPU (amdgpu, i915), WiFi (iwlwifi, ath, brcm, rtl), i innych urządzeń"
+arch=x86_64
+license=custom
+deps=glibc
+makedeps=
+source=https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20250211.tar.gz
+sha256=VERIFY
+
+build() {
+    :
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

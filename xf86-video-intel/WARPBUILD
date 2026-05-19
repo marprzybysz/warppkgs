@@ -1,0 +1,19 @@
+pkgname=xf86-video-intel
+pkgver=2.99.917
+description="Xorg DDX driver for Intel integrated graphics"
+arch=x86_64
+license=MIT
+deps=glibc,xorg-server,libdrm,mesa,libxcb,libx11
+makedeps=gcc,make,pkg-config,autoconf,automake,libtool,xorg-server
+source=https://xorg.freedesktop.org/releases/individual/driver/xf86-video-intel-2.99.917.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --enable-kms-only
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

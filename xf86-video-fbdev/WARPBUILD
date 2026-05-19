@@ -1,0 +1,18 @@
+pkgname=xf86-video-fbdev
+pkgver=0.5.0
+description="Xorg DDX driver for framebuffer devices (fallback)"
+arch=x86_64
+license=MIT
+deps=glibc,xorg-server
+makedeps=gcc,make,pkg-config,autoconf,automake,libtool,xorg-server
+source=https://xorg.freedesktop.org/releases/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

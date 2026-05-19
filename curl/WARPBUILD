@@ -1,12 +1,12 @@
 pkgname=curl
-pkgver=8.9.1
+pkgver=8.13.0
 description="URL transfer library and tool"
 arch=x86_64
 license=MIT
 deps=glibc,openssl,zlib
 makedeps=gcc,make,pkg-config
-source=https://curl.se/download/curl-8.9.1.tar.xz
-sha256=291124a007ee5f13f90bf56ada442cb20d86a0254de5da23a88bd09acb0fcc2a
+source=https://curl.se/download/curl-8.13.0.tar.xz
+sha256=VERIFY
 
 build() {
     ./configure --prefix=/usr         \
