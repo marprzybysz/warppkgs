@@ -1,0 +1,21 @@
+pkgname=glslang
+pkgver=15.0.0
+description="GLSL/HLSL validator i SPIR-V generator — makedep dla Mesa/Vulkan"
+arch=x86_64
+license=BSD
+deps=glibc
+makedeps=gcc,cmake,ninja,python3
+source=https://github.com/KhronosGroup/glslang/archive/refs/tags/15.0.0.tar.gz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=ON
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

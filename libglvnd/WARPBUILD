@@ -1,0 +1,18 @@
+pkgname=libglvnd
+pkgver=1.7.0
+description="GL Vendor-Neutral Dispatch library — wymagana przez NVIDIA i inne GPU drivers"
+arch=x86_64
+license=MIT
+deps=glibc,libx11,libxext,mesa
+makedeps=gcc,meson,ninja,pkg-config,python3
+source=https://gitlab.freedesktop.org/glvnd/libglvnd/-/archive/v1.7.0/libglvnd-v1.7.0.tar.gz
+sha256=VERIFY
+
+build() {
+    meson setup build --prefix=/usr --buildtype=release
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

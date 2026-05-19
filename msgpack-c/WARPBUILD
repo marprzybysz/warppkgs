@@ -1,0 +1,21 @@
+pkgname=msgpack-c
+pkgver=6.1.0
+description="MessagePack C/C++ library — wymagana przez Neovim"
+arch=x86_64
+license=BSL-1.0
+deps=glibc
+makedeps=gcc,cmake,ninja
+source=https://github.com/msgpack/msgpack-c/releases/download/c-6.1.0/msgpack-c-6.1.0.tar.gz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DMSGPACK_BUILD_TESTS=OFF
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

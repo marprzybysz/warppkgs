@@ -1,0 +1,17 @@
+pkgname=libvterm
+pkgver=0.3.3
+description="Abstract terminal emulator library — wymagana przez Neovim"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make,libtool
+source=https://launchpad.net/libvterm/trunk/v0.3/+download/libvterm-0.3.3.tar.gz
+sha256=VERIFY
+
+build() {
+    make $MAKEFLAGS PREFIX=/usr
+}
+
+package() {
+    make PREFIX=/usr DESTDIR="$DESTDIR" install
+}

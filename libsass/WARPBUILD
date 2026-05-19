@@ -1,0 +1,19 @@
+pkgname=libsass
+pkgver=3.6.6
+description="SASS/SCSS C++ library — wymagana przez sassc"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool
+source=https://github.com/sass/libsass/archive/refs/tags/3.6.6.tar.gz
+sha256=VERIFY
+
+build() {
+    autoreconf -fi
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

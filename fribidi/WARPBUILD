@@ -1,0 +1,18 @@
+pkgname=fribidi
+pkgver=1.0.16
+description="BiDi text library — wymagana przez pango i GTK dla tekstów RTL (arabski, hebrajski)"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc
+makedeps=gcc,meson,ninja
+source=https://github.com/fribidi/fribidi/releases/download/v1.0.16/fribidi-1.0.16.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build --prefix=/usr --buildtype=release -Ddocs=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

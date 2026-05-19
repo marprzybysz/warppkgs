@@ -1,0 +1,18 @@
+pkgname=libatomic_ops
+pkgver=7.8.2
+description="Atomic memory operations library — wymagana przez gc (Boehm GC)"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool
+source=https://github.com/ivmai/libatomic_ops/releases/download/v7.8.2/libatomic_ops-7.8.2.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

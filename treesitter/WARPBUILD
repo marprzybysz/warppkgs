@@ -1,0 +1,17 @@
+pkgname=treesitter
+pkgver=0.24.3
+description="Tree-sitter parser generator — wymagany przez Neovim i Helix"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make
+source=https://github.com/tree-sitter/tree-sitter/archive/refs/tags/v0.24.3.tar.gz
+sha256=VERIFY
+
+build() {
+    make $MAKEFLAGS
+}
+
+package() {
+    make PREFIX=/usr DESTDIR="$DESTDIR" install
+}

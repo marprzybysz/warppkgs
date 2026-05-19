@@ -1,0 +1,18 @@
+pkgname=libev
+pkgver=4.33
+description="High-performance event loop library — wymagana przez nghttp2"
+arch=x86_64
+license=BSD
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool
+source=http://dist.schmorp.de/libev/Attic/libev-4.33.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

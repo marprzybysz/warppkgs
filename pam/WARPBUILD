@@ -1,0 +1,21 @@
+pkgname=pam
+pkgver=1.6.1
+description="Linux PAM — Pluggable Authentication Modules (OpenSSH, SDDM, polkit)"
+arch=x86_64
+license=BSD
+deps=glibc,libxcrypt,audit
+makedeps=gcc,make,autoconf,automake,libtool,flex,pkg-config
+source=https://github.com/linux-pam/linux-pam/releases/download/v1.6.1/Linux-PAM-1.6.1.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --sbindir=/usr/sbin \
+                --enable-securedir=/usr/lib/security \
+                --disable-doc
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

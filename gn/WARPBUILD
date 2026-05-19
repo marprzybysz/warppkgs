@@ -1,0 +1,18 @@
+pkgname=gn
+pkgver=2024.09
+description="GN build system — makedep dla Chromium (meta-build generuje Ninja files)"
+arch=x86_64
+license=BSD
+deps=glibc
+makedeps=clang,python3,ninja
+source=https://gn.googlesource.com/gn/+archive/refs/heads/main.tar.gz
+sha256=VERIFY
+
+build() {
+    python3 build/gen.py
+    ninja -C out gn
+}
+
+package() {
+    install -Dm755 out/gn "$DESTDIR/usr/bin/gn"
+}

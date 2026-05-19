@@ -1,0 +1,22 @@
+pkgname=gc
+pkgver=8.2.8
+description="Boehm-Demers-Weiser garbage collector — wymagany przez Crystal"
+arch=x86_64
+license=MIT
+deps=glibc,libatomic_ops
+makedeps=gcc,cmake,ninja
+source=https://github.com/ivmai/bdwgc/releases/download/v8.2.8/gc-8.2.8.tar.gz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=ON \
+        -Denable_cplusplus=ON
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

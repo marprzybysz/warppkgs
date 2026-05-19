@@ -1,0 +1,19 @@
+pkgname=sassc
+pkgver=3.6.2
+description="SASS/SCSS compiler w C — makedep dla GNOME Shell i libadwaita"
+arch=x86_64
+license=MIT
+deps=glibc,libsass
+makedeps=gcc,make,autoconf,automake,libtool
+source=https://github.com/sass/sassc/archive/refs/tags/3.6.2.tar.gz
+sha256=VERIFY
+
+build() {
+    autoreconf -fi
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,20 @@
+pkgname=unibilium
+pkgver=2.1.2
+description="Terminfo parsing library — wymagana przez Neovim"
+arch=x86_64
+license=LGPL-3.0
+deps=glibc
+makedeps=gcc,make,cmake,ninja
+source=https://github.com/neovim/unibilium/archive/refs/tags/v2.1.2.tar.gz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,18 @@
+pkgname=vala
+pkgver=0.56.17
+description="Vala compiler — C#-like język dla GNOME/GLib (makedep dla niektórych GNOME apps)"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,glib,libxml2,gobject-introspection
+makedeps=gcc,make,pkg-config,flex,bison
+source=https://download.gnome.org/sources/vala/0.56/vala-0.56.17.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,21 @@
+pkgname=cups
+pkgver=2.4.11
+description="Common UNIX Printing System — wymagany przez Chromium"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,openssl,zlib,pam,dbus,libusb
+makedeps=gcc,make,pkg-config
+source=https://github.com/OpenPrinting/cups/releases/download/v2.4.11/cups-2.4.11-source.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --with-rundir=/run/cups \
+                --with-rcdir=no \
+                --disable-systemd
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

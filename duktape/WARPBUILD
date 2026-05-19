@@ -1,0 +1,20 @@
+pkgname=duktape
+pkgver=2.7.0
+description="Embeddable JavaScript engine w C — mały, używany przez różne narzędzia"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make,python3
+source=https://duktape.org/duktape-2.7.0.tar.xz
+sha256=VERIFY
+
+build() {
+    make $MAKEFLAGS -f Makefile.sharedlibrary
+}
+
+package() {
+    install -Dm755 libduktape.so.207.20700 "$DESTDIR/usr/lib/libduktape.so.207.20700"
+    ln -sf libduktape.so.207.20700 "$DESTDIR/usr/lib/libduktape.so.207"
+    ln -sf libduktape.so.207 "$DESTDIR/usr/lib/libduktape.so"
+    install -Dm644 src/duktape.h "$DESTDIR/usr/include/duktape.h"
+}

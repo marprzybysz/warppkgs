@@ -1,0 +1,21 @@
+pkgname=libogg
+pkgver=1.3.5
+description="Ogg container format library — wymagana przez libvorbis, flac, opusfile"
+arch=x86_64
+license=BSD
+deps=glibc
+makedeps=gcc,cmake,ninja
+source=https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.xz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=ON
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

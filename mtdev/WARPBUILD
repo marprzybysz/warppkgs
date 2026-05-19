@@ -1,0 +1,18 @@
+pkgname=mtdev
+pkgver=1.1.7
+description="Multitouch device abstraction library — wymagana przez libinput"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool,pkg-config
+source=https://bitmath.org/code/mtdev/mtdev-1.1.7.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

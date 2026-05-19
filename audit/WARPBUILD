@@ -1,0 +1,21 @@
+pkgname=audit
+pkgver=4.0.2
+description="Linux audit framework — wymagany przez PAM i SELinux-aware apps"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool,python3
+source=https://people.redhat.com/sgrubb/audit/audit-4.0.2.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --sbindir=/usr/sbin \
+                --sysconfdir=/etc \
+                --with-python3
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

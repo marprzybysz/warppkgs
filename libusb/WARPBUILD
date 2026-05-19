@@ -1,0 +1,18 @@
+pkgname=libusb
+pkgver=1.0.27
+description="USB device access library — wymagana przez CUPS i narzędzia sprzętowe"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool,pkg-config
+source=https://github.com/libusb/libusb/releases/download/v1.0.27/libusb-1.0.27.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

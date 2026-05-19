@@ -1,0 +1,19 @@
+pkgname=boost
+pkgver=1.86.0
+description="C++ Boost libraries — używane przez MPD, ncmpcpp, wiele projektów C++"
+arch=x86_64
+license=BSL-1.0
+deps=glibc,zlib,bzip2,xz-utils,zstd
+makedeps=gcc,python3
+source=https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./bootstrap.sh --prefix=/usr --with-python=python3
+    ./b2 stage threading=multi link=shared runtime-link=shared \
+        variant=release --layout=system $MAKEFLAGS
+}
+
+package() {
+    ./b2 install --prefix="$DESTDIR/usr"
+}

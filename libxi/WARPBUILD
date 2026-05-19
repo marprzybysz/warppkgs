@@ -1,0 +1,18 @@
+pkgname=libxi
+pkgver=1.8.2
+description="X Input extension library — wymagana przez libxtst i OpenJDK"
+arch=x86_64
+license=MIT
+deps=glibc,libx11,libxext,libxfixes
+makedeps=gcc,make,pkg-config,autoconf,automake,libtool
+source=https://xorg.freedesktop.org/releases/individual/lib/libXi-1.8.2.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

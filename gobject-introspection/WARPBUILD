@@ -1,0 +1,18 @@
+pkgname=gobject-introspection
+pkgver=1.82.0
+description="GObject introspection — wymagana przez GTK4, GNOME, wiele bibliotek GLib"
+arch=x86_64
+license=LGPL-2.0
+deps=glibc,glib,python3,libffi
+makedeps=gcc,meson,ninja,pkg-config,python3,flex,bison
+source=https://download.gnome.org/sources/gobject-introspection/1.82/gobject-introspection-1.82.0.tar.xz
+sha256=VERIFY
+
+build() {
+    meson setup build --prefix=/usr --buildtype=release
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,18 @@
+pkgname=libassuan
+pkgver=3.0.1
+description="GnuPG IPC library — wymagana przez gpgme i podman"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,libgpg-error
+makedeps=gcc,make,autoconf,automake
+source=https://gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.1.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

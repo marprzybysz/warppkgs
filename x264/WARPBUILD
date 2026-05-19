@@ -1,0 +1,21 @@
+pkgname=x264
+pkgver=0.164.3108
+description="H.264/AVC encoder library — wymagana przez ffmpeg"
+arch=x86_64
+license=GPL-2.0
+deps=glibc
+makedeps=gcc,make,nasm
+source=https://code.videolan.org/videolan/x264/-/archive/stable/x264-stable.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --enable-shared \
+                --disable-cli \
+                --enable-pic
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

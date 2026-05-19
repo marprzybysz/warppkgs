@@ -1,0 +1,20 @@
+pkgname=graphite2
+pkgver=1.3.14
+description="Smart font rendering engine — używana przez harfbuzz i freetype"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc
+makedeps=gcc,cmake,ninja,python3
+source=https://github.com/silnrsi/graphite/releases/download/1.3.14/graphite2-1.3.14.tgz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}
