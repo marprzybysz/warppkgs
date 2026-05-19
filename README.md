@@ -1,10 +1,11 @@
 # warppkgs — Flow Linux package repository
 
-Package repository for the [WARP](https://github.com/marprzybysz/warp) package manager — the sole package manager for Flow Linux.
+Package repository for the [WARP](https://github.com/marprzybysz/warp) package manager — the sole package manager for Flow Linux.  
+Internally called **"tabela kompilacji"** — each WARPBUILD is a build recipe that produces a `.wrp` binary package.
 
 ## Overview
 
-184 packages organized into categories. Each package contains a `WARPBUILD` file with metadata and `build()` / `package()` functions. Some packages have `INSTALL` / `REMOVE` hooks for post-install automation.
+**310 packages** organized into categories. Each package contains a `WARPBUILD` file with metadata and `build()` / `package()` functions. Some packages have `INSTALL` / `REMOVE` hooks for post-install automation.
 
 ## WARPBUILD format
 
@@ -41,43 +42,115 @@ Core userland utilities that form the foundation of Flow Linux.
 `lz4` `m4` `make` `man-db` `man-pages` `mpc` `mpfr` `ncurses` `openrc`
 `openssl` `patch` `pcre2` `perl` `pkgconf` `procps-ng` `readline` `sed`
 `shadow` `sysklogd` `tar` `tcl` `texinfo` `util-linux` `which` `xz-utils`
-`zlib` `zstd`
+`zlib` `zstd` `audit` `pam`
 
 ### Toolchain & build tools
 Compilers, build systems, and language runtimes.
 
-`clang` `cmake` `go` `meson` `ninja` `python3` `rust` `zig`
+`clang` `cmake` `go` `meson` `ninja` `python3` `rust` `zig` `llvm`
 `cbindgen` `extra-cmake-modules` `nasm` `blueprint-compiler` `lua`
+`glslang` `gn` `gperf` `itstool` `vala`
 
 > `rust`, `go`, `zig` — distributed as pre-built binaries, no source compilation.
+> `llvm` — ~100 SBU, backend dla Crystal, D language i clang.
+
+### Programming languages
+
+**JVM:**
+`openjdk` *(21 LTS, pre-built)* · `kotlin` · `scala` · `groovy`
+
+**Build tools JVM:**
+`gradle` · `maven`
+
+**Scripting:**
+`nodejs` *(22 LTS)* · `php` *(8.4)* · `ruby`
+
+**Systems / compiled:**
+`nim` *(Python-like syntax → compiles to C → native)* · `dlang` *(LDC2, pre-built)* · `crystal`
+
+**Functional:**
+`ghc` *(Haskell, pre-built)* · `ocaml` · `erlang` · `elixir` *(requires erlang)*
+
+**Scientific:**
+`julia` *(pre-built)* · `r-lang`
+
+> Already in toolchain: `rust` `go` `zig` `clang` `python3` `perl` `lua`
 
 ### Libraries
-Shared libraries used across multiple packages.
 
-**Graphics & UI:** `atk` `at-spi2-core` `cairo` `fontconfig` `freetype`
-`gdk-pixbuf` `gtk3` `gtk4` `harfbuzz` `libadwaita` `libdrm` `libjpeg-turbo`
-`libpng` `libva` `mesa` `pango` `pixman` `vte`
+**Graphics & UI:**
+`atk` `at-spi2-core` `cairo` `fontconfig` `freetype` `fribidi` `gdk-pixbuf`
+`gtk3` `gtk4` `graphite` `harfbuzz` `libadwaita` `libdrm` `libjpeg-turbo`
+`libpng` `libva` `libvpx` `mesa` `pango` `pixman` `vte`
 
-**System:** `dbus` `elogind` `glib` `libinput` `libevent` `libnl` `libndp`
-`libsecret` `nss` `oniguruma` `polkit`
+**System & auth:**
+`dbus` `elogind` `glib` `gobject-introspection` `libcap` `libev` `libevdev`
+`libevent` `libffi` `libinput` `libnl` `libndp` `libseccomp` `libsecret`
+`libusb` `mtdev` `nss` `oniguruma` `polkit` `shared-mime-info`
 
-**X11/Wayland:** `libx11` `libxcb` `libxcomposite` `libxdamage` `libxext`
-`libxfixes` `libxft` `libxinerama` `libxkbcommon` `libxrender` `wayland`
-`wayland-protocols` `xcb-proto` `xcb-util` `xcb-util-cursor`
-`xcb-util-keysyms` `xcb-util-wm` `xkeyboard-config`
+**Crypto & GPG:**
+`libassuan` `libgpg-error` `gpgme`
+
+**Compression & data:**
+`blas` `boost` `duktape` `gc` `lapack` `libatomic_ops` `libogg` `libvorbis`
+`libmad` `flac` `opus` `opusfile` `sqlite`
+
+**Network:**
+`c-ares` `libev` `libmnl` `libnetfilter_conntrack` `libnftnl` `libssh2`
+`libidn2` `nghttp2` `popt`
+
+**X11/Wayland:**
+`libx11` `libxau` `libxcb` `libxcomposite` `libxdamage` `libxdmcp` `libxext`
+`libxfixes` `libxft` `libxi` `libxinerama` `libxkbcommon` `libxrender`
+`libxtst` `wayland` `wayland-protocols` `xcb-proto` `xcb-util`
+`xcb-util-cursor` `xcb-util-keysyms` `xcb-util-wm` `xkeyboard-config`
+`xorg-util-macros` `xtrans`
+
+**Neovim/editor deps:**
+`libvterm` `libuv` `msgpack-c` `treesitter` `unibilium` `libxml2` `libyaml`
+`libglvnd`
 
 ### Audio
-`alsa-lib` `pipewire` `wireplumber`
+
+**Stack:**
+`alsa-lib` `alsa-utils` `pipewire` `wireplumber`
+
+**Players (CLI/TUI):**
+`cmus` `mpd` `mpc` `ncmpcpp` `sox`
+
+**Codecs:**
+`flac` `libmad` `libvorbis` `libogg` `opus` `opusfile`
 
 > `pipewire` built with `-Dsystemd=disabled` for OpenRC compatibility.
 
 ### Network
-`curl` `iproute2` `networkmanager` `wpa_supplicant`
+`curl` `iproute2` `iptables` `libmnl` `libnftnl` `libnetfilter_conntrack`
+`networkmanager` `openssh` `rsync` `wget` `wpa_supplicant`
 
 > `networkmanager` built with `-Dsession_tracking=elogind` for OpenRC.
 
 ### Display server
 `xorg-server` `xorg-xinit` `xwayland`
+
+### Drivers
+
+**Xorg DDX (GPU):**
+`xf86-video-amdgpu` `xf86-video-intel` `xf86-video-nouveau`
+`xf86-video-fbdev` *(fallback)* `xf86-video-vesa` *(fallback)*
+
+**Input:**
+`xf86-input-libinput`
+
+**Vulkan:**
+`vulkan-loader` *(Khronos ICD loader)*
+
+**Firmware:**
+`linux-firmware` *(GPU/WiFi blobs — amdgpu, i915, iwlwifi, ath, brcm)*
+
+**NVIDIA proprietary:**
+`nvidia` *(570.x, DKMS kernel module)*
+
+> `mesa` — OpenGL + Vulkan dla AMD (`radeonsi`), Intel (`iris`/`intel`) i nouveau.
 
 ### Desktop environments
 
@@ -108,15 +181,35 @@ Shared libraries used across multiple packages.
 > `zen-browser` — Firefox fork, requires internet during build (downloads Firefox source via `surfer`).
 
 ### Media
-`ffmpeg` `mpv`
+`ffmpeg` `mpv` `libva` `libvpx` `x264`
 
-### Shells
-`fish` `zsh`
+### Containers & virtualization
+`docker` · `containerd` · `runc` · `docker-compose` · `podman` · `cgroupfs-mount`
+`libseccomp` · `iptables`
 
-> Both have `INSTALL` hooks that wire up WARP tab completions automatically when installed.
+> `docker` — INSTALL hook auto-registers OpenRC services and creates `docker` group.
+> `podman` — daemonless, rootless container engine, Docker-compatible.
 
-### Editors & tools
-`tmux` `vim`
+### Dev tools
+`git` `neovim` `helix` `openssh` `rsync` `wget`
+
+### System monitoring
+`htop` `btop` `fastfetch` `neofetch`
+
+### Modern CLI utilities
+`bat` *(cat+highlight)* · `fd` *(find)* · `fzf` *(fuzzy finder)* · `jq` *(JSON)*
+`ripgrep` *(grep)* · `zoxide` *(smart cd)* · `unzip`
+
+### File managers (TUI)
+`mc` *(Midnight Commander)* · `lf` · `ranger` · `nnn`
+
+### Shell & prompt
+`fish` `zsh` `starship`
+
+> `fish` and `zsh` have `INSTALL` hooks that wire up WARP tab completions automatically.
+
+### Editors & multiplexers
+`vim` `neovim` `helix` `tmux` `zellij`
 
 ## Workspace
 
