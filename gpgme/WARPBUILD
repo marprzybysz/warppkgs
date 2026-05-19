@@ -1,0 +1,18 @@
+pkgname=gpgme
+pkgver=1.24.0
+description="GnuPG Made Easy — biblioteka do operacji GPG (używana przez podman)"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,libassuan,libgpg-error
+makedeps=gcc,make,autoconf,automake,pkg-config
+source=https://gnupg.org/ftp/gcrypt/gpgme/gpgme-1.24.0.tar.bz2
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

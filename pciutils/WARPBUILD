@@ -1,0 +1,17 @@
+pkgname=pciutils
+pkgver=3.13.0
+description="Narzędzia PCI: lspci, setpci (używane przez fastfetch i diagnostykę)"
+arch=x86_64
+license=GPL-2.0
+deps=glibc
+makedeps=gcc,make
+source=https://mj.ucw.cz/download/linux/pci/pciutils-3.13.0.tar.gz
+sha256=VERIFY
+
+build() {
+    make $MAKEFLAGS PREFIX=/usr SHARED=yes
+}
+
+package() {
+    make PREFIX=/usr DESTDIR="$DESTDIR" install install-lib
+}

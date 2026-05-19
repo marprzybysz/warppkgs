@@ -1,0 +1,20 @@
+pkgname=rsync
+pkgver=3.3.0
+description="Szybkie narzędzie do synchronizacji plików lokalnie i przez sieć"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,openssl,zlib,popt,libssh2
+makedeps=gcc,make,autoconf,pkg-config,python3
+source=https://download.samba.org/pub/rsync/rsync-3.3.0.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --with-included-popt=no \
+                --with-included-zlib=no
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

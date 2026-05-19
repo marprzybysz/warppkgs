@@ -1,0 +1,17 @@
+pkgname=podman
+pkgver=5.2.0
+description="Daemonless container engine — Docker-compatible, rootless containers"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,containerd,runc,iptables,cgroupfs-mount,libseccomp,gpgme
+makedeps=go,make,pkg-config,python3
+source=https://github.com/containers/podman/archive/refs/tags/v5.2.0.tar.gz
+sha256=VERIFY
+
+build() {
+    make $MAKEFLAGS BUILDTAGS="seccomp exclude_graphdriver_devicemapper"
+}
+
+package() {
+    make install.bin DESTDIR="$DESTDIR" PREFIX=/usr
+}

@@ -1,0 +1,21 @@
+pkgname=libuv
+pkgver=1.49.0
+description="Asynchronous I/O library (używana przez neovim, node.js)"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,cmake,ninja
+source=https://github.com/libuv/libuv/archive/refs/tags/v1.49.0.tar.gz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_TESTING=OFF
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

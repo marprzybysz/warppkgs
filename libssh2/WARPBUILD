@@ -1,0 +1,22 @@
+pkgname=libssh2
+pkgver=1.11.1
+description="Biblioteka protokołu SSH2 (używana przez rsync, mc, curl)"
+arch=x86_64
+license=BSD
+deps=glibc,openssl,zlib
+makedeps=gcc,cmake,ninja
+source=https://libssh2.org/download/libssh2-1.11.1.tar.gz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=ON \
+        -DCRYPTO_BACKEND=OpenSSL
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

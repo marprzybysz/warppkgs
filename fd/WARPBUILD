@@ -1,0 +1,17 @@
+pkgname=fd
+pkgver=10.2.0
+description="Przyjazna alternatywa dla find — szybsza, czytelniejsza składnia"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=rust
+source=https://github.com/sharkdp/fd/archive/refs/tags/v10.2.0.tar.gz
+sha256=VERIFY
+
+build() {
+    cargo build --release --locked
+}
+
+package() {
+    install -Dm755 target/release/fd "$DESTDIR/usr/bin/fd"
+}

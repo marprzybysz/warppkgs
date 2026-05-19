@@ -1,0 +1,20 @@
+pkgname=fastfetch
+pkgver=2.26.0
+description="Szybki system info fetcher — następca neofetch, napisany w C"
+arch=x86_64
+license=MIT
+deps=glibc,libdrm,libx11,pciutils,dbus
+makedeps=gcc,cmake,ninja,pkg-config
+source=https://github.com/fastfetch-cli/fastfetch/archive/refs/tags/2.26.0.tar.gz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

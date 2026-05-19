@@ -1,0 +1,21 @@
+pkgname=htop
+pkgver=3.3.0
+description="Interaktywny monitor procesów — TUI z kolorami i drzewem procesów"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,ncurses,libcap
+makedeps=gcc,make,autoconf,automake,pkg-config
+source=https://github.com/htop-dev/htop/releases/download/3.3.0/htop-3.3.0.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --enable-unicode \
+                --enable-affinity \
+                --enable-cgroups
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

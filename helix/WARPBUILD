@@ -1,0 +1,19 @@
+pkgname=helix
+pkgver=24.07
+description="Post-modern modal text editor — wbudowany LSP i tree-sitter, zero konfiguracji"
+arch=x86_64
+license=MPL-2.0
+deps=glibc
+makedeps=rust
+source=https://github.com/helix-editor/helix/releases/download/24.07/helix-24.07-source.tar.xz
+sha256=VERIFY
+
+build() {
+    cargo build --release --locked
+}
+
+package() {
+    install -Dm755 target/release/hx "$DESTDIR/usr/bin/hx"
+    install -dm755 "$DESTDIR/usr/share/helix"
+    cp -r runtime "$DESTDIR/usr/share/helix/runtime"
+}

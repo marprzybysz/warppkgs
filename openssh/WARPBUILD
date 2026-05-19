@@ -1,0 +1,22 @@
+pkgname=openssh
+pkgver=9.9p1
+description="OpenSSH — klient i serwer SSH"
+arch=x86_64
+license=BSD
+deps=glibc,openssl,zlib,libpam
+makedeps=gcc,make,autoconf
+source=https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.9p1.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc/ssh \
+                --with-ssl-dir=/usr \
+                --with-pam \
+                --with-privsep-path=/var/lib/sshd
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

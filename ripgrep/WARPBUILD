@@ -1,0 +1,17 @@
+pkgname=ripgrep
+pkgver=14.1.1
+description="Ultraszybki grep napisany w Rust — szuka rekurencyjnie z gitignore"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=rust
+source=https://github.com/BurntSushi/ripgrep/archive/refs/tags/14.1.1.tar.gz
+sha256=VERIFY
+
+build() {
+    cargo build --release --locked
+}
+
+package() {
+    install -Dm755 target/release/rg "$DESTDIR/usr/bin/rg"
+}

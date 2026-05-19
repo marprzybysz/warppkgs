@@ -1,0 +1,20 @@
+pkgname=wget
+pkgver=1.24.5
+description="Narzędzie do pobierania plików z HTTP/HTTPS/FTP"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,openssl,zlib,pcre2,libidn2
+makedeps=gcc,make,autoconf,pkg-config,perl
+source=https://ftp.gnu.org/gnu/wget/wget-1.24.5.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --with-ssl=openssl \
+                --disable-debug
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

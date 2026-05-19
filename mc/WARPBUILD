@@ -1,0 +1,21 @@
+pkgname=mc
+pkgver=4.8.32
+description="Midnight Commander — dwupanelowy file manager TUI, klasyk"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,ncurses,glib,libssh2,openssl
+makedeps=gcc,make,autoconf,automake,pkg-config,glib
+source=https://ftp.midnight-commander.org/mc-4.8.32.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --with-screen=ncurses \
+                --enable-charset \
+                --with-ssh2
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

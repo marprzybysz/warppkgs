@@ -1,0 +1,17 @@
+pkgname=starship
+pkgver=1.20.1
+description="Wieloznamienny prompt dla bash/zsh/fish — szybki, konfigurowalny, ładny"
+arch=x86_64
+license=ISC
+deps=glibc
+makedeps=rust
+source=https://github.com/starship/starship/archive/refs/tags/v1.20.1.tar.gz
+sha256=VERIFY
+
+build() {
+    cargo build --release --locked
+}
+
+package() {
+    install -Dm755 target/release/starship "$DESTDIR/usr/bin/starship"
+}

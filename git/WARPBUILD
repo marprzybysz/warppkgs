@@ -1,0 +1,17 @@
+pkgname=git
+pkgver=2.47.0
+description="Distributed version control system"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,curl,openssl,zlib,pcre2,expat
+makedeps=gcc,make,autoconf,pkg-config,perl
+source=https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.47.0.tar.xz
+sha256=VERIFY
+
+build() {
+    make $MAKEFLAGS prefix=/usr all
+}
+
+package() {
+    make prefix=/usr DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,18 @@
+pkgname=popt
+pkgver=1.19
+description="Biblioteka do parsowania opcji wiersza poleceń (używana przez rsync)"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make,autoconf,automake,libtool
+source=https://ftp.samba.org/pub/popt/popt-1.19.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

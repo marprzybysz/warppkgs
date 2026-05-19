@@ -1,0 +1,21 @@
+pkgname=neovim
+pkgver=0.10.2
+description="Hyperextensible Vim-based text editor"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,ncurses,libuv,libvterm,unibilium,msgpack-c,treesitter
+makedeps=gcc,cmake,ninja,pkg-config,python3,gettext
+source=https://github.com/neovim/neovim/archive/refs/tags/v0.10.2.tar.gz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_BUNDLED=OFF
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}
