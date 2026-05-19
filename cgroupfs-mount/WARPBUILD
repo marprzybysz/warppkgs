@@ -1,0 +1,26 @@
+pkgname=cgroupfs-mount
+pkgver=1.0
+description="Skrypt OpenRC do montowania cgroupfs przy starcie (wymagane przez Docker)"
+arch=x86_64
+license=GPL-2.0
+deps=openrc
+makedeps=
+source=
+sha256=
+
+build() {
+    :
+}
+
+package() {
+    install -Dm755 /dev/stdin "$DESTDIR/etc/init.d/cgroupfs-mount" <<'EOF'
+#!/sbin/openrc-run
+description="Mount cgroup filesystems"
+
+start() {
+    ebegin "Mounting cgroup2"
+    mount -t cgroup2 none /sys/fs/cgroup 2>/dev/null || true
+    eend $?
+}
+EOF
+}

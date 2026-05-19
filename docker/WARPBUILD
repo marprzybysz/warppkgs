@@ -1,0 +1,31 @@
+pkgname=docker
+pkgver=27.3.1
+description="Docker Engine — platforma do uruchamiania kontenerów"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,containerd,runc,iptables,cgroupfs-mount,libseccomp,elogind
+makedeps=go,make,pkg-config
+source=https://github.com/moby/moby/archive/refs/tags/v27.3.1.tar.gz
+sha256=VERIFY
+
+build() {
+    export DOCKER_GITCOMMIT=flow
+    export VERSION=${pkgver}
+    make $MAKEFLAGS dynbinary
+}
+
+package() {
+    install -Dm755 bundles/dynbinary-daemon/dockerd "$DESTDIR/usr/bin/dockerd"
+    install -Dm755 bundles/dynbinary-daemon/docker-proxy "$DESTDIR/usr/bin/docker-proxy"
+    install -Dm755 /dev/stdin "$DESTDIR/etc/init.d/docker" <<'EOF'
+#!/sbin/openrc-run
+description="Docker container engine"
+depend() {
+    need containerd cgroupfs-mount
+    use networkmanager
+}
+command=/usr/bin/dockerd
+command_background=true
+pidfile=/run/docker.pid
+EOF
+}

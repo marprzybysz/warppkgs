@@ -1,0 +1,29 @@
+pkgname=containerd
+pkgver=2.0.0
+description="Container runtime — zarządza cyklem życia kontenerów"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,runc,libseccomp
+makedeps=go,make
+source=https://github.com/containerd/containerd/archive/refs/tags/v2.0.0.tar.gz
+sha256=VERIFY
+
+build() {
+    make $MAKEFLAGS
+}
+
+package() {
+    install -Dm755 bin/containerd       "$DESTDIR/usr/bin/containerd"
+    install -Dm755 bin/containerd-shim-runc-v2 "$DESTDIR/usr/bin/containerd-shim-runc-v2"
+    install -Dm755 bin/ctr              "$DESTDIR/usr/bin/ctr"
+    install -Dm644 /dev/stdin "$DESTDIR/etc/openrc/conf.d/containerd" <<'EOF'
+# containerd OpenRC config
+EOF
+    install -Dm755 /dev/stdin "$DESTDIR/etc/init.d/containerd" <<'EOF'
+#!/sbin/openrc-run
+description="containerd container runtime"
+command=/usr/bin/containerd
+command_background=true
+pidfile=/run/containerd/containerd.pid
+EOF
+}

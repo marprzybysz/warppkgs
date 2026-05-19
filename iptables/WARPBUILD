@@ -1,0 +1,20 @@
+pkgname=iptables
+pkgver=1.8.10
+description="Narzędzia do zarządzania regułami netfilter (wymagane przez Docker networking)"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,libnftnl,libmnl,libnetfilter_conntrack
+makedeps=gcc,make,pkg-config,autoconf,automake,libtool
+source=https://netfilter.org/projects/iptables/files/iptables-1.8.10.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --sbindir=/usr/sbin \
+                --disable-nftables
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

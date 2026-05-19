@@ -1,0 +1,13 @@
+#!/bin/bash
+# Dodaj docker do grupy i włącz serwis OpenRC
+rc-update add cgroupfs-mount boot   2>/dev/null || true
+rc-update add containerd default    2>/dev/null || true
+rc-update add docker default        2>/dev/null || true
+
+if ! getent group docker > /dev/null 2>&1; then
+    groupadd docker
+fi
+
+echo "Docker zainstalowany. Dodaj siebie do grupy docker:"
+echo "  usermod -aG docker \$USER"
+echo "Następnie uruchom ponownie lub: newgrp docker"
