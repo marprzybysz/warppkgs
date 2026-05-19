@@ -1,0 +1,22 @@
+pkgname=erlang
+pkgver=27.1
+description="Erlang/OTP — współbieżność, fault-tolerance, telecom. VM dla Elixira"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,openssl,zlib,libncurses
+makedeps=gcc,make,autoconf,perl
+source=https://github.com/erlang/otp/releases/download/OTP-27.1/otp_src_27.1.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --with-ssl \
+                --enable-threads \
+                --enable-smp-support \
+                --enable-kernel-poll
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,17 @@
+pkgname=crystal
+pkgver=1.14.0
+description="Crystal — składnia jak Ruby, kompilowany do natywnego kodu, szybki jak C"
+arch=x86_64
+license=Apache-2.0
+deps=glibc,llvm,openssl,zlib,libxml2,libyaml,pcre2,gc
+makedeps=crystal,gcc,pkg-config
+source=https://github.com/crystal-lang/crystal/archive/refs/tags/1.14.0.tar.gz
+sha256=VERIFY
+
+build() {
+    make $MAKEFLAGS release=1
+}
+
+package() {
+    make DESTDIR="$DESTDIR" PREFIX=/usr install
+}

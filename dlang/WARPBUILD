@@ -1,0 +1,21 @@
+pkgname=dlang
+pkgver=1.40.0
+description="LDC2 — LLVM-based D language compiler (pre-built)"
+arch=x86_64
+license=BSD
+deps=glibc,llvm
+makedeps=
+source=https://github.com/ldc-developers/ldc/releases/download/v1.40.0/ldc2-1.40.0-linux-x86_64.tar.xz
+sha256=VERIFY
+
+build() {
+    :
+}
+
+package() {
+    install -Dm755 bin/ldc2   "$DESTDIR/usr/bin/ldc2"
+    install -Dm755 bin/ldmd2  "$DESTDIR/usr/bin/ldmd2"
+    install -Dm755 bin/rdmd   "$DESTDIR/usr/bin/rdmd"
+    install -dm755 "$DESTDIR/usr/lib/ldc2"
+    cp -r lib/. "$DESTDIR/usr/lib/ldc2/"
+}

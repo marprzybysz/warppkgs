@@ -1,0 +1,22 @@
+pkgname=lapack
+pkgver=3.12.0
+description="Linear Algebra PACKage — wymagane przez R i naukowe biblioteki"
+arch=x86_64
+license=BSD
+deps=glibc,blas
+makedeps=gcc,cmake,ninja,gfortran
+source=https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.0.tar.gz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_SHARED_LIBS=ON \
+        -DLAPACKE=ON
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,25 @@
+pkgname=r-lang
+pkgver=4.4.2
+description="R — statystyka i data science, głównie akademicki i research"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,blas,lapack,readline,zlib,bzip2,xz-utils,pcre2,curl,libpng,libjpeg-turbo,cairo,pango,libx11
+makedeps=gcc,make,gfortran,pkg-config,texinfo
+source=https://cran.r-project.org/src/base/R-4/R-4.4.2.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --enable-R-shlib \
+                --with-blas \
+                --with-lapack \
+                --with-readline \
+                --with-cairo \
+                --with-libpng \
+                --with-x
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

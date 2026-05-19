@@ -1,0 +1,20 @@
+pkgname=groovy
+pkgver=4.0.24
+description="Apache Groovy — JVM scripting, używany w plikach Gradle (pre-built)"
+arch=x86_64
+license=Apache-2.0
+deps=openjdk
+makedeps=
+source=https://groovy.jfrog.io/artifactory/dist-release-local/groovy-zips/apache-groovy-binary-4.0.24.zip
+sha256=VERIFY
+
+build() {
+    :
+}
+
+package() {
+    install -dm755 "$DESTDIR/usr/lib/groovy"
+    cp -r groovy-4.0.24/. "$DESTDIR/usr/lib/groovy/"
+    ln -sf /usr/lib/groovy/bin/groovy  "$DESTDIR/usr/bin/groovy"
+    ln -sf /usr/lib/groovy/bin/groovyc "$DESTDIR/usr/bin/groovyc"
+}

@@ -1,0 +1,19 @@
+pkgname=gradle
+pkgver=8.11.1
+description="Gradle build tool — JVM/Android/Kotlin projekty (pre-built)"
+arch=x86_64
+license=Apache-2.0
+deps=openjdk
+makedeps=
+source=https://services.gradle.org/distributions/gradle-8.11.1-bin.zip
+sha256=VERIFY
+
+build() {
+    :
+}
+
+package() {
+    install -dm755 "$DESTDIR/usr/lib/gradle"
+    cp -r gradle-8.11.1/. "$DESTDIR/usr/lib/gradle/"
+    ln -sf /usr/lib/gradle/bin/gradle "$DESTDIR/usr/bin/gradle"
+}

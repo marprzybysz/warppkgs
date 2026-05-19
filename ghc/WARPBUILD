@@ -1,0 +1,17 @@
+pkgname=ghc
+pkgver=9.10.1
+description="Glasgow Haskell Compiler — czysto funkcyjny język, akademicki (pre-built)"
+arch=x86_64
+license=BSD
+deps=glibc,libffi,libnuma,libgmp
+makedeps=
+source=https://downloads.haskell.org/ghc/9.10.1/ghc-9.10.1-x86_64-ubuntu22_04-linux.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

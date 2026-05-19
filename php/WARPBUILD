@@ -1,0 +1,27 @@
+pkgname=php
+pkgver=8.4.1
+description="PHP scripting language — web development, CLI scripting"
+arch=x86_64
+license=PHP-3.01
+deps=glibc,openssl,zlib,libxml2,sqlite,curl,libpng,libjpeg-turbo,readline,libffi
+makedeps=gcc,make,autoconf,pkg-config,bison,re2c
+source=https://www.php.net/distributions/php-8.4.1.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --with-openssl \
+                --with-zlib \
+                --with-curl \
+                --with-pdo-sqlite \
+                --enable-mbstring \
+                --enable-bcmath \
+                --enable-fpm \
+                --enable-cli \
+                --without-pear
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

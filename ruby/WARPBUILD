@@ -1,0 +1,21 @@
+pkgname=ruby
+pkgver=3.3.6
+description="Ruby programming language — elegant scripting, Rails, Jekyll"
+arch=x86_64
+license=BSD
+deps=glibc,openssl,zlib,readline,libffi,libyaml,gdbm
+makedeps=gcc,make,autoconf,pkg-config
+source=https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.6.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --enable-shared \
+                --disable-install-doc \
+                --with-openssl-dir=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

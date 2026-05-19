@@ -1,0 +1,21 @@
+pkgname=nghttp2
+pkgver=1.64.0
+description="HTTP/2 library (używana przez Node.js i curl)"
+arch=x86_64
+license=MIT
+deps=glibc,openssl,zlib,libev,libcares
+makedeps=gcc,cmake,ninja,pkg-config,python3
+source=https://github.com/nghttp2/nghttp2/releases/download/v1.64.0/nghttp2-1.64.0.tar.xz
+sha256=VERIFY
+
+build() {
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DENABLE_LIB_ONLY=ON
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

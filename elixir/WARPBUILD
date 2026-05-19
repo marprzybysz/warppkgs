@@ -1,0 +1,17 @@
+pkgname=elixir
+pkgver=1.17.3
+description="Elixir — Ruby-like składnia na VM Erlanga. Phoenix web framework"
+arch=x86_64
+license=Apache-2.0
+deps=erlang
+makedeps=erlang
+source=https://github.com/elixir-lang/elixir/archive/refs/tags/v1.17.3.tar.gz
+sha256=VERIFY
+
+build() {
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" PREFIX=/usr install
+}

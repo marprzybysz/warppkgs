@@ -1,0 +1,20 @@
+pkgname=kotlin
+pkgver=2.1.0
+description="Kotlin — JVM language by JetBrains, Android + backend (pre-built)"
+arch=x86_64
+license=Apache-2.0
+deps=openjdk
+makedeps=
+source=https://github.com/JetBrains/kotlin/releases/download/v2.1.0/kotlin-compiler-2.1.0.zip
+sha256=VERIFY
+
+build() {
+    :
+}
+
+package() {
+    install -dm755 "$DESTDIR/usr/lib/kotlin"
+    cp -r kotlinc/. "$DESTDIR/usr/lib/kotlin/"
+    ln -sf /usr/lib/kotlin/bin/kotlinc "$DESTDIR/usr/bin/kotlinc"
+    ln -sf /usr/lib/kotlin/bin/kotlin  "$DESTDIR/usr/bin/kotlin"
+}

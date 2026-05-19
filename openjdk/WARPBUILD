@@ -1,0 +1,23 @@
+pkgname=openjdk
+pkgver=21.0.5
+description="OpenJDK 21 LTS — Java Development Kit (pre-built binary)"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,libx11,libxext,libxrender,libxtst,alsa-lib,freetype,fontconfig
+makedeps=
+source=https://download.java.net/java/GA/jdk21.0.5/b5c070a4dbe841f39cc99f7a7b8c5e73/11/GPL/openjdk-21.0.5_linux-x64_bin.tar.gz
+sha256=VERIFY
+
+build() {
+    :
+}
+
+package() {
+    install -dm755 "$DESTDIR/usr/lib/jvm/openjdk-21"
+    cp -r . "$DESTDIR/usr/lib/jvm/openjdk-21/"
+    install -dm755 "$DESTDIR/usr/bin"
+    ln -sf /usr/lib/jvm/openjdk-21/bin/java    "$DESTDIR/usr/bin/java"
+    ln -sf /usr/lib/jvm/openjdk-21/bin/javac   "$DESTDIR/usr/bin/javac"
+    ln -sf /usr/lib/jvm/openjdk-21/bin/jar     "$DESTDIR/usr/bin/jar"
+    ln -sf /usr/lib/jvm/openjdk-21/bin/javadoc "$DESTDIR/usr/bin/javadoc"
+}

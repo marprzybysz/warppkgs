@@ -1,0 +1,23 @@
+pkgname=nodejs
+pkgver=22.11.0
+description="Node.js JavaScript runtime (LTS) + npm package manager"
+arch=x86_64
+license=MIT
+deps=glibc,openssl,zlib,libuv,nghttp2,c-ares
+makedeps=gcc,python3,make,pkg-config
+source=https://nodejs.org/dist/v22.11.0/node-v22.11.0.tar.xz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr \
+                --shared-openssl \
+                --shared-zlib \
+                --shared-libuv \
+                --shared-nghttp2 \
+                --shared-cares
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

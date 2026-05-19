@@ -1,0 +1,20 @@
+pkgname=scala
+pkgver=3.5.2
+description="Scala — JVM functional+OOP, używany w Apache Spark i big data (pre-built)"
+arch=x86_64
+license=Apache-2.0
+deps=openjdk
+makedeps=
+source=https://github.com/scala/scala3/releases/download/3.5.2/scala3-3.5.2.tar.gz
+sha256=VERIFY
+
+build() {
+    :
+}
+
+package() {
+    install -dm755 "$DESTDIR/usr/lib/scala"
+    cp -r scala3-3.5.2/. "$DESTDIR/usr/lib/scala/"
+    ln -sf /usr/lib/scala/bin/scala  "$DESTDIR/usr/bin/scala"
+    ln -sf /usr/lib/scala/bin/scalac "$DESTDIR/usr/bin/scalac"
+}

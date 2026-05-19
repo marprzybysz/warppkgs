@@ -1,0 +1,19 @@
+pkgname=maven
+pkgver=3.9.9
+description="Apache Maven — build tool i dependency manager dla Javy (pre-built)"
+arch=x86_64
+license=Apache-2.0
+deps=openjdk
+makedeps=
+source=https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+sha256=VERIFY
+
+build() {
+    :
+}
+
+package() {
+    install -dm755 "$DESTDIR/usr/lib/maven"
+    cp -r apache-maven-3.9.9/. "$DESTDIR/usr/lib/maven/"
+    ln -sf /usr/lib/maven/bin/mvn "$DESTDIR/usr/bin/mvn"
+}

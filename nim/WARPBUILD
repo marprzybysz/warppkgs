@@ -1,0 +1,25 @@
+pkgname=nim
+pkgver=2.2.0
+description="Nim — kompiluje się do C, składnia jak Python, wydajność jak C. Unikalne!"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make
+source=https://nim-lang.org/download/nim-2.2.0.tar.xz
+sha256=VERIFY
+
+build() {
+    # Nim bootstrapuje się przez C — kompiluje swój własny kompilator przez CC
+    sh build.sh
+    bin/nim c -d:release koch
+    ./koch boot -d:release
+    ./koch tools -d:release
+}
+
+package() {
+    install -Dm755 bin/nim     "$DESTDIR/usr/bin/nim"
+    install -Dm755 bin/nimble  "$DESTDIR/usr/bin/nimble"
+    install -Dm755 bin/nimsuggest "$DESTDIR/usr/bin/nimsuggest"
+    install -dm755 "$DESTDIR/usr/lib/nim"
+    cp -r lib/. "$DESTDIR/usr/lib/nim/"
+}
