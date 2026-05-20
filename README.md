@@ -24,13 +24,12 @@ warppkgs/
 ├── browsers/      Web browsers (chromium, zen-browser)
 ├── media/         Media players & encoders (ffmpeg, mpv, x264)
 ├── containers/    Docker, Podman, containerd, runc
-├── devtools/      Dev tools (git, neovim, helix, vim)
+├── devtools/      Dev tools + multiplexers (git, neovim, helix, vim, tmux, zellij)
 ├── monitoring/    System monitoring (htop, btop, fastfetch)
 ├── cli/           Modern CLI utilities (ripgrep, fzf, bat, jq…)
 ├── filemanagers/  TUI file managers (mc, lf, ranger, nnn)
 ├── shell/         Shells & prompt (fish, zsh, starship)
-├── editors/       Multiplexers & editors (tmux, zellij)
-├── windows/       Windows compatibility (wine, bottles, cabextract, p7zip)
+├── compat/        Windows compatibility (wine, bottles, cabextract, p7zip)
 └── pending/       Build workspace — packages under development
 ```
 
@@ -210,7 +209,7 @@ Compilers, build systems, and language runtimes.
 ### Media
 `ffmpeg` `mpv` `libva` `libvpx` `x264`
 
-### Windows compatibility
+### Windows compatibility (`compat/`)
 `wine` *(9.0, WineHQ — runs Windows .exe on Linux)* · `bottles` *(GUI Wine manager, GNOME/libadwaita)*
 `cabextract` · `p7zip` · `xdg-utils`
 
@@ -242,8 +241,8 @@ Compilers, build systems, and language runtimes.
 
 > `fish` and `zsh` have `INSTALL` hooks that wire up WARP tab completions automatically.
 
-### Editors & multiplexers
-`vim` `neovim` `helix` `tmux` `zellij`
+### Dev tools & multiplexers
+`git` `neovim` `helix` `vim` `tmux` `zellij`
 
 ## Workspace
 
