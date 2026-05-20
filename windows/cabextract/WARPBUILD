@@ -1,0 +1,18 @@
+pkgname=cabextract
+pkgver=1.11
+description="Tool for extracting Microsoft Cabinet (.cab) files"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,zlib
+makedeps=gcc,make
+source=https://www.cabextract.org.uk/cabextract-1.11.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

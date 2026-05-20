@@ -1,0 +1,20 @@
+pkgname=bottles
+pkgver=51.8
+description="Wine manager — GUI frontend for creating and managing Wine prefixes"
+arch=x86_64
+license=GPL-3.0
+deps=glibc,python3,gtk4,libadwaita,glib,dbus,wine,cabextract,p7zip,curl,xdg-utils
+makedeps=python3,meson,ninja,pkg-config,blueprint-compiler
+source=https://github.com/bottlesdevs/Bottles/archive/refs/tags/51.8.tar.gz
+sha256=VERIFY
+
+build() {
+    meson setup build \
+        --prefix=/usr \
+        --buildtype=release
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

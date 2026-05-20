@@ -1,0 +1,34 @@
+pkgname=wine
+pkgver=9.0
+description="Compatibility layer for running Windows applications on Linux"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,glib,dbus,fontconfig,freetype,libx11,libxext,libxrender,libxcomposite,libxinerama,libxi,libxft,libxkbcommon,openssl,libusb,libpng,libjpeg-turbo,alsa-lib,mesa,vulkan-loader,gtk3,pciutils,cups,ncurses
+makedeps=gcc,make,pkg-config,flex,bison,mingw-w64-gcc
+source=https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz
+sha256=VERIFY
+
+build() {
+    mkdir build64 && cd build64
+    ../configure \
+        --prefix=/usr \
+        --libdir=/usr/lib \
+        --with-x \
+        --with-wayland \
+        --with-vulkan \
+        --with-opengl \
+        --with-alsa \
+        --with-dbus \
+        --with-fontconfig \
+        --with-freetype \
+        --with-openssl \
+        --with-usb \
+        --with-cups \
+        --without-oss
+    make $MAKEFLAGS
+}
+
+package() {
+    cd build64
+    make DESTDIR="$DESTDIR" install
+}

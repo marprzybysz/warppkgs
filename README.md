@@ -5,7 +5,34 @@ Internally called **"tabela kompilacji"** — each WARPBUILD is a build recipe t
 
 ## Overview
 
-**310 packages** organized into categories. Each package contains a `WARPBUILD` file with metadata and `build()` / `package()` functions. Some packages have `INSTALL` / `REMOVE` hooks for post-install automation.
+**317 packages** organized into category directories. Each package contains a `WARPBUILD` file with metadata and `build()` / `package()` functions. Some packages have `INSTALL` / `REMOVE` hooks for post-install automation.
+
+## Directory structure
+
+```
+warppkgs/
+├── base/          Base system utilities (glibc chain, openssl, pam…)
+├── toolchain/     Compilers & build tools (gcc, clang, rust, go, zig…)
+├── langs/         Programming language runtimes (nodejs, openjdk, ruby…)
+├── libs/          Libraries (gtk, mesa, x11, wayland, boost…)
+├── audio/         Audio stack + players + codecs
+├── network/       Network tools (curl, openssh, NetworkManager…)
+├── display/       Display server (xorg-server, xwayland)
+├── drivers/       GPU, input, Vulkan, firmware, NVIDIA
+├── desktop/       DEs, WMs, Qt6, KDE, GNOME, SDDM
+├── terminals/     Terminal emulators (alacritty, kitty, ghostty…)
+├── browsers/      Web browsers (chromium, zen-browser)
+├── media/         Media players & encoders (ffmpeg, mpv, x264)
+├── containers/    Docker, Podman, containerd, runc
+├── devtools/      Dev tools (git, neovim, helix, vim)
+├── monitoring/    System monitoring (htop, btop, fastfetch)
+├── cli/           Modern CLI utilities (ripgrep, fzf, bat, jq…)
+├── filemanagers/  TUI file managers (mc, lf, ranger, nnn)
+├── shell/         Shells & prompt (fish, zsh, starship)
+├── editors/       Multiplexers & editors (tmux, zellij)
+├── windows/       Windows compatibility (wine, bottles, cabextract, p7zip)
+└── pending/       Build workspace — packages under development
+```
 
 ## WARPBUILD format
 
@@ -182,6 +209,13 @@ Compilers, build systems, and language runtimes.
 
 ### Media
 `ffmpeg` `mpv` `libva` `libvpx` `x264`
+
+### Windows compatibility
+`wine` *(9.0, WineHQ — runs Windows .exe on Linux)* · `bottles` *(GUI Wine manager, GNOME/libadwaita)*
+`cabextract` · `p7zip` · `xdg-utils`
+
+> `wine` compiled with Wayland + Vulkan support.  
+> `bottles` requires `wine` and auto-manages prefixes, DXVK, and Windows runtimes.
 
 ### Containers & virtualization
 `docker` · `containerd` · `runc` · `docker-compose` · `podman` · `cgroupfs-mount`

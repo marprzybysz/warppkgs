@@ -1,0 +1,18 @@
+pkgname=p7zip
+pkgver=17.05
+description="Command-line port of 7-Zip for POSIX systems"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,gcc-libs
+makedeps=gcc,make
+source=https://github.com/p7zip-project/p7zip/archive/refs/tags/v17.05.tar.gz
+sha256=VERIFY
+
+build() {
+    make $MAKEFLAGS all3
+}
+
+package() {
+    make DEST_HOME=/usr DEST_MAN=/usr/share/man DEST_SHARE_DOC=/usr/share/doc/p7zip \
+        DESTDIR="$DESTDIR" install
+}

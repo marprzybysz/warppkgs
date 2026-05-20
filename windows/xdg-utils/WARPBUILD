@@ -1,0 +1,18 @@
+pkgname=xdg-utils
+pkgver=1.2.1
+description="Command-line tools for desktop integration (xdg-open, xdg-mime, etc.)"
+arch=x86_64
+license=MIT
+deps=glibc,bash
+makedeps=make,xmlto
+source=https://portland.freedesktop.org/download/xdg-utils-1.2.1.tar.gz
+sha256=VERIFY
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}
