@@ -6,7 +6,7 @@ license=GPL-3.0
 deps=glibc,freetype,fontconfig,harfbuzz,libpng,libjpeg-turbo,libxkbcommon,libx11,libxcb,mesa,ncurses,zlib,openssl,dbus
 makedeps=gcc,python3,make,pkg-config,go
 source=https://github.com/kovidgoyal/kitty/releases/download/v0.36.4/kitty-0.36.4.tar.xz
-sha256=VERIFY
+sha256=10ebf00a8576bca34ae683866c5be307a35f3c517906d6441923fd740db059bd
 
 build() {
     python3 setup.py linux-package \
