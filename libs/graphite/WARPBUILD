@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc
 makedeps=gcc,cmake,ninja,python3
 source=https://github.com/silnrsi/graphite/releases/download/1.3.14/graphite2-1.3.14.tgz
-sha256=VERIFY
+sha256=f99d1c13aa5fa296898a181dff9b82fb25f6cc0933dbaa7a475d8109bd54209d
 
 build() {
     cmake -B build -G Ninja \
