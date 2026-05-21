@@ -4,7 +4,7 @@ description="GPU-accelerated terminal emulator"
 arch=x86_64
 license=GPL-3.0
 deps=glibc,freetype,fontconfig,harfbuzz,libpng,libjpeg-turbo,libxkbcommon,libx11,libxcb,mesa,ncurses,zlib,openssl,dbus
-makedeps=gcc,python3,make,pkg-config,go
+makedeps=gcc,python3,make,pkg-config
 source=https://github.com/kovidgoyal/kitty/releases/download/v0.36.4/kitty-0.36.4.tar.xz
 sha256=VERIFY
 
