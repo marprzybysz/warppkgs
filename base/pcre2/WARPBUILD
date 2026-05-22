@@ -11,6 +11,7 @@ sha256=d34f02e113cf7193a1ebf2770d3ac527088d485d4e047ed10e5d217c6ef5de96
 build() {
     cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
         -DPCRE2_BUILD_PCRE2_16=ON \
         -DPCRE2_BUILD_PCRE2_32=ON \
