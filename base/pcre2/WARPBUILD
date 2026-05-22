@@ -25,4 +25,17 @@ build() {
 
 package() {
     DESTDIR="$DESTDIR" cmake --install build
+    # cmake creates: real.so.0 + symlink.so.0.13.0 -> real.so.0
+    # Normalize to standard layout: real.so.0.13.0 + soname/dev symlinks
+    cd "$DESTDIR/usr/lib"
+    for link in libpcre2-*.so.*.*.*; do
+        [ -L "$link" ] || continue
+        target=$(readlink "$link")
+        [ -f "$target" ] || continue
+        rm "$link"
+        mv "$target" "$link"
+        ln -sf "$link" "$target"
+        devname="${target%.so.*}.so"
+        ln -sf "$target" "$devname"
+    done
 }
