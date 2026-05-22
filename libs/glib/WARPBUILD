@@ -12,6 +12,7 @@ build() {
     meson setup build \
         --prefix=/usr \
         --buildtype=release \
+        --wrap-mode=nodownload \
         -Dselinux=disabled \
         -Dxattr=false \
         -Dtests=false
