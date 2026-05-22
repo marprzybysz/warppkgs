@@ -4,29 +4,24 @@ description="Perl-compatible regular expressions library v2"
 arch=x86_64
 license=BSD
 deps=glibc,zlib,bzip2
-makedeps=gcc,make
+makedeps=gcc,cmake,ninja
 source=https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.44/pcre2-10.44.tar.bz2
 sha256=d34f02e113cf7193a1ebf2770d3ac527088d485d4e047ed10e5d217c6ef5de96
 
 build() {
-    ./configure --prefix=/usr \
-                --enable-unicode \
-                --enable-jit \
-                --enable-pcre2-16 \
-                --enable-pcre2-32 \
-                --enable-pcre2grep-libz \
-                --enable-pcre2grep-libbz2 \
-                --enable-pcre2test-libreadline \
-                --disable-static
-    make $MAKEFLAGS
+    cmake -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DPCRE2_BUILD_PCRE2_16=ON \
+        -DPCRE2_BUILD_PCRE2_32=ON \
+        -DPCRE2_SUPPORT_JIT=ON \
+        -DPCRE2_SUPPORT_UNICODE=ON \
+        -DPCRE2_BUILD_PCRE2GREP=ON \
+        -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_STATIC_LIBS=OFF
+    cmake --build build $MAKEFLAGS
 }
 
 package() {
-    make DESTDIR="$DESTDIR" install
-    find "$DESTDIR" -name '*.la' -delete
-    for f in "$DESTDIR"/usr/lib/lib*.so.*; do
-        [ -L "$f" ] && [ "$(readlink "$f")" = "$(basename "$f")" ] && \
-            cp -af ".libs/$(basename "$f")" "$f"
-    done
-    ldconfig -n "$DESTDIR/usr/lib"
+    DESTDIR="$DESTDIR" cmake --install build
 }
