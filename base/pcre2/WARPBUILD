@@ -23,4 +23,10 @@ build() {
 
 package() {
     make DESTDIR="$DESTDIR" install
+    find "$DESTDIR" -name '*.la' -delete
+    for f in "$DESTDIR"/usr/lib/lib*.so.*; do
+        [ -L "$f" ] && [ "$(readlink "$f")" = "$(basename "$f")" ] && \
+            cp -af ".libs/$(basename "$f")" "$f"
+    done
+    ldconfig -n "$DESTDIR/usr/lib"
 }
