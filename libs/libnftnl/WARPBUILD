@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,libmnl
 makedeps=gcc,make,autoconf,automake,libtool,pkg-config
 source=https://netfilter.org/projects/libnftnl/files/libnftnl-1.2.7.tar.xz
-sha256=VERIFY
+sha256=9122774f968093d5c0bacddd67de480f31fa4073405a7fc058a34b0f387aecb3
 
 build() {
     ./configure --prefix=/usr

@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=glibc,runc,libseccomp
 makedeps=go,make
 source=https://github.com/containerd/containerd/archive/refs/tags/v2.0.0.tar.gz
-sha256=VERIFY
+sha256=346d644e1b96e1f4a39bfe9d1eb0eb01ca676f806c12d95e5dbe35325bbc1780
 
 build() {
     make $MAKEFLAGS

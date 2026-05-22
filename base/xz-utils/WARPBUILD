@@ -6,7 +6,7 @@ license=Public-Domain
 deps=glibc
 makedeps=gcc,make
 source=https://github.com/tukaani-project/xz/releases/download/v5.6.2/xz-5.6.2.tar.xz
-sha256=a69f4f660c299f5a3325e166f81dd4a98e30c12ec8267555caac34ebdc9ca671
+sha256=a9db3bb3d64e248a0fae963f8fb6ba851a26ba1822e504dc0efd18a80c626caf
 
 build() {
     ./configure --prefix=/usr --disable-static

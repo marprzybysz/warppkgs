@@ -6,7 +6,7 @@ license=BSD-2-Clause
 deps=glibc
 makedeps=gcc,make
 source=https://github.com/gavinhoward/bc/releases/download/6.7.6/bc-6.7.6.tar.xz
-sha256=
+sha256=828f390c2a552cadbc8c8ad5fde6eeaee398dc8d59d706559158330f3629ce35
 
 build() {
     CC=gcc ./configure --prefix=/usr -G -O3 -r

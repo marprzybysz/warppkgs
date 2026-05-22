@@ -6,7 +6,7 @@ license=MIT
 deps=glibc
 makedeps=gcc,make,autoconf,automake,libtool
 source=https://pyyaml.org/download/libyaml/yaml-0.2.5.tar.gz
-sha256=VERIFY
+sha256=c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
 
 build() {
     ./configure --prefix=/usr --disable-static

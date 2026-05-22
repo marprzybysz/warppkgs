@@ -6,7 +6,7 @@ license=ISC
 deps=glibc
 makedeps=gcc,make
 source=https://distfiles.ariadne.space/pkgconf/pkgconf-2.3.0.tar.xz
-sha256=3a9080ac51d03615e7c1910a0a2a8df08424892b5f13b0571ca9a3b2e38770d4
+sha256=3a9080ac51d03615e7c1910a0a2a8df08424892b5f13b0628a204d3fcce0ea8b
 
 build() {
     ./configure --prefix=/usr --disable-static

@@ -5,8 +5,8 @@ arch=x86_64
 license=GPL-3.0
 deps=glibc,openssl,zlib,popt,libssh2
 makedeps=gcc,make,autoconf,pkg-config,python3
-source=https://download.samba.org/pub/rsync/rsync-3.3.0.tar.gz
-sha256=VERIFY
+source=https://download.samba.org/pub/rsync/src/rsync-3.3.0.tar.gz
+sha256=7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90
 
 build() {
     ./configure --prefix=/usr \

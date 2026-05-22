@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,qt6-base,libxcb,libx11
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
 source=https://download.kde.org/stable/frameworks/6.7/kwindowsystem-6.7.0.tar.xz
-sha256=VERIFY
+sha256=62c0f0b4a9507939d84aeeda55bbd4300b88c04e37953e5189b139003310a8f4
 
 build() {
     cmake -GNinja \

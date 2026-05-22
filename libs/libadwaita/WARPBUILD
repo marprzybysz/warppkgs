@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,gtk4,glib
 makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,vala
 source=https://ftp.gnome.org/pub/gnome/sources/libadwaita/1.6/libadwaita-1.6.0.tar.xz
-sha256=VERIFY
+sha256=9ed783934cb99c9101639194e1fc072cb09303b8f3c2fc6623390186a9dad8d3
 
 build() {
     meson setup build \

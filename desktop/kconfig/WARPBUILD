@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,qt6-base
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
 source=https://download.kde.org/stable/frameworks/6.7/kconfig-6.7.0.tar.xz
-sha256=VERIFY
+sha256=be2d5ddb63e56703bc097e5d9912b39abc513ac51654de2e0d83a1aed2c54b1b
 
 build() {
     cmake -GNinja \

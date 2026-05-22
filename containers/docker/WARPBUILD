@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=glibc,containerd,runc,iptables,cgroupfs-mount,libseccomp,elogind
 makedeps=go,make,pkg-config
 source=https://github.com/moby/moby/archive/refs/tags/v27.3.1.tar.gz
-sha256=VERIFY
+sha256=d18208d9e0b6421307342cdef266193984c97c87177b9262b1113e6e9e7e020e
 
 build() {
     export DOCKER_GITCOMMIT=flow

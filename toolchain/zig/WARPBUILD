@@ -6,7 +6,7 @@ license=MIT
 deps=glibc
 makedeps=
 source=https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz
-sha256=VERIFY
+sha256=d45312e61ebcc48032b77bc4cf7fd6915c11fa16e4aad116b66c9468211230ea
 
 build() {
     # Zig ships pre-built binaries

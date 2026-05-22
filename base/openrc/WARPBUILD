@@ -6,7 +6,7 @@ license=BSD-2-Clause
 deps=glibc
 makedeps=gcc,make,meson,ninja
 source=https://github.com/OpenRC/openrc/archive/0.54.2.tar.gz
-sha256=
+sha256=1075c7793c0479a65810984036dc7c82142e934b19310edeb397db8939bf526c
 
 build() {
     meson setup build \

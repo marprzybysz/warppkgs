@@ -5,8 +5,8 @@ arch=x86_64
 license=LGPL-2.1
 deps=glibc
 makedeps=gcc,make,autoconf,automake,libtool
-source=https://libndp.org/files/libndp-1.9.tar.gz
-sha256=VERIFY
+source=https://github.com/jpirko/libndp/archive/refs/tags/v1.9.tar.gz
+sha256=e564f5914a6b1b799c3afa64c258824a801c1b79a29e2fe6525b682249c65261
 
 build() {
     ./configure --prefix=/usr --disable-static

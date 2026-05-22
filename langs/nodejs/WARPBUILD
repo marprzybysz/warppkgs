@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,openssl,zlib,libuv,nghttp2,c-ares
 makedeps=gcc,python3,make,pkg-config
 source=https://nodejs.org/dist/v22.11.0/node-v22.11.0.tar.xz
-sha256=VERIFY
+sha256=bbf0297761d53aefda9d7855c57c7d2c272b83a7b5bad4fea9cb29006d8e1d35
 
 build() {
     ./configure --prefix=/usr \

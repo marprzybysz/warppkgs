@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,alsa-lib,dbus,glib,libcap,eudev
 makedeps=gcc,meson,ninja,pkg-config,python3
 source=https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.2.6/pipewire-1.2.6.tar.gz
-sha256=VERIFY
+sha256=8d9b4e95dba33d218c760fecbb71672c86a56917f803e96fe6c3af62fa783a95
 
 build() {
     meson setup build \

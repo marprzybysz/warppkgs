@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,alsa-lib,pipewire,libvorbis,libmad,flac,curl,sqlite,boost
 makedeps=gcc,meson,ninja,pkg-config,python3
 source=https://github.com/MusicPlayerDaemon/MPD/archive/refs/tags/v0.23.15.tar.gz
-sha256=VERIFY
+sha256=d2865d8f8ea79aa509b1465b99a2b8f3f449fe894521c97feadc2dca85a6ecd2
 
 build() {
     meson setup build \

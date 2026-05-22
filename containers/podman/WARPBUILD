@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=glibc,containerd,runc,iptables,cgroupfs-mount,libseccomp,gpgme
 makedeps=go,make,pkg-config,python3
 source=https://github.com/containers/podman/archive/refs/tags/v5.2.0.tar.gz
-sha256=VERIFY
+sha256=d2362700314fdb23baf6c021e73755655294f0e7b21e29c2d6798973cb08d5bb
 
 build() {
     make $MAKEFLAGS BUILDTAGS="seccomp exclude_graphdriver_devicemapper"

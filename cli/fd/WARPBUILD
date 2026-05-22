@@ -6,7 +6,7 @@ license=MIT
 deps=glibc
 makedeps=rust
 source=https://github.com/sharkdp/fd/archive/refs/tags/v10.2.0.tar.gz
-sha256=VERIFY
+sha256=73329fe24c53f0ca47cd0939256ca5c4644742cb7c14cf4114c8c9871336d342
 
 build() {
     cargo build --release --locked

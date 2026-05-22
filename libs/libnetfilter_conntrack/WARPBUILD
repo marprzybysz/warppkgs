@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,libmnl,libnfnetlink
 makedeps=gcc,make,autoconf,automake,libtool,pkg-config
 source=https://netfilter.org/projects/libnetfilter_conntrack/files/libnetfilter_conntrack-1.0.9.tar.bz2
-sha256=VERIFY
+sha256=67bd9df49fe34e8b82144f6dfb93b320f384a8ea59727e92ff8d18b5f4b579a8
 
 build() {
     ./configure --prefix=/usr

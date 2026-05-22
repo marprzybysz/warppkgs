@@ -6,7 +6,7 @@ license=GPL-3.0
 deps=glibc,glib,gtk4,libadwaita,gdk-pixbuf,at-spi2-core,libsecret,dbus
 makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection
 source=https://ftp.gnome.org/pub/gnome/sources/nautilus/47/nautilus-47.1.tar.xz
-sha256=VERIFY
+sha256=15450ebc7aa61ed2fae63130af9ebbbae14ce706a547f594c66bb8cca724d74c
 
 build() {
     meson setup build \

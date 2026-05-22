@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,blas,lapack,readline,zlib,bzip2,xz-utils,pcre2,curl,libpng,libjpeg-turbo,cairo,pango,libx11
 makedeps=gcc,make,gfortran,pkg-config,texinfo
 source=https://cran.r-project.org/src/base/R-4/R-4.4.2.tar.gz
-sha256=VERIFY
+sha256=1578cd603e8d866b58743e49d8bf99c569e81079b6a60cf33cdf7bdffeb817ec
 
 build() {
     ./configure --prefix=/usr \

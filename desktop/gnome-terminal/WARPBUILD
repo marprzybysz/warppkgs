@@ -5,8 +5,8 @@ arch=x86_64
 license=GPL-3.0
 deps=glibc,glib,gtk4,libadwaita,vte,dbus
 makedeps=gcc,meson,ninja,pkg-config,python3,itstool
-source=https://ftp.gnome.org/pub/gnome/sources/gnome-terminal/3.54/gnome-terminal-3.54.0.tar.xz
-sha256=VERIFY
+source=https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3.54.0/gnome-terminal-3.54.0.tar.gz
+sha256=77370b4a00d0cda9ef339ff3aa809d266f3b937f00875176904c5bbefb76ae79
 
 build() {
     meson setup build \

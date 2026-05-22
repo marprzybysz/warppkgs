@@ -5,8 +5,8 @@ arch=x86_64
 license=LGPL-2.1
 deps=glibc,qt6-base
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
-source=https://download.kde.org/stable/frameworks/6.7/ksyntaxhighlighting-6.7.0.tar.xz
-sha256=VERIFY
+source=https://download.kde.org/stable/frameworks/6.7/syntax-highlighting-6.7.0.tar.xz
+sha256=6ef527a941740b9ddfe053eb08ead7e11c12a283aa88a5ddf1a18520cd9d2ca7
 
 build() {
     cmake -GNinja \

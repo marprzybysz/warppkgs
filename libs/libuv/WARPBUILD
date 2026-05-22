@@ -6,7 +6,7 @@ license=MIT
 deps=glibc
 makedeps=gcc,cmake,ninja
 source=https://github.com/libuv/libuv/archive/refs/tags/v1.49.0.tar.gz
-sha256=VERIFY
+sha256=a10656a0865e2cff7a1b523fa47d0f5a9c65be963157301f814d1cc5dbd4dc1d
 
 build() {
     cmake -B build -G Ninja \

@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,libgpg-error
 makedeps=gcc,make,autoconf,automake
 source=https://gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.1.tar.bz2
-sha256=VERIFY
+sha256=c8f0f42e6103dea4b1a6a483cb556654e97302c7465308f58363778f95f194b1
 
 build() {
     ./configure --prefix=/usr

@@ -6,7 +6,7 @@ license=Vim
 deps=glibc,ncurses,acl
 makedeps=gcc,make
 source=https://github.com/vim/vim/archive/refs/tags/v9.1.0660.tar.gz
-sha256=
+sha256=cf7d5c1fbde84357a355c1ad20118c8947d5e1684e71a673549f1e9635f9bfe7
 
 build() {
     ./configure --prefix=/usr

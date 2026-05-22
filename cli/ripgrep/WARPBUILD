@@ -6,7 +6,7 @@ license=MIT
 deps=glibc
 makedeps=rust
 source=https://github.com/BurntSushi/ripgrep/archive/refs/tags/14.1.1.tar.gz
-sha256=VERIFY
+sha256=4dad02a2f9c8c3c8d89434e47337aa654cb0e2aa50e806589132f186bf5c2b66
 
 build() {
     cargo build --release --locked

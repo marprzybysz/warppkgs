@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,libxcb,libx11,libxext,libxfixes,wayland,mesa,pixman,libxkbcommon,libdrm
 makedeps=gcc,meson,ninja,pkg-config,python3,xcb-proto,wayland-protocols
 source=https://xorg.freedesktop.org/releases/individual/xserver/xwayland-24.1.4.tar.xz
-sha256=VERIFY
+sha256=d96a78dbab819f55750173444444995b5031ebdcc15b77afebbd8dbc02af34f4
 
 build() {
     meson setup build \

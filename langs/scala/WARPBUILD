@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=openjdk
 makedeps=
 source=https://github.com/scala/scala3/releases/download/3.5.2/scala3-3.5.2.tar.gz
-sha256=VERIFY
+sha256=899de4f9aca56989ce337d8390fbf94967bc70c9e8420e79f375d1c2ad00ff99
 
 build() {
     :

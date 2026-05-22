@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc
 makedeps=gcc,make
 source=https://github.com/ocaml/ocaml/archive/refs/tags/5.2.1.tar.gz
-sha256=VERIFY
+sha256=abdd3124a888165eeac518d8fb05b483b2f813c40c1d2242817bb2f62a3144fc
 
 build() {
     ./configure --prefix=/usr

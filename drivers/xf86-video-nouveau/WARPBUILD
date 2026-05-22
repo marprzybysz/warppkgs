@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,xorg-server,libdrm,mesa
 makedeps=gcc,make,pkg-config,autoconf,automake,libtool,xorg-server
 source=https://xorg.freedesktop.org/releases/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
-sha256=VERIFY
+sha256=499322e27a55c8183166bf2dd1e47d085eb834143e0d7036baba8427b90c156b
 
 build() {
     ./configure --prefix=/usr

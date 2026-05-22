@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,qt6-base,kwidgetsaddons,ki18n,sonnet
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
 source=https://download.kde.org/stable/frameworks/6.7/ktextwidgets-6.7.0.tar.xz
-sha256=VERIFY
+sha256=23bb71450e39f437c06bd9af48e7893253c31ad10649b0901d0a8ec1ee18ae01
 
 build() {
     cmake -GNinja \

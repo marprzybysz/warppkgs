@@ -6,7 +6,7 @@ license=BSD
 deps=glibc
 makedeps=gcc,meson,ninja,pkg-config
 source=https://github.com/MusicPlayerDaemon/libmpdclient/archive/refs/tags/v2.22.tar.gz
-sha256=VERIFY
+sha256=56bbae543a8a70db83b68c679b91990838f0db31a358c1a139774cd8ba7e3c59
 
 build() {
     meson setup build --prefix=/usr --buildtype=release

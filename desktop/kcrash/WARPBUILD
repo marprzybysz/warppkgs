@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,qt6-base,kcoreaddons,kwindowsystem
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
 source=https://download.kde.org/stable/frameworks/6.7/kcrash-6.7.0.tar.xz
-sha256=VERIFY
+sha256=1dc2c65d8ef62ef98457f8ab423b7686de3e713766c06e64d6322aa9db26eea4
 
 build() {
     cmake -GNinja \

@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,qt6-base,qt6-declarative,kcoreaddons,kconfig,kwidgetsaddons,kiconthemes,kservice,kio,solid,knotifications
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools,ki18n
 source=https://download.kde.org/stable/release-service/24.08.3/src/dolphin-24.08.3.tar.xz
-sha256=VERIFY
+sha256=95bbce876019fb0c7cc6ca4a5fd8ec1f625f70fd511fe883df12446a5285806d
 
 build() {
     cmake -GNinja \

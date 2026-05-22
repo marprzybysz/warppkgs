@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,qt6-base
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
 source=https://download.kde.org/stable/frameworks/6.7/kguiaddons-6.7.0.tar.xz
-sha256=VERIFY
+sha256=ac437ca6baf50b0178bc8bf0b4dd1e6e70e0e4ef1ac770259738a1c42d035bcc
 
 build() {
     cmake -GNinja \

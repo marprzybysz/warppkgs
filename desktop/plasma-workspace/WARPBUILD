@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,qt6-base,qt6-declarative,qt6-svg,qt6-wayland,kwin,kconfig,kcoreaddons,kwindowsystem,kiconthemes,kservice,kio,knotifications,kpackage,polkit,elogind,dbus,wayland,fontconfig,freetype
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools,wayland-protocols
 source=https://download.kde.org/stable/plasma/6.2.5/plasma-workspace-6.2.5.tar.xz
-sha256=VERIFY
+sha256=b82511e46f62e1b8f60b969c828c8d8d32fc7928401a70cc28c29f85f46c412f
 
 build() {
     cmake -GNinja \

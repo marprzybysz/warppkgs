@@ -6,7 +6,7 @@ license=MPL-2.0
 deps=glibc
 makedeps=rust
 source=https://github.com/mozilla/cbindgen/archive/refs/tags/v0.27.0.tar.gz
-sha256=VERIFY
+sha256=af74dd0452ace58895088048873a765fffacc3ad55eea00c0f2999cc4bcf9b5d
 
 build() {
     cargo build --release

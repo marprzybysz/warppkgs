@@ -6,7 +6,7 @@ license=GPL-3.0
 deps=glibc
 makedeps=gcc,make
 source=https://ftp.gnu.org/gnu/diffutils/diffutils-3.10.tar.xz
-sha256=90e5e93cc724e4ebe12ede80df1634063c7a855571b0d8c3d9253062a61801bb
+sha256=90e5e93cc724e4ebe12ede80df1634063c7a855692685919bfe60b556c9bd09e
 
 build() {
     ./configure --prefix=/usr

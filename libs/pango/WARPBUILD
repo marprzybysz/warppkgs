@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,glib,cairo,freetype,fontconfig,harfbuzz
 makedeps=gcc,meson,ninja,pkgconf
 source=https://ftp.gnome.org/pub/gnome/sources/pango/1.54/pango-1.54.0.tar.xz
-sha256=28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb
+sha256=8a9eed75021ee734d7fc0fdf3a65c3bba51dfefe4ae51a9b414a60c70b2d1ed8
 
 build() {
     meson setup --prefix=/usr --buildtype=release build

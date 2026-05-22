@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,qt6-base,kservice,solid,kauth,kdbusaddons,kjobwidgets
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
 source=https://download.kde.org/stable/frameworks/6.7/kio-6.7.0.tar.xz
-sha256=VERIFY
+sha256=df235019a07acd579920f6c655050e02dacf847c706f4b8279e755be46f9d990
 
 build() {
     cmake -GNinja \

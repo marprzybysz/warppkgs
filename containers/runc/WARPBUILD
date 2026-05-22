@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=glibc,libseccomp
 makedeps=go,make,pkg-config
 source=https://github.com/opencontainers/runc/archive/refs/tags/v1.2.0.tar.gz
-sha256=VERIFY
+sha256=25072beb84f4adae316a968241dc74ac30982d38e4459635074aa9e9d87d3de7
 
 build() {
     make BUILDTAGS="seccomp" $MAKEFLAGS

@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,xorg-util-macros
 makedeps=gcc,make,pkg-config,autoconf,automake,libtool
 source=https://xorg.freedesktop.org/releases/individual/lib/libXau-1.0.11.tar.xz
-sha256=VERIFY
+sha256=f3fa3282f5570c3f6bd620244438dbfbdd580fc80f02f549587a0f8ab329bbeb
 
 build() {
     ./configure --prefix=/usr

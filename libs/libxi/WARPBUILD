@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,libx11,libxext,libxfixes
 makedeps=gcc,make,pkg-config,autoconf,automake,libtool
 source=https://xorg.freedesktop.org/releases/individual/lib/libXi-1.8.2.tar.xz
-sha256=VERIFY
+sha256=d0e0555e53d6e2114eabfa44226ba162d2708501a25e18d99cfb35c094c6c104
 
 build() {
     ./configure --prefix=/usr

@@ -6,7 +6,7 @@ license=BSD
 deps=glibc,llvm
 makedeps=
 source=https://github.com/ldc-developers/ldc/releases/download/v1.40.0/ldc2-1.40.0-linux-x86_64.tar.xz
-sha256=VERIFY
+sha256=0da61ed2ea96583aa0ccbeb00f8d78983b23d1e87b84a6f2098eb12059475b27
 
 build() {
     :

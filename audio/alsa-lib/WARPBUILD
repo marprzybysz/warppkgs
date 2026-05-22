@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc
 makedeps=gcc,make,autoconf,automake,libtool,python3
 source=https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.12.tar.bz2
-sha256=VERIFY
+sha256=4868cd908627279da5a634f468701625be8cc251d84262c7e5b6a218391ad0d2
 
 build() {
     ./configure --prefix=/usr --disable-static

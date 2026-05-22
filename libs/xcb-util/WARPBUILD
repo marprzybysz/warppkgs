@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,libxcb
 makedeps=gcc,make,pkgconf
 source=https://xorg.freedesktop.org/releases/individual/lib/xcb-util-0.4.1.tar.xz
-sha256=8a9eed75021ee734d7fc0fdf3a65c3bba51dfefe4ae51a9b414a60c70b2d1ed8
+sha256=5abe3bbbd8e54f0fa3ec945291b7e8fa8cfd3cccc43718f8758430f94126e512
 
 build() {
     ./configure --prefix=/usr --disable-static

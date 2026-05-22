@@ -6,7 +6,7 @@ license=BSD-3-Clause
 deps=glibc
 makedeps=gcc,make
 source=https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.70.tar.xz
-sha256=23a6ef8aadaf1e3c875f633ee6b9d19e54ad3d853e682f49462e7c0a29a36c6a
+sha256=23a6ef8aadaf1e3e875f633bb2d116cfef8952dba7bc7c569b13458e1952b30f
 
 build() {
     sed -i '/install -m.*STA/d' libcap/Makefile

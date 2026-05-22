@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=glibc,libffi,zlib,libxml2
 makedeps=gcc,cmake,ninja,python3,pkg-config
 source=https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.0/llvm-19.1.0.src.tar.xz
-sha256=VERIFY
+sha256=a8b141cbfa13f50d84ce545899bd311aaa60d59dfbf7f3a0cf84f25badc1544d
 
 build() {
     cmake -B build -G Ninja \

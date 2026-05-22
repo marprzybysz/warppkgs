@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,libx11,libxfixes
 makedeps=gcc,make,pkg-config
 source=https://xorg.freedesktop.org/releases/individual/lib/libXcomposite-0.4.6.tar.xz
-sha256=VERIFY
+sha256=fe40bcf0ae1a09070eba24088a5eb9810efe57453779ec1e20a55080c6dc2c87
 
 build() {
     ./configure --prefix=/usr --disable-static

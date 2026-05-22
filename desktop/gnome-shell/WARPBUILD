@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,mutter,glib,gtk4,libadwaita,dbus,polkit,elogind,at-spi2-core,gdk-pixbuf
 makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,sassc
 source=https://ftp.gnome.org/pub/gnome/sources/gnome-shell/47/gnome-shell-47.1.tar.xz
-sha256=VERIFY
+sha256=b467575f8c159d20557258517f0dd68dfd0147d11b48d97ab8e1f709bc522a63
 
 build() {
     meson setup build \

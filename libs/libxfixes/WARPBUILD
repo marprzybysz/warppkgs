@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,libx11
 makedeps=gcc,make,pkg-config
 source=https://xorg.freedesktop.org/releases/individual/lib/libXfixes-6.0.1.tar.xz
-sha256=VERIFY
+sha256=b695f93cd2499421ab02d22744458e650ccc88c1d4c8130d60200213abc02d58
 
 build() {
     ./configure --prefix=/usr --disable-static

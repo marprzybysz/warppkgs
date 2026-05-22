@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,mesa,libdrm,libx11,libxext
 makedeps=gcc,meson,ninja,pkg-config
 source=https://github.com/intel/libva/releases/download/2.22.0/libva-2.22.0.tar.bz2
-sha256=VERIFY
+sha256=e3da2250654c8d52b3f59f8cb3f3d8e7fb1a2ee64378dbc400fbc5663de7edb8
 
 build() {
     meson setup build \

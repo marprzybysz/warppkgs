@@ -6,7 +6,7 @@ license=FTL
 deps=glibc,zlib,bzip2,libpng
 makedeps=gcc,make,pkg-config
 source=https://downloads.sourceforge.net/freetype/freetype-2.13.3.tar.xz
-sha256=VERIFY
+sha256=0550350666d427c74daeb85d5ac7bb353acba5f76956395995311a9c6f063289
 
 build() {
     ./configure --prefix=/usr \

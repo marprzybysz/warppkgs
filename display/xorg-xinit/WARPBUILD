@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,xorg-server,libx11
 makedeps=gcc,make,pkg-config
 source=https://xorg.freedesktop.org/releases/individual/app/xinit-1.4.2.tar.xz
-sha256=VERIFY
+sha256=b7d8dc8d22ef9f15985a10b606ee4f2aad6828befa437359934647e88d331f23
 
 build() {
     ./configure --prefix=/usr \

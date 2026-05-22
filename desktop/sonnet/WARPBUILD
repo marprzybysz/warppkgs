@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,qt6-base
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
 source=https://download.kde.org/stable/frameworks/6.7/sonnet-6.7.0.tar.xz
-sha256=VERIFY
+sha256=2f970d490effd668e64dd93ffef344a80db7e63130bb23df4fa0d6b14150e588
 
 build() {
     cmake -GNinja \

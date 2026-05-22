@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,zlib,xz-utils
 makedeps=gcc,make,pkg-config,autoconf,automake,libtool,python3
 source=https://download.gnome.org/sources/libxml2/2.13/libxml2-2.13.4.tar.xz
-sha256=VERIFY
+sha256=65d042e1c8010243e617efb02afda20b85c2160acdbfbcb5b26b80cec6515650
 
 build() {
     ./configure --prefix=/usr --disable-static --with-history

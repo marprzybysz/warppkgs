@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=glibc,docker
 makedeps=go,make
 source=https://github.com/docker/compose/archive/refs/tags/v2.30.0.tar.gz
-sha256=VERIFY
+sha256=f2bfce36128a14862192162dfd03bb1f4a493c0cb09ebe9b13105b2e12e4a088
 
 build() {
     make $MAKEFLAGS

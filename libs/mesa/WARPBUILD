@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,libdrm,libxcb,libxkbcommon,wayland,zstd,expat,llvm
 makedeps=gcc,meson,ninja,pkg-config,python3,libxml2,glslang,wayland-protocols
 source=https://mesa.freedesktop.org/archive/mesa-24.2.7.tar.xz
-sha256=VERIFY
+sha256=a0ce37228679647268a83b3652d859dcf23d6f6430d751489d4464f6de6459fd
 
 build() {
     meson setup build \

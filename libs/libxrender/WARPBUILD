@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,libx11
 makedeps=gcc,make,pkg-config
 source=https://xorg.freedesktop.org/releases/individual/lib/libXrender-0.9.11.tar.xz
-sha256=VERIFY
+sha256=bc53759a3a83d1ff702fb59641b3d2f7c56e05051fa0cfa93501166fa782dc24
 
 build() {
     ./configure --prefix=/usr --disable-static

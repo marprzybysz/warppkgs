@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,freetype,expat
 makedeps=gcc,make,pkg-config,gperf,python3
 source=https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.15.0.tar.xz
-sha256=VERIFY
+sha256=63a0658d0e06e0fa886106452b58ef04f21f58202ea02a94c39de0d3335d7c0e
 
 build() {
     ./configure --prefix=/usr \

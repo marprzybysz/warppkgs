@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,libx11
 makedeps=gcc,make,pkgconf
 source=https://xorg.freedesktop.org/releases/individual/lib/libXinerama-1.1.5.tar.xz
-sha256=2b3b3dad9347db41dca56beb7db5878f283bde1142f04d9f8e478af435dfdc53
+sha256=5094d1f0fcc1828cb1696d0d39d9e866ae32520c54d01f618f1a3c1e30c2085c
 
 build() {
     ./configure --prefix=/usr --disable-static

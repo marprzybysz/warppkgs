@@ -6,7 +6,7 @@ license=BSD
 deps=glibc,openssl,dbus,libnl
 makedeps=gcc,make,pkg-config
 source=https://w1.fi/releases/wpa_supplicant-2.11.tar.gz
-sha256=VERIFY
+sha256=912ea06f74e30a8e36fbb68064d6cdff218d8d591db0fc5d75dee6c81ac7fc0a
 
 build() {
     cd wpa_supplicant

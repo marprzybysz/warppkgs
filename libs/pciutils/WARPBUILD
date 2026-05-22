@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc
 makedeps=gcc,make
 source=https://mj.ucw.cz/download/linux/pci/pciutils-3.13.0.tar.gz
-sha256=VERIFY
+sha256=a03c88a0aab709b1697ca1753766f443e78297f84c7bcd80a82c1422edd7cb42
 
 build() {
     make $MAKEFLAGS PREFIX=/usr SHARED=yes

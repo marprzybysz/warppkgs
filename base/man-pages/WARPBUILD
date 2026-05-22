@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=
 makedeps=make
 source=https://www.kernel.org/pub/linux/docs/man-pages/man-pages-6.9.1.tar.xz
-sha256=
+sha256=e23cbac29f110ba571f0da8523e79d373691466ed7f2a31301721817d34530bd
 
 build() {
     true

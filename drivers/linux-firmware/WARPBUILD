@@ -5,8 +5,8 @@ arch=x86_64
 license=custom
 deps=glibc
 makedeps=
-source=https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20250211.tar.gz
-sha256=VERIFY
+source=https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-20250211.tar.xz
+sha256=2de1345897bf839d532c5de0fdb348770ca2a5f4edfb21971582597abb45297d
 
 build() {
     :

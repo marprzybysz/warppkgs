@@ -6,7 +6,7 @@ license=MIT
 deps=glibc
 makedeps=gcc,make,python3
 source=https://duktape.org/duktape-2.7.0.tar.xz
-sha256=VERIFY
+sha256=90f8d2fa8b5567c6899830ddef2c03f3c27960b11aca222fa17aa7ac613c2890
 
 build() {
     make $MAKEFLAGS -f Makefile.sharedlibrary

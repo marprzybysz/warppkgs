@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,glib,libxml2
 makedeps=gcc,meson,ninja,pkg-config,itstool,gettext
 source=https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.4/shared-mime-info-2.4.tar.gz
-sha256=VERIFY
+sha256=531291d0387eb94e16e775d7e73788d06d2b2fdd8cd2ac6b6b15287593b6a2de
 
 build() {
     meson setup build --prefix=/usr --buildtype=release -Dbuild-tests=false

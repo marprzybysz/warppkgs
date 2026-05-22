@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,glib,gtk4,libxkbcommon,wayland,libinput,libdrm,mesa,pango,cairo,dbus,elogind,at-spi2-core
 makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,wayland-protocols
 source=https://ftp.gnome.org/pub/gnome/sources/mutter/47/mutter-47.1.tar.xz
-sha256=VERIFY
+sha256=905474a32cd99b34342cd69e74bb01971b387e2fa22361b6d99add109409ddc9
 
 build() {
     meson setup build \

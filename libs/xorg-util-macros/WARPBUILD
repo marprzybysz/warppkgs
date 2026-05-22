@@ -6,7 +6,7 @@ license=MIT
 deps=
 makedeps=autoconf,automake
 source=https://xorg.freedesktop.org/releases/individual/util/util-macros-1.20.1.tar.xz
-sha256=VERIFY
+sha256=0b308f62dce78ac0f4d9de6888234bf170f276b64ac7c96e99779bb4319bcef5
 
 build() {
     ./configure --prefix=/usr

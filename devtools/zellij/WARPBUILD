@@ -6,7 +6,7 @@ license=MIT
 deps=glibc
 makedeps=rust
 source=https://github.com/zellij-org/zellij/archive/refs/tags/v0.41.0.tar.gz
-sha256=VERIFY
+sha256=cfe987c6ab8adeb484cd429618a8019d162b7298b98da2288eed1b1d9aaf8ef5
 
 build() {
     cargo build --release --locked

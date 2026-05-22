@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=glibc,libx11,libxcb,wayland
 makedeps=gcc,cmake,ninja,pkg-config,python3,wayland-protocols
 source=https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/v1.3.290.tar.gz
-sha256=VERIFY
+sha256=a1f0d80c4ee448d4fa37d1d4a4c4cf1d6d0f5873d3ca6dffe2a9498e6e654142
 
 build() {
     cmake -B build -G Ninja \

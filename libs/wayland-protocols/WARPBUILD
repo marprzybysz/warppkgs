@@ -6,7 +6,7 @@ license=MIT
 deps=wayland
 makedeps=meson,ninja,pkg-config,python3
 source=https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.37/downloads/wayland-protocols-1.37.tar.xz
-sha256=VERIFY
+sha256=a70e9be924f2e8688e6824dceaf6188faacd5ae218dfac8d0a3d0976211ef326
 
 build() {
     meson setup build \

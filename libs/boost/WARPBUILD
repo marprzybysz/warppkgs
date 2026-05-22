@@ -6,7 +6,7 @@ license=BSL-1.0
 deps=glibc,zlib,bzip2,xz-utils,zstd
 makedeps=gcc,python3
 source=https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.bz2
-sha256=VERIFY
+sha256=1bed88e40401b2cb7a1f76d4bab499e352fa4d0c5f31c0dbae64e24d34d7513b
 
 build() {
     ./bootstrap.sh --prefix=/usr --with-python=python3

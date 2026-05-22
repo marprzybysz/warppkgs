@@ -6,7 +6,7 @@ license=LGPL-3.0
 deps=python3,gtk4
 makedeps=meson,ninja,python3
 source=https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/v0.14.0/blueprint-compiler-v0.14.0.tar.gz
-sha256=VERIFY
+sha256=05faf3810cb76d4e2d2382c6a7e6c8096af27e144e2260635c97f6a173d67234
 
 build() {
     meson setup build \

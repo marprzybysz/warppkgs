@@ -6,7 +6,7 @@ license=BSD
 deps=glibc,libxcrypt,audit
 makedeps=gcc,make,autoconf,automake,libtool,flex,pkg-config
 source=https://github.com/linux-pam/linux-pam/releases/download/v1.6.1/Linux-PAM-1.6.1.tar.xz
-sha256=VERIFY
+sha256=f8923c740159052d719dbfc2a2f81942d68dd34fcaf61c706a02c9b80feeef8e
 
 build() {
     ./configure --prefix=/usr \

@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,glib,dbus,eudev,libnl,libndp,openssl,curl,polkit,elogind
 makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,vala
 source=https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/1.50.0/NetworkManager-1.50.0.tar.gz
-sha256=VERIFY
+sha256=fc1045a453eda9e85465491b99e3a9a924bd6b3e38471b65c9e09baf4de896dc
 
 build() {
     meson setup build \

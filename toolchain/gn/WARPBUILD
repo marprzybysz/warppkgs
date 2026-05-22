@@ -6,7 +6,7 @@ license=BSD
 deps=glibc
 makedeps=clang,python3,ninja
 source=https://gn.googlesource.com/gn/+archive/refs/heads/main.tar.gz
-sha256=VERIFY
+sha256=2d99fc07cb5010b5f64f56b0bf2221476dc565ae0062b14f5de18f603cabf3bf
 
 build() {
     python3 build/gen.py

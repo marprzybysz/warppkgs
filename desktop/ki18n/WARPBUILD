@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,qt6-base,gettext,python3
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
 source=https://download.kde.org/stable/frameworks/6.7/ki18n-6.7.0.tar.xz
-sha256=VERIFY
+sha256=555b5bc19546c3a791c69724e238c5d1710a9575cf8740012f8fc546f354122b
 
 build() {
     cmake -GNinja \

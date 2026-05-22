@@ -6,7 +6,7 @@ license=MIT
 deps=
 makedeps=autoconf,automake,pkg-config
 source=https://xorg.freedesktop.org/releases/individual/lib/xtrans-1.5.2.tar.xz
-sha256=VERIFY
+sha256=5c5cbfe34764a9131d048f03c31c19e57fb4c682d67713eab6a65541b4dff86c
 
 build() {
     ./configure --prefix=/usr

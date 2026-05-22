@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,xorg-server,libinput
 makedeps=gcc,make,pkg-config,autoconf,automake,libtool,xorg-server
 source=https://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-1.4.0.tar.xz
-sha256=VERIFY
+sha256=3a3d14cd895dc75b59ae2783b888031956a0bac7a1eff16d240dbb9d5df3e398
 
 build() {
     ./configure --prefix=/usr

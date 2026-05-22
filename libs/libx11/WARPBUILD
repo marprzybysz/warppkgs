@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,libxcb
 makedeps=gcc,make,pkgconf,xorg-util-macros
 source=https://xorg.freedesktop.org/releases/individual/lib/libX11-1.8.10.tar.xz
-sha256=5094d1f0fcc1828cb1696d0d39d9e866ae32520c54d01f618f1a3c1e30c2085c
+sha256=2b3b3dad9347db41dca56beb7db5878f283bde1142f04d9f8e478af435dfdc53
 
 build() {
     ./configure --prefix=/usr --disable-static

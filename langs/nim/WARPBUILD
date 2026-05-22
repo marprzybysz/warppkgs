@@ -6,7 +6,7 @@ license=MIT
 deps=glibc
 makedeps=gcc,make
 source=https://nim-lang.org/download/nim-2.2.0.tar.xz
-sha256=VERIFY
+sha256=ce9842849c9760e487ecdd1cdadf7c0f2844cafae605401c7c72ae257644893c
 
 build() {
     # Nim bootstrapuje się przez C — kompiluje swój własny kompilator przez CC

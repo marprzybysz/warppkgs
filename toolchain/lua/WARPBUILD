@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,readline
 makedeps=gcc,make
 source=https://www.lua.org/ftp/lua-5.4.7.tar.gz
-sha256=VERIFY
+sha256=9fbf5e28ef86c69858f6d3d34eccc32e911c1a28b4120ff3e84aaa70cfbf1e30
 
 build() {
     make $MAKEFLAGS INSTALL_TOP=/usr linux

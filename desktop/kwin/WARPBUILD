@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,qt6-base,qt6-declarative,qt6-wayland,kconfig,kcoreaddons,kwindowsystem,kdbusaddons,kglobalaccel,libxkbcommon,wayland,libinput,mesa,libdrm,libxcb
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools,wayland-protocols,knotifications,kiconthemes
 source=https://download.kde.org/stable/plasma/6.2.5/kwin-6.2.5.tar.xz
-sha256=VERIFY
+sha256=5cc450a6e41105c8c49929b72550b331237f96aafb294690f4707bdc5f776848
 
 build() {
     cmake -GNinja \

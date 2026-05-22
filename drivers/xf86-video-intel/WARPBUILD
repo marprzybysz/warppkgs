@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,xorg-server,libdrm,mesa,libxcb,libx11
 makedeps=gcc,make,pkg-config,autoconf,automake,libtool,xorg-server
 source=https://xorg.freedesktop.org/releases/individual/driver/xf86-video-intel-2.99.917.tar.bz2
-sha256=VERIFY
+sha256=00b781eea055582820a123c47b62411bdf6aabf4f03dc0568faec55faf9667c9
 
 build() {
     ./configure --prefix=/usr \

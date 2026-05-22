@@ -6,7 +6,7 @@ license=BSD
 deps=glibc,openssl,zlib,pam
 makedeps=gcc,make,autoconf
 source=https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.9p1.tar.gz
-sha256=VERIFY
+sha256=b343fbcdbff87f15b1986e6e15d6d4fc9a7d36066be6b7fb507087ba8f966c02
 
 build() {
     ./configure --prefix=/usr \

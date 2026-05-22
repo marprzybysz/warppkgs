@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,gtk4,libadwaita,freetype,fontconfig,harfbuzz,libxkbcommon,wayland,mesa,dbus,oniguruma
 makedeps=zig,pkg-config,blueprint-compiler
 source=https://github.com/ghostty-org/ghostty/archive/refs/tags/v1.0.1.tar.gz
-sha256=VERIFY
+sha256=4e4d9725ef2e50715492df26265e275417acca0db374f6d21740b848c77d6189
 
 build() {
     zig build \

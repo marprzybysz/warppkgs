@@ -6,7 +6,7 @@ license=BSD
 deps=glibc,ncurses,readline
 makedeps=gcc,make,pkg-config
 source=https://github.com/jarun/nnn/releases/download/v5.0/nnn-v5.0.tar.gz
-sha256=VERIFY
+sha256=ba82d6c685bb3687521de2f576244f82558a4af9afeeedda434d5ecb1c029520
 
 build() {
     make $MAKEFLAGS O_NERD=1

@@ -6,7 +6,7 @@ license=GPL-3.0
 deps=glibc,python3,gtk4,libadwaita,glib,dbus,wine,cabextract,p7zip,curl,xdg-utils
 makedeps=python3,meson,ninja,pkg-config,blueprint-compiler
 source=https://github.com/bottlesdevs/Bottles/archive/refs/tags/51.8.tar.gz
-sha256=VERIFY
+sha256=801c224ff8a0b45250a2830455f037dfe3640aad3392070554b2d513c1386d52
 
 build() {
     meson setup build \

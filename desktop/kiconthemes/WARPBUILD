@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,qt6-base,kcolorscheme,kwidgetsaddons
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
 source=https://download.kde.org/stable/frameworks/6.7/kiconthemes-6.7.0.tar.xz
-sha256=VERIFY
+sha256=be25bff1f5f65edd45b24ff9beda44b04c0e22d193e72458c96a5c591b70b968
 
 build() {
     cmake -GNinja \

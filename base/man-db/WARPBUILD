@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,groff,less,libpipeline,gdbm
 makedeps=gcc,make,pkg-config
 source=https://download.savannah.gnu.org/releases/man-db/man-db-2.12.1.tar.xz
-sha256=
+sha256=ddee249daeb78cf92bab794ccd069cc8b575992265ea20e239e887156e880265
 
 build() {
     ./configure --prefix=/usr          \

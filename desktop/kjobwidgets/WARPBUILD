@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,qt6-base,kwidgetsaddons,kcoreaddons
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
 source=https://download.kde.org/stable/frameworks/6.7/kjobwidgets-6.7.0.tar.xz
-sha256=VERIFY
+sha256=16d7e7ab54235d6fa1eb213d3d637182e22fcbdbcb7b4b14032430a02a2f888a
 
 build() {
     cmake -GNinja \

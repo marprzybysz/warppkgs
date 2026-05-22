@@ -6,7 +6,7 @@ license=BSD
 deps=glibc,openssl,zlib,readline,libffi,libyaml,gdbm
 makedeps=gcc,make,autoconf,pkg-config
 source=https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.6.tar.xz
-sha256=VERIFY
+sha256=540975969d1af42190d26ff629bc93b1c3f4bffff4ab253e245e125085e66266
 
 build() {
     ./configure --prefix=/usr \

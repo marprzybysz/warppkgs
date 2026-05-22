@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,pipewire,glib,dbus,lua
 makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection
 source=https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.7/wireplumber-0.5.7.tar.gz
-sha256=VERIFY
+sha256=8cd43a582f68368ee5a915e97bf9dadc44d2dfe8c7bb4f96bb7b40ea2ed7848f
 
 build() {
     meson setup build \

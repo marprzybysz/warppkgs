@@ -6,7 +6,7 @@ license=BSD
 deps=glibc,gtk3,nss,alsa-lib,pipewire,mesa,libxkbcommon,dbus,at-spi2-core,cups,libdrm,fontconfig,freetype,harfbuzz,libx11,libxext,libxcomposite,libxdamage,libxfixes,elogind,curl
 makedeps=clang,python3,nodejs,pkg-config,ninja,gn
 source=https://commondatastorage.googleapis.com/chromium-browser-official/chromium-131.0.6778.204.tar.xz
-sha256=VERIFY
+sha256=c03b6d9c10a2b2db4b1d2cef0657e85ad2e2d836f029655106cebd9a140692e6
 
 build() {
     # Chromium wymaga clang — gcc nie jest wspierany

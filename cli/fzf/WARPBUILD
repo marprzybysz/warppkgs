@@ -6,7 +6,7 @@ license=MIT
 deps=glibc
 makedeps=go
 source=https://github.com/junegunn/fzf/archive/refs/tags/v0.55.0.tar.gz
-sha256=VERIFY
+sha256=805383f71bca7f8fb271ecd716852aea88fd898d5027d58add9e43df6ea766da
 
 build() {
     go build -ldflags="-s -w" -o fzf .

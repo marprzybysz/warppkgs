@@ -6,7 +6,7 @@ license=MPL-2.0
 deps=glibc,gtk3,dbus,glib,libxkbcommon,libx11,libxext,libxcomposite,libxdamage,libxfixes,alsa-lib,pipewire,fontconfig,freetype,harfbuzz,nss,zlib,bzip2,libjpeg-turbo,libpng,at-spi2-core
 makedeps=rust,clang,python3,nodejs,nasm,cbindgen,autoconf,pkg-config,unzip
 source=https://github.com/zen-browser/desktop/archive/refs/tags/1.0.2-b.5.tar.gz
-sha256=VERIFY
+sha256=32c7f3612e5f4ba6eea0a4198db79c348d4b3f12063de7c9dbcdcd977e5752ba
 
 build() {
     # Zen używa narzędzia surfer do pobrania Firefox source + aplikacji patchy

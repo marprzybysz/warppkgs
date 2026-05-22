@@ -5,8 +5,8 @@ arch=x86_64
 license=GPL-3.0
 deps=glibc,ncurses,glib,libssh2,openssl
 makedeps=gcc,make,autoconf,automake,pkg-config,glib
-source=https://ftp.midnight-commander.org/mc-4.8.32.tar.xz
-sha256=VERIFY
+source=https://github.com/MidnightCommander/mc/archive/refs/tags/4.8.32.tar.gz
+sha256=5b8e6a66b53f67a430296e3e490c00af17cbbb449f6c56f406ff02a11d516ba1
 
 build() {
     ./configure --prefix=/usr \

@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=glibc,ncurses,libuv,libvterm,unibilium,msgpack-c,treesitter
 makedeps=gcc,cmake,ninja,pkg-config,python3,gettext
 source=https://github.com/neovim/neovim/archive/refs/tags/v0.10.2.tar.gz
-sha256=VERIFY
+sha256=546cb2da9fffbb7e913261344bbf4cf1622721f6c5a67aa77609e976e78b8e89
 
 build() {
     cmake -B build -G Ninja \

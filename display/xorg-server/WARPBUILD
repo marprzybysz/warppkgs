@@ -6,7 +6,7 @@ license=MIT
 deps=glibc,libxcb,libx11,libxext,libxrender,libxfixes,libxcomposite,libxdamage,mesa,pixman,dbus,eudev,libinput,libxkbcommon,openssl,xkeyboard-config
 makedeps=gcc,meson,ninja,pkg-config,python3,xcb-proto,xkeyboard-config
 source=https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-21.1.14.tar.xz
-sha256=VERIFY
+sha256=8f2102cebdc4747d1656c1099ef610f5063c7422c24a177e300de569b354ee35
 
 build() {
     meson setup build \

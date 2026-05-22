@@ -6,7 +6,7 @@ license=GPL-3.0
 deps=glibc,ncurses
 makedeps=gcc,make
 source=https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz
-sha256=3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331571d0e0062f74
+sha256=3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35
 
 build() {
     ./configure --prefix=/usr    \

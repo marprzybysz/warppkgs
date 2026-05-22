@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,gtk4,glib,pango,cairo,pcre2,fribidi
 makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,vala,gperf
 source=https://ftp.gnome.org/pub/gnome/sources/vte/0.78/vte-0.78.0.tar.xz
-sha256=VERIFY
+sha256=07f09c6228a8bb3c1599dd0f5a6ec797b30d3010c3ac91cf21b69d9635dfaf7c
 
 build() {
     meson setup build \

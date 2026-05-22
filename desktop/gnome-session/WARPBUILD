@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,glib,gtk4,dbus,elogind,at-spi2-core
 makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,xtrans
 source=https://ftp.gnome.org/pub/gnome/sources/gnome-session/46/gnome-session-46.0.tar.xz
-sha256=VERIFY
+sha256=c6e1624af6090bc4e1a191fe2268abfa7a8de07831ca7a57f217e679bf7b9a54
 
 build() {
     meson setup build \

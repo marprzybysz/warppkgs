@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,libnftnl,libmnl,libnetfilter_conntrack
 makedeps=gcc,make,pkg-config,autoconf,automake,libtool
 source=https://netfilter.org/projects/iptables/files/iptables-1.8.10.tar.xz
-sha256=VERIFY
+sha256=5cc255c189356e317d070755ce9371eb63a1b783c34498fb8c30264f3cc59c9c
 
 build() {
     ./configure --prefix=/usr \

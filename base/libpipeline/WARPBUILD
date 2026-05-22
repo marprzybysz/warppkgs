@@ -6,7 +6,7 @@ license=GPL-3.0
 deps=glibc
 makedeps=gcc,make
 source=https://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.5.7.tar.gz
-sha256=b8b45194f3b4c0e6545d27a860807c2839d4b4e7962ca7da7da8be69c66e0c35
+sha256=b8b45194989022a79ec1317f64a2a75b1551b2a55bea06f67704cb2a2e4690b0
 
 build() {
     ./configure --prefix=/usr --disable-static

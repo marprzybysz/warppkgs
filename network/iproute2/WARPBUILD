@@ -6,7 +6,7 @@ license=GPL-2.0
 deps=glibc,elfutils
 makedeps=gcc,make,pkg-config,bison,flex
 source=https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.10.0.tar.xz
-sha256=
+sha256=91a62f82737b44905a00fa803369c447d549e914e9a2a4018fdd75b1d54e8dce
 
 build() {
     make PREFIX=/usr $MAKEFLAGS

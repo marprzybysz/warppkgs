@@ -6,7 +6,7 @@ license=LGPL-2.1
 deps=glibc,glib,gdk-pixbuf,pango,cairo,harfbuzz,fontconfig,freetype,libxkbcommon,wayland,libpng,libjpeg-turbo,dbus
 makedeps=gcc,meson,ninja,pkg-config,python3,gobject-introspection,wayland-protocols
 source=https://ftp.gnome.org/pub/gnome/sources/gtk/4.16/gtk-4.16.7.tar.xz
-sha256=VERIFY
+sha256=5303c7624e15a48880591b9ddd43389afba3de4fb92a219719519bb1642ce3dc
 
 build() {
     meson setup build \

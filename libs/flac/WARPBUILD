@@ -6,7 +6,7 @@ license=BSD
 deps=glibc,libogg
 makedeps=gcc,cmake,ninja,pkg-config
 source=https://downloads.xiph.org/releases/flac/flac-1.4.3.tar.xz
-sha256=VERIFY
+sha256=6c58e69cd22348f441b861092b825e591d0b822e106de6eb0ee4d05d27205b70
 
 build() {
     cmake -B build -G Ninja \

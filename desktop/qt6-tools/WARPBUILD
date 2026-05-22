@@ -6,7 +6,7 @@ license=LGPL-3.0
 deps=qt6-base,qt6-declarative
 makedeps=gcc,cmake,ninja
 source=https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qttools-everywhere-src-6.8.1.tar.xz
-sha256=VERIFY
+sha256=9d43d409be08b8681a0155a9c65114b69c9a3fc11aef6487bb7fdc5b283c432d
 
 build() {
     cmake -GNinja \

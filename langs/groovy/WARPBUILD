@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=openjdk
 makedeps=
 source=https://groovy.jfrog.io/artifactory/dist-release-local/groovy-zips/apache-groovy-binary-4.0.24.zip
-sha256=VERIFY
+sha256=dbff36835568bec2271876f70bfcca6deb80e1b179453cca934a502ea301bb80
 
 build() {
     :

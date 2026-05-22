@@ -5,8 +5,8 @@ arch=x86_64
 license=GPL-2.0
 deps=glibc,qt6-base,qt6-declarative,elogind,pam,libxcb,libx11
 makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
-source=https://github.com/sddm/sddm/releases/download/v0.21.0/sddm-0.21.0.tar.xz
-sha256=VERIFY
+source=https://github.com/sddm/sddm/archive/refs/tags/v0.21.0.tar.gz
+sha256=f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf
 
 build() {
     cmake -GNinja \

@@ -6,7 +6,7 @@ license=MIT
 deps=glibc
 makedeps=gcc,make,autoconf,automake,libtool,pkg-config
 source=https://bitmath.org/code/mtdev/mtdev-1.1.7.tar.bz2
-sha256=VERIFY
+sha256=a107adad2101fecac54ac7f9f0e0a0dd155d954193da55c2340c97f2ff1d814e
 
 build() {
     ./configure --prefix=/usr --disable-static

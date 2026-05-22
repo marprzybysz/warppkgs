@@ -6,7 +6,7 @@ license=Apache-2.0
 deps=glibc,llvm,openssl,zlib,libxml2,libyaml,pcre2,gc
 makedeps=crystal,gcc,pkg-config
 source=https://github.com/crystal-lang/crystal/archive/refs/tags/1.14.0.tar.gz
-sha256=VERIFY
+sha256=85c74d8654a0e111e2eaec6de38470bc9cb6762bc5b799dd3693d18cce4bc807
 
 build() {
     make $MAKEFLAGS release=1

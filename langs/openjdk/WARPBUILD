@@ -5,8 +5,8 @@ arch=x86_64
 license=GPL-2.0
 deps=glibc,libx11,libxext,libxrender,libxtst,alsa-lib,freetype,fontconfig
 makedeps=
-source=https://download.java.net/java/GA/jdk21.0.5/b5c070a4dbe841f39cc99f7a7b8c5e73/11/GPL/openjdk-21.0.5_linux-x64_bin.tar.gz
-sha256=VERIFY
+source=https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.5%2B11/OpenJDK21U-jdk_x64_linux_hotspot_21.0.5_11.tar.gz
+sha256=3c654d98404c073b8a7e66bffb27f4ae3e7ede47d13284c132d40a83144bfd8c
 
 build() {
     :
