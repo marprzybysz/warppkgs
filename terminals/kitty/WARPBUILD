@@ -12,12 +12,10 @@ build() {
     python3 setup.py linux-package \
         --prefix=/usr \
         --update-check-interval=0
+    mkdir -p "$DESTDIR/usr"
+    cp -a linux-package/* "$DESTDIR/usr/"
 }
 
 package() {
-    mkdir -p "$DESTDIR/usr"
-    echo "DEBUG: pwd=$(pwd)"
-    echo "DEBUG: ls=$(ls -d */ 2>&1)"
-    find . -maxdepth 2 -name "linux-package" -type d
-    cp -a linux-package/* "$DESTDIR/usr/"
+    true
 }
