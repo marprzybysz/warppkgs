@@ -20,6 +20,9 @@ mkdir -p "$LOGDIR"
 
 # --- Kolejność budowania (deps → dependenci) ---
 PACKAGES=(
+    # Sync — zarejestruj systemowe pakiety
+    __SYNC__
+
     # Layer 0: biblioteki bazowe (mogą już być zainstalowane)
     libs/hicolor-icon-theme
     libs/hwdata
@@ -162,21 +165,36 @@ for pkg in "${PACKAGES[@]}"; do
         if [[ "$name" == "$START_FROM" || "$pkg" == "$START_FROM" ]]; then
             SKIP=0
         else
-            ((SKIPPED++))
+            SKIPPED=$((SKIPPED+1))
             continue
         fi
     fi
 
+    # Specjalny krok: warp --sync
+    if [[ "$pkg" == "__SYNC__" ]]; then
+        if [[ $DRY_RUN -eq 1 ]]; then
+            echo -e "  ${CYAN}[sync]${NC} warp --sync"
+            continue
+        fi
+        echo -e "${CYAN}[sync]${NC} Synchronizuję bazę pakietów..."
+        if warp --sync > "$LOGDIR/sync.log" 2>&1; then
+            echo -e "  ${GREEN}✓${NC} sync"
+        else
+            echo -e "  ${RED}✗${NC} sync — log: $LOGDIR/sync.log"
+        fi
+        continue
+    fi
+
     if [[ $DRY_RUN -eq 1 ]]; then
         echo -e "  ${CYAN}[$((BUILT+1))]${NC} $pkg"
-        ((BUILT++))
+        BUILT=$((BUILT+1))
         continue
     fi
 
     WARPBUILD="$SCRIPTDIR/$pkg/WARPBUILD"
     if [[ ! -f "$WARPBUILD" ]]; then
         echo -e "  ${YELLOW}[BRAK]${NC} $pkg — brak WARPBUILD, pomijam"
-        ((SKIPPED++))
+        SKIPPED=$((SKIPPED+1))
         continue
     fi
 
@@ -187,11 +205,11 @@ for pkg in "${PACKAGES[@]}"; do
     if (cd "$category" && warp -buildI "$name/") > "$LOGFILE" 2>&1; then
         rm -rf /tmp/warp-build-*
         echo -e "  ${GREEN}✓${NC} $name"
-        ((BUILT++))
+        BUILT=$((BUILT+1))
     else
         rm -rf /tmp/warp-build-*
         echo -e "  ${RED}✗${NC} $name — log: $LOGFILE"
-        ((FAILED++))
+        FAILED=$((FAILED+1))
         FAIL_LIST+=("$name")
     fi
 done
