@@ -1,0 +1,18 @@
+pkgname=libxcursor
+pkgver=1.2.2
+description="X11 cursor management library"
+arch=x86_64
+license=MIT
+deps=glibc,libx11,libxfixes,libxrender
+makedeps=gcc,make,pkg-config,xorg-util-macros
+source=https://xorg.freedesktop.org/archive/individual/lib/libXcursor-1.2.2.tar.xz
+sha256=53d071bd2cc56e517a30998d5e685c8a74556ddada43c6985d14da9a023a88ee
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}
