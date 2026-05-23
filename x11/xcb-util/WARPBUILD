@@ -1,11 +1,11 @@
 pkgname=xcb-util
 pkgver=0.4.1
-description="XCB utility functions"
+description="XCB utility library"
 arch=x86_64
 license=MIT
 deps=glibc,libxcb
-makedeps=gcc,make,pkgconf
-source=https://xorg.freedesktop.org/releases/individual/lib/xcb-util-0.4.1.tar.xz
+makedeps=gcc,make,pkg-config
+source=https://xcb.freedesktop.org/dist/xcb-util-0.4.1.tar.xz
 sha256=5abe3bbbd8e54f0fa3ec945291b7e8fa8cfd3cccc43718f8758430f94126e512
 
 build() {

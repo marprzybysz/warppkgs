@@ -1,19 +1,15 @@
 pkgname=wayland
-pkgver=1.23.1
-description="Wayland display protocol library"
+pkgver=1.23.0
+description="Wayland display protocol core library"
 arch=x86_64
 license=MIT
-deps=glibc,expat,libffi
-makedeps=gcc,meson,ninja,pkg-config,python3,libxml2
-source=https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.23.1/downloads/wayland-1.23.1.tar.xz
-sha256=864fb2a8399e2d0ec39d56e9d9b753c093775beadc6022ce81f441929a81e5ed
+deps=glibc,libxml2,libffi
+makedeps=gcc,meson,ninja,pkg-config
+source=https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.23.0/downloads/wayland-1.23.0.tar.xz
+sha256=05b3e1574d3e67626b5974f862f36b5b427c7ceeb965cb36a4e6c2d342e45ab2
 
 build() {
-    meson setup build \
-        --prefix=/usr \
-        --buildtype=release \
-        -Ddocumentation=false \
-        -Dtests=false
+    meson setup build --prefix=/usr -Ddocumentation=false -Dtests=false
     ninja -C build $MAKEFLAGS
 }
 

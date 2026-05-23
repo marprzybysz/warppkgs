@@ -1,0 +1,18 @@
+pkgname=xcb-util-image
+pkgver=0.4.1
+description="XCB image utility library"
+arch=x86_64
+license=MIT
+deps=glibc,libxcb,xcb-util
+makedeps=gcc,make,pkg-config
+source=https://xcb.freedesktop.org/dist/xcb-util-image-0.4.1.tar.xz
+sha256=ccad8ee5dadb1271fd4727ad14d9bd77a64e505608766c4e98267d9aede40d3d
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

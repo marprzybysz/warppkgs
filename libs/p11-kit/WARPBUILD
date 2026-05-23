@@ -1,0 +1,19 @@
+pkgname=p11-kit
+pkgver=0.25.5
+description="PKCS#11 module loader library"
+arch=x86_64
+license=BSD-3-Clause
+deps=glibc,libtasn1,libffi
+makedeps=gcc,meson,ninja,pkg-config
+source=https://github.com/p11-glue/p11-kit/releases/download/0.25.5/p11-kit-0.25.5.tar.xz
+sha256=04d0a86450cdb1be018f26af6699857171a188ac6d5b8c90786a60854e1198e5
+
+build() {
+    meson setup build --prefix=/usr \
+        -Dtrust_paths=/etc/pki/anchors
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

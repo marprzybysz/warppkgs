@@ -1,0 +1,19 @@
+pkgname=libwebp
+pkgver=1.4.0
+description="WebP image format library"
+arch=x86_64
+license=BSD-3-Clause
+deps=glibc,libjpeg-turbo,libpng,libtiff
+makedeps=gcc,make,pkg-config
+source=https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.4.0.tar.gz
+sha256=61f873ec69e3be1b99535634340d5bde750b2e4447caa1db9f61be3fd49ab1e5
+
+build() {
+    ./configure --prefix=/usr --disable-static \
+        --enable-libwebpmux --enable-libwebpdemux
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

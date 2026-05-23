@@ -1,11 +1,11 @@
 pkgname=xcb-util-cursor
 pkgver=0.1.4
-description="XCB cursor library"
+description="XCB cursor utility library"
 arch=x86_64
 license=MIT
-deps=glibc,libxcb,xcb-util
-makedeps=gcc,make,pkgconf
-source=https://xorg.freedesktop.org/releases/individual/lib/xcb-util-cursor-0.1.4.tar.xz
+deps=glibc,libxcb,xcb-util-image,xcb-util-renderutil
+makedeps=gcc,make,pkg-config
+source=https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.4.tar.xz
 sha256=28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb
 
 build() {

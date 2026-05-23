@@ -1,0 +1,18 @@
+pkgname=libgcrypt
+pkgver=1.11.0
+description="GnuPG cryptographic library"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,libgpg-error
+makedeps=gcc,make
+source=https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.11.0.tar.bz2
+sha256=09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}
