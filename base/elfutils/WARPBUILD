@@ -18,6 +18,7 @@ build() {
 package() {
     make -C libelf DESTDIR="$DESTDIR" install
     make -C libdw DESTDIR="$DESTDIR" install
+    mkdir -p "$DESTDIR/usr/lib/pkgconfig"
     install -m644 config/libelf.pc "$DESTDIR/usr/lib/pkgconfig/"
     install -m644 config/libdw.pc "$DESTDIR/usr/lib/pkgconfig/"
 }
