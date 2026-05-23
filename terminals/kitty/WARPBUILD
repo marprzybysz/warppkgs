@@ -15,5 +15,6 @@ build() {
 }
 
 package() {
-    cp -r linux-package/* "$DESTDIR/usr/"
+    mkdir -p "$DESTDIR/usr"
+    cp -a linux-package/* "$DESTDIR/usr/"
 }
