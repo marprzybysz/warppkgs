@@ -16,5 +16,8 @@ build() {
 
 package() {
     mkdir -p "$DESTDIR/usr"
+    echo "DEBUG: pwd=$(pwd)"
+    echo "DEBUG: ls=$(ls -d */ 2>&1)"
+    find . -maxdepth 2 -name "linux-package" -type d
     cp -a linux-package/* "$DESTDIR/usr/"
 }
