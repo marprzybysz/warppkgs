@@ -1,0 +1,18 @@
+pkgname=libxxf86vm
+pkgver=1.1.5
+description="X11 XFree86 Video Mode extension library"
+arch=x86_64
+license=MIT
+deps=glibc,libx11,libxext
+makedeps=gcc,make,pkg-config,xorg-util-macros
+source=https://xorg.freedesktop.org/archive/individual/lib/libXxf86vm-1.1.5.tar.xz
+sha256=247fef48b3e0e7e67129e41f1e789e8d006ba47dba1c0cdce684b9b703f888e7
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}
