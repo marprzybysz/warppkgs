@@ -11,7 +11,7 @@ sha256=
 build() {
     meson setup build --prefix=/usr   \
         -Dplatforms=x11               \
-        -Dgallium-drivers=swrast      \
+        -Dgallium-drivers=softpipe     \
         -Dvulkan-drivers=             \
         -Dglx=dri                     \
         -Degl=enabled                 \

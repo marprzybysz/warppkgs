@@ -1,0 +1,18 @@
+pkgname=libxshmfence
+pkgver=1.3.2
+description="X11 shared memory fences"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make,pkg-config,xorg-util-macros
+source=https://xorg.freedesktop.org/archive/individual/lib/libxshmfence-1.3.2.tar.xz
+sha256=870df257bc18b6d40e17f9b9b4a57fa8b3c7b50fbefa2a5bed3bcd3e6768aaec
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}
