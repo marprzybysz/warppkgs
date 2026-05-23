@@ -4,7 +4,7 @@ description="JPEG image codec with SIMD acceleration"
 arch=x86_64
 license=IJG
 deps=glibc
-makedeps=gcc,cmake,make,nasm
+makedeps=gcc,cmake,make
 source=https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.0.4/libjpeg-turbo-3.0.4.tar.gz
 sha256=99130559e7d62e8d695f2c0eaeef912c5828d5b84a0537dcb24c9678c9d5b76b
 
@@ -13,6 +13,7 @@ build() {
           -DCMAKE_INSTALL_LIBDIR=lib \
           -DCMAKE_BUILD_TYPE=Release \
           -DENABLE_STATIC=OFF \
+          -DWITH_SIMD=OFF \
           -B build
     cmake --build build --parallel $(nproc)
 }
