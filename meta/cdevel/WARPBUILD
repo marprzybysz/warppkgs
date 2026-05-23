@@ -1,0 +1,16 @@
+pkgname=cdevel
+pkgver=1.0
+description="C/C++ development toolchain meta-package"
+arch=x86_64
+license=GPL-3.0
+deps=gcc,binutils,make,cmake,pkgconf,autoconf,automake,libtool,m4,ninja,meson
+makedeps=
+
+build() {
+    true
+}
+
+package() {
+    mkdir -p "$DESTDIR/usr/share/doc/cdevel"
+    echo "C/C++ development toolchain for Flow Linux" > "$DESTDIR/usr/share/doc/cdevel/README"
+}

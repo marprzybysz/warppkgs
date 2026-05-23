@@ -1,0 +1,17 @@
+pkgname=meson
+pkgver=1.5.1
+description="High productivity build system"
+arch=x86_64
+license=Apache-2.0
+deps=python3,ninja
+makedeps=python3
+source=https://github.com/mesonbuild/meson/releases/download/1.5.1/meson-1.5.1.tar.gz
+sha256=567e533adf255de73a2de35049b99923caf872a455af9ce03e01077e0d384bed
+
+build() {
+    python3 -m pip wheel --no-cache-dir --no-build-isolation --wheel-dir=dist .
+}
+
+package() {
+    python3 -m pip install --no-index --find-links=dist --root="$DESTDIR" --prefix=/usr meson
+}

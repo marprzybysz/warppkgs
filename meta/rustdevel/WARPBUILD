@@ -1,0 +1,16 @@
+pkgname=rustdevel
+pkgver=1.0
+description="Rust development toolchain meta-package"
+arch=x86_64
+license=MIT
+deps=rust,cargo,cdevel
+makedeps=
+
+build() {
+    true
+}
+
+package() {
+    mkdir -p "$DESTDIR/usr/share/doc/rustdevel"
+    echo "Rust development toolchain for Flow Linux" > "$DESTDIR/usr/share/doc/rustdevel/README"
+}
