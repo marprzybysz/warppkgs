@@ -1,0 +1,18 @@
+pkgname=drkonqi
+pkgver=6.2.5
+description="KDE crash handler"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,qt6-base,qt6-declarative,kconfig,kcoreaddons,kcrash,ki18n,kio,knotifications,kservice,kwidgetsaddons,kirigami,kstatusnotifieritem
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/plasma/6.2.5/drkonqi-6.2.5.tar.xz
+sha256=f95ec56c702eb1cba48411fd1709d8723849e370ff8ea69981482d6f3a5d5c73
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

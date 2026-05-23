@@ -1,0 +1,18 @@
+pkgname=libxcvt
+pkgver=0.1.2
+description="VESA CVT standard timing modelines generator"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,meson,ninja
+source=https://xorg.freedesktop.org/archive/individual/lib/libxcvt-0.1.2.tar.xz
+sha256=0561690544796e25cfbd71806ba1b0d797ffe464e9796411123e79450f71db38
+
+build() {
+    meson setup build --prefix=/usr
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

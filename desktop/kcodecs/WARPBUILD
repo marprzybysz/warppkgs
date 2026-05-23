@@ -1,0 +1,18 @@
+pkgname=kcodecs
+pkgver=6.7.0
+description="String encoding and manipulating library"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,qt6-base
+makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
+source=https://download.kde.org/stable/frameworks/6.7/kcodecs-6.7.0.tar.xz
+sha256=9ab494055e06bdce45568b7c47edb2aa9ecaa9dec0c0fb152367b4321921b9f2
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,22 @@
+pkgname=taglib
+pkgver=2.0.2
+description="Audio meta-data library"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,zlib
+makedeps=gcc,cmake,ninja
+source=https://taglib.org/releases/taglib-2.0.2.tar.gz
+sha256=0de288d7fe34ba133199fd8512f19cc1100196826eafcb67a33b224ec3a59737
+
+build() {
+    cmake -GNinja \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DBUILD_SHARED_LIBS=ON \
+          -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

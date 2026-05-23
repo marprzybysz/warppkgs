@@ -1,0 +1,18 @@
+pkgname=bluez-qt
+pkgver=6.7.0
+description="Qt wrapper for BlueZ 5 DBus API"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,qt6-base,qt6-declarative
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/frameworks/6.7/bluez-qt-6.7.0.tar.xz
+sha256=b0640106986213e1b28f2cba13d9cc22ee3d259755f27521f2e861634338f93b
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DUDEV_RULES_INSTALL_DIR=/usr/lib/udev/rules.d -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

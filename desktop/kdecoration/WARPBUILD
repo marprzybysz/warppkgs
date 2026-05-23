@@ -1,0 +1,18 @@
+pkgname=kdecoration
+pkgver=6.2.5
+description="Plugin-based library to create window decorations"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,qt6-base,ki18n,kcoreaddons
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/plasma/6.2.5/kdecoration-6.2.5.tar.xz
+sha256=726c58cd4b34fc49546578727a447c76242938add577292cd334bd60bf9d8f26
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

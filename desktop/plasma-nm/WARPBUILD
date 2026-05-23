@@ -1,0 +1,18 @@
+pkgname=plasma-nm
+pkgver=6.2.5
+description="Plasma NetworkManager applet"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,qt6-base,qt6-declarative,kconfig,kcoreaddons,kdbusaddons,ki18n,kio,knotifications,kservice,kwidgetsaddons,kwindowsystem,kirigami,networkmanager-qt,modemmanager-qt,libplasma,plasma5support,prison,qqc2-desktop-style
+makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
+source=https://download.kde.org/stable/plasma/6.2.5/plasma-nm-6.2.5.tar.xz
+sha256=146d76936ce98558839a9a7cf30fa951b7ee6cd3daa7c32d71ccdf157a4f6c68
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

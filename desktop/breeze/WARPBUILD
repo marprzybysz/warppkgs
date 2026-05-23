@@ -1,0 +1,18 @@
+pkgname=breeze
+pkgver=6.2.5
+description="Breeze visual style for Plasma"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,qt6-base,qt6-declarative,kconfig,kcoreaddons,kguiaddons,ki18n,kiconthemes,kwindowsystem,kconfigwidgets,kirigami,kcolorscheme,kdecoration
+makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
+source=https://download.kde.org/stable/plasma/6.2.5/breeze-6.2.5.tar.xz
+sha256=1d3bd4481bb7cd274a13ac5d5852be51ff2975e620872dfc22fbd531bad04e25
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

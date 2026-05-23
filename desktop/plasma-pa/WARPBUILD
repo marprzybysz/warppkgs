@@ -1,0 +1,18 @@
+pkgname=plasma-pa
+pkgver=6.2.5
+description="Plasma PulseAudio/PipeWire volume applet"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,qt6-base,qt6-declarative,kconfig,kcoreaddons,kdbusaddons,kglobalaccel,ki18n,ksvg,libplasma,plasma5support,qqc2-desktop-style,kirigami,pipewire
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/plasma/6.2.5/plasma-pa-6.2.5.tar.xz
+sha256=5179337a7eac4145a953b46146d4899945d9c43373ad60f76692ffc42cf19d47
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

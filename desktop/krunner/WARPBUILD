@@ -1,0 +1,18 @@
+pkgname=krunner
+pkgver=6.7.0
+description="Framework for Plasma runners"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,qt6-base,kconfig,kcoreaddons,ki18n,kitemmodels
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/frameworks/6.7/krunner-6.7.0.tar.xz
+sha256=187ffe9180e98e83fbac5bd3644ec6671ba1e8066ca6013a98b4f1d7439cff3a
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

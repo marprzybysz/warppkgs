@@ -1,0 +1,17 @@
+pkgname=hicolor-icon-theme
+pkgver=0.18
+description="Default fallback icon theme"
+arch=x86_64
+license=GPL-2.0
+deps=glibc
+makedeps=make
+source=https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.18.tar.xz
+sha256=db0e50a80aa3bf64bb45cbca5cf9f75efd9348cf2ac690b907435238c3cf81d7
+
+build() {
+    ./configure --prefix=/usr
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

@@ -1,0 +1,24 @@
+pkgname=libical
+pkgver=3.0.18
+description="iCalendar protocol implementation"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,icu,glib
+makedeps=gcc,cmake,ninja,pkg-config
+source=https://github.com/libical/libical/releases/download/v3.0.18/libical-3.0.18.tar.gz
+sha256=72b7dc1a5937533aee5a2baefc990983b66b141dd80d43b51f80aced4aae219c
+
+build() {
+    cmake -GNinja \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DSHARED_ONLY=ON \
+          -DICAL_BUILD_DOCS=OFF \
+          -DGOBJECT_INTROSPECTION=OFF \
+          -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,18 @@
+pkgname=cracklib
+pkgver=2.10.2
+description="Password strength checking library"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,zlib
+makedeps=gcc,make,autoconf,automake,libtool
+source=https://github.com/cracklib/cracklib/releases/download/v2.10.2/cracklib-2.10.2.tar.bz2
+sha256=e157c78e6f26a97d05e04b6fe9ced468e91fa015cc2b2b7584889d667a958887
+
+build() {
+    ./configure --prefix=/usr --disable-static --with-default-dict=/usr/share/cracklib/pw_dict
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

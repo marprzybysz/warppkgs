@@ -1,0 +1,18 @@
+pkgname=powerdevil
+pkgver=6.2.5
+description="KDE power management service"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,qt6-base,qt6-declarative,kauth,kconfig,kcoreaddons,kcrash,kdbusaddons,kglobalaccel,ki18n,kidletime,kio,knotifications,kservice,solid,kirigami,libplasma,plasma5support
+makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools,plasma-wayland-protocols
+source=https://download.kde.org/stable/plasma/6.2.5/powerdevil-6.2.5.tar.xz
+sha256=70250396d5efae4be7d3201be878e0e35fd8d9bfb390660d5e0394828b1f464b
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

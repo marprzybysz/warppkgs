@@ -1,0 +1,18 @@
+pkgname=plasma5support
+pkgver=6.2.5
+description="Support components for porting from KF5/Plasma 5"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,qt6-base,qt6-declarative,kconfig,kcoreaddons,kguiaddons,ki18n,knotifications,kservice
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/plasma/6.2.5/plasma5support-6.2.5.tar.xz
+sha256=cac5244aa2961ad020ed2c43427389e0823482ecb179948b5fd6b221606e8b04
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

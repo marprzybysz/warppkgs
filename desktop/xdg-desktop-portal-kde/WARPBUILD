@@ -1,0 +1,18 @@
+pkgname=xdg-desktop-portal-kde
+pkgver=6.2.5
+description="XDG desktop portal backend for KDE Plasma"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,qt6-base,qt6-declarative,qt6-wayland,kconfig,kcoreaddons,kdbusaddons,ki18n,kio,kirigami,knotifications,kservice,kwidgetsaddons,kwindowsystem,kstatusnotifieritem,wayland,plasma-wayland-protocols,libplasma
+makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
+source=https://download.kde.org/stable/plasma/6.2.5/xdg-desktop-portal-kde-6.2.5.tar.xz
+sha256=1e86bf6f7dc433400ade93347671ec9cad88e382536dd30930030e4514623af1
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

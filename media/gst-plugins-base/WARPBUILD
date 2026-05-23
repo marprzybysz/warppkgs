@@ -1,0 +1,20 @@
+pkgname=gst-plugins-base
+pkgver=1.24.10
+description="GStreamer base plugins"
+arch=x86_64
+license=LGPL-2.0
+deps=glibc,glib,gstreamer,mesa,libx11,libxext,libxv,alsa-lib,libogg,libvorbis,opus,pango,cairo
+makedeps=gcc,meson,ninja,pkg-config,python3
+source=https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.24.10.tar.xz
+sha256=ebd57b1be924c6e24f327dd55bab9d8fbaaebe5e1dc8fca784182ab2b12d23eb
+
+build() {
+    meson setup build --prefix=/usr \
+          -Dtests=disabled \
+          -Dexamples=disabled
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,18 @@
+pkgname=breeze-gtk
+pkgver=6.2.5
+description="Breeze widget theme for GTK"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,gtk3,breeze
+makedeps=cmake,ninja,extra-cmake-modules,sassc,python3
+source=https://download.kde.org/stable/plasma/6.2.5/breeze-gtk-6.2.5.tar.xz
+sha256=2115f00bbcef8e6ba57247e9c6ce1633dedf370f92da01d2fc4aafca1a74d35f
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

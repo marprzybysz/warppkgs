@@ -1,0 +1,18 @@
+pkgname=layer-shell-qt
+pkgver=6.2.5
+description="Qt component for Wayland layer-shell protocol"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,qt6-base,qt6-wayland,wayland,wayland-protocols
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/plasma/6.2.5/layer-shell-qt-6.2.5.tar.xz
+sha256=bc09870218df387c377bad2fed4b2a8f39121ddbdc5c6bb28a40be0c1b000c77
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

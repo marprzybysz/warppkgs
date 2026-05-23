@@ -1,0 +1,18 @@
+pkgname=ksvg
+pkgver=6.7.0
+description="SVG rendering framework"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,qt6-base,qt6-declarative,qt6-svg,karchive,kconfig,kcolorscheme,kcoreaddons,kguiaddons,kirigami
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/frameworks/6.7/ksvg-6.7.0.tar.xz
+sha256=bbdf7c786c959707cd9c67c04a67e51a15dbcdd6eff7ab52b03c09544e66f184
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

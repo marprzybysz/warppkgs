@@ -1,0 +1,19 @@
+pkgname=lmdb
+pkgver=0.9.32
+description="Lightning Memory-Mapped Database"
+arch=x86_64
+license=OpenLDAP
+deps=glibc
+makedeps=gcc,make
+source=https://github.com/LMDB/lmdb/archive/LMDB_0.9.32.tar.gz
+sha256=41eaf015a31f9f6e4c019fbe6824f26a3b7a28fa00c074a9b333db34eb1260cc
+
+build() {
+    cd libraries/liblmdb
+    make prefix=/usr $MAKEFLAGS
+}
+
+package() {
+    cd libraries/liblmdb
+    make prefix=/usr DESTDIR="$DESTDIR" install
+}

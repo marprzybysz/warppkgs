@@ -1,0 +1,18 @@
+pkgname=libdisplay-info
+pkgver=0.2.0
+description="EDID and DisplayID library"
+arch=x86_64
+license=MIT
+deps=glibc,hwdata
+makedeps=gcc,meson,ninja,pkg-config
+source=https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/0.2.0/downloads/libdisplay-info-0.2.0.tar.xz
+sha256=5a2f002a16f42dd3540c8846f80a90b8f4bdcd067a94b9d2087bc2feae974176
+
+build() {
+    meson setup build --prefix=/usr
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

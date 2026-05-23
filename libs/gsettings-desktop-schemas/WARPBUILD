@@ -1,0 +1,18 @@
+pkgname=gsettings-desktop-schemas
+pkgver=47.1
+description="GSettings schemas for GNOME desktop"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,glib
+makedeps=gcc,meson,ninja,pkg-config,gobject-introspection
+source=https://download.gnome.org/sources/gsettings-desktop-schemas/47/gsettings-desktop-schemas-47.1.tar.xz
+sha256=a60204d9c9c0a1b264d6d0d134a38340ba5fc6076a34b84da945d8bfcc7a2815
+
+build() {
+    meson setup build --prefix=/usr
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,18 @@
+pkgname=kdeclarative
+pkgver=6.7.0
+description="Integration of QML and KDE Frameworks"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,qt6-base,qt6-declarative,kconfig,kglobalaccel,kguiaddons,ki18n,kwidgetsaddons
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/frameworks/6.7/kdeclarative-6.7.0.tar.xz
+sha256=f1f804f6bac2b229503cfd165ebd8ae093533888ae15e0e61474c6e328d535b9
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

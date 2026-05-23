@@ -1,0 +1,18 @@
+pkgname=plasma-desktop
+pkgver=6.2.5
+description="KDE Plasma Desktop"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,qt6-base,qt6-declarative,qt6-svg,karchive,kauth,kconfig,kconfigwidgets,kcoreaddons,kcrash,kdbusaddons,kdeclarative,kglobalaccel,kguiaddons,ki18n,kiconthemes,kio,kitemmodels,kitemviews,knewstuff,knotifications,kpackage,krunner,kservice,ksvg,kwidgetsaddons,kwindowsystem,kxmlgui,libplasma,plasma-activities,plasma5support,baloo,qqc2-desktop-style
+makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools,plasma-wayland-protocols
+source=https://download.kde.org/stable/plasma/6.2.5/plasma-desktop-6.2.5.tar.xz
+sha256=b73d29202031b7049485d84e615d7bd0a3ca890dcb2c22d8116eb8fe6fe9d068
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

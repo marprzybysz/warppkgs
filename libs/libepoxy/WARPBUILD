@@ -1,0 +1,18 @@
+pkgname=libepoxy
+pkgver=1.5.10
+description="OpenGL function pointer management library"
+arch=x86_64
+license=MIT
+deps=glibc,mesa
+makedeps=gcc,meson,ninja,pkg-config
+source=https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz
+sha256=072cda4b59dd098bba8c2363a6247299db1fa89411dc221c8b81b8ee8192e623
+
+build() {
+    meson setup build --prefix=/usr -Dtests=false
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

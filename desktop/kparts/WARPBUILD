@@ -1,0 +1,18 @@
+pkgname=kparts
+pkgver=6.7.0
+description="Document centric plugin system"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,qt6-base,kconfig,kcoreaddons,ki18n,kio,kjobwidgets,kservice,kwidgetsaddons,kxmlgui
+makedeps=gcc,cmake,ninja,extra-cmake-modules,qt6-tools
+source=https://download.kde.org/stable/frameworks/6.7/kparts-6.7.0.tar.xz
+sha256=0b1b305050d61fcbefa7026b096dc6b47709d7435c69b18ab56a7e2ea57d759e
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

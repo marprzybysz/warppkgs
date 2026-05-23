@@ -1,0 +1,18 @@
+pkgname=breeze-icons
+pkgver=6.7.0
+description="Breeze icon theme"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,hicolor-icon-theme
+makedeps=cmake,ninja,extra-cmake-modules,qt6-base
+source=https://download.kde.org/stable/frameworks/6.7/breeze-icons-6.7.0.tar.xz
+sha256=39037e3fcbbb7a65011685c498cae31ff496a5f2493269c955bb29c94a688b74
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBINARY_ICONS_RESOURCE=ON -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

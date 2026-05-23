@@ -1,0 +1,18 @@
+pkgname=libpwquality
+pkgver=1.4.5
+description="Password quality checking library"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,cracklib,pam
+makedeps=gcc,make,pkg-config
+source=https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.5/libpwquality-1.4.5.tar.bz2
+sha256=6fcf18b75d305d99d04d2e42982ed5b787a081af2842220ed63287a2d6a10988
+
+build() {
+    ./configure --prefix=/usr --disable-static --disable-python-bindings
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

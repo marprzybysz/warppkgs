@@ -1,0 +1,18 @@
+pkgname=qrencode
+pkgver=4.1.1
+description="QR Code encoding library"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,libpng
+makedeps=gcc,make,pkg-config
+source=https://fukuchi.org/works/qrencode/qrencode-4.1.1.tar.bz2
+sha256=69715728107aa227eb54f6189aed16cd9d9e8caad49e3049a26efaa229cc8a56
+
+build() {
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

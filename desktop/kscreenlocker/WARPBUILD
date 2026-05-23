@@ -1,0 +1,18 @@
+pkgname=kscreenlocker
+pkgver=6.2.5
+description="Library and components for secure lock screen"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,qt6-base,qt6-declarative,kconfig,kcoreaddons,kcrash,kglobalaccel,ki18n,kidletime,knotifications,ksvg,kwindowsystem,layer-shell-qt,pam,wayland
+makedeps=gcc,cmake,ninja,extra-cmake-modules,plasma-wayland-protocols,qt6-wayland
+source=https://download.kde.org/stable/plasma/6.2.5/kscreenlocker-6.2.5.tar.xz
+sha256=3a3ed2d040394dc2a80cf25cdd2a6c4022146aca54e72c44af16e8982e8b8e4e
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

@@ -1,0 +1,18 @@
+pkgname=libksysguard
+pkgver=6.2.5
+description="KDE system monitor library"
+arch=x86_64
+license=GPL-2.0
+deps=glibc,qt6-base,qt6-declarative,kconfig,kcoreaddons,ki18n,knewstuff,kio,kservice
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/plasma/6.2.5/libksysguard-6.2.5.tar.xz
+sha256=9694f3d6b5078b4d82eb8e6ed34eb20e2d109ed7c2234c59a640bc32f31c76ab
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

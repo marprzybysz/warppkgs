@@ -1,0 +1,18 @@
+pkgname=baloo
+pkgver=6.7.0
+description="File indexing and search framework"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc,qt6-base,qt6-declarative,kconfig,kcoreaddons,kdbusaddons,kfilemetadata,ki18n,kidletime,kio,solid,lmdb
+makedeps=gcc,cmake,ninja,extra-cmake-modules
+source=https://download.kde.org/stable/frameworks/6.7/baloo-6.7.0.tar.xz
+sha256=ce8c18a21ed7acd5912c7d273cac5f6cb1adb524a0415d56c6fdde2e967f67cc
+
+build() {
+    cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}
