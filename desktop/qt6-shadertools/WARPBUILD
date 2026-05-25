@@ -1,21 +1,19 @@
-pkgname=qt6-svg
+pkgname=qt6-shadertools
 pkgver=6.8.1
-description="Qt6 SVG support"
+description="Qt6 Shader Tools (SPIR-V, GLSL compiler)"
 arch=x86_64
 license=LGPL-3.0
 deps=qt6-base
 makedeps=gcc,cmake,ninja
-source=https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qtsvg-everywhere-src-6.8.1.tar.xz
-sha256=3d0de73596e36b2daa7c48d77c4426bb091752856912fba720215f756c560dd0
+source=https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qtshadertools-everywhere-src-6.8.1.tar.xz
+sha256=55b70cd632473a8043c74ba89310f7ba9c5041d253bc60e7ae1fa789169c4846
 
 build() {
     cmake -GNinja \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_BUILD_TYPE=Release \
-          -DQT_BUILD_EXAMPLES=OFF \
-          -DQT_BUILD_TESTS=OFF \
-          -DQT_MKSPECS_DIR=/usr/mkspecs \
           -DBUILD_WITH_PCH=OFF \
+          -DQT_MKSPECS_DIR=/usr/mkspecs \
           -B build
     ninja -C build $MAKEFLAGS
 }

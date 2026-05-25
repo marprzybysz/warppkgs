@@ -22,6 +22,7 @@ build() {
           -DFEATURE_system_libpng=ON \
           -DFEATURE_dbus=ON \
           -DFEATURE_wayland=OFF \
+          -DBUILD_WITH_PCH=OFF \
           -B build
     ninja -C build $MAKEFLAGS
 }

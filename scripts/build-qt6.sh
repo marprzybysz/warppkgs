@@ -23,6 +23,7 @@ PACKAGES=(
 
     # Qt6 stack
     desktop/qt6-base
+    desktop/qt6-shadertools
     desktop/qt6-declarative
     desktop/qt6-svg
     desktop/qt6-tools
