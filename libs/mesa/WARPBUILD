@@ -9,10 +9,12 @@ source=https://mesa.freedesktop.org/archive/mesa-24.2.7.tar.xz
 sha256=a0ce37228679647268a83b3652d859dcf23d6f6430d751489d4464f6de6459fd
 
 build() {
+    # virgl: akceleracja 3D w VM (QEMU virtio-vga-gl + virglrenderer na hoscie).
+    # softpipe zostaje jako programowy fallback gdy virgl niedostepny.
     meson setup build \
         --prefix=/usr \
         --buildtype=release \
-        -Dgallium-drivers=softpipe \
+        -Dgallium-drivers=virgl,softpipe \
         -Dvulkan-drivers= \
         -Dglx=dri \
         -Degl=enabled \
