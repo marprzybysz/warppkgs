@@ -1,8 +1,0 @@
-name=xtrans
-version=1.5.0
-description=X.Org transport library
-arch=any
-license=MIT
-provides=xtrans
-deps=
-source=warp

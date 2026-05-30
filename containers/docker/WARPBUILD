@@ -1,31 +1,36 @@
 pkgname=docker
-pkgver=27.3.1
-description="Docker Engine — platforma do uruchamiania kontenerów"
+pkgver=27.4.1
+description="Container runtime engine, CLI, and tools"
 arch=x86_64
 license=Apache-2.0
-deps=glibc,containerd,runc,iptables,cgroupfs-mount,libseccomp,elogind
-makedeps=go,make,pkg-config
-source=https://github.com/moby/moby/archive/refs/tags/v27.3.1.tar.gz
-sha256=d18208d9e0b6421307342cdef266193984c97c87177b9262b1113e6e9e7e020e
+deps=glibc,iptables,libseccomp
+makedeps=go,make,bash
+source=https://download.docker.com/linux/static/stable/x86_64/docker-27.4.1.tgz
+sha256=
 
 build() {
-    export DOCKER_GITCOMMIT=flow
-    export VERSION=${pkgver}
-    make $MAKEFLAGS dynbinary
+    true
 }
 
 package() {
-    install -Dm755 bundles/dynbinary-daemon/dockerd "$DESTDIR/usr/bin/dockerd"
-    install -Dm755 bundles/dynbinary-daemon/docker-proxy "$DESTDIR/usr/bin/docker-proxy"
-    install -Dm755 /dev/stdin "$DESTDIR/etc/init.d/docker" <<'EOF'
+    mkdir -p "$DESTDIR/usr/bin"
+    cp docker dockerd containerd containerd-shim-runc-v2 ctr runc docker-init docker-proxy "$DESTDIR/usr/bin/"
+
+    mkdir -p "$DESTDIR/etc/openrc/init.d"
+    cat > "$DESTDIR/etc/openrc/init.d/docker" << 'INITEOF'
 #!/sbin/openrc-run
-description="Docker container engine"
-depend() {
-    need containerd cgroupfs-mount
-    use networkmanager
-}
-command=/usr/bin/dockerd
+
+name="Docker"
+description="Docker container runtime"
+command="/usr/bin/dockerd"
 command_background=true
-pidfile=/run/docker.pid
-EOF
+pidfile="/run/docker.pid"
+start_stop_daemon_args="--stdout /var/log/docker.log --stderr /var/log/docker.log"
+
+depend() {
+    need net
+    after firewall
+}
+INITEOF
+    chmod 755 "$DESTDIR/etc/openrc/init.d/docker"
 }

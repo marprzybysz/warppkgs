@@ -1,19 +1,18 @@
 pkgname=zsh
-pkgver=5.9
-description="Powerful interactive shell"
+pkgver=5.9.1
+description="Powerful shell with scripting language"
 arch=x86_64
 license=MIT
-deps=glibc,ncurses,pcre2
-makedeps=gcc,make,autoconf
-source=https://www.zsh.org/pub/zsh-5.9.tar.xz
-sha256=9b8d1ecedd5b5e81fbf1918e876752a7dd948e05c1a0dba10ab863842d45acd5
+deps=glibc,ncurses,libcap,gdbm
+makedeps=gcc,make,pkg-config
+source=https://www.zsh.org/pub/zsh-5.9.1.tar.xz
+sha256=
 
 build() {
-    ./configure --prefix=/usr \
-                --bindir=/usr/bin \
-                --sysconfdir=/etc/zsh \
-                --enable-multibyte \
-                --enable-pcre \
+    ./configure --prefix=/usr       \
+                --enable-etcdir=/etc/zsh \
+                --enable-multibyte  \
+                --enable-zsh-secure-free \
                 --with-tcsetpgrp
     make $MAKEFLAGS
 }

@@ -1,17 +1,17 @@
 pkgname=iptables
-pkgver=1.8.10
-description="Narzędzia do zarządzania regułami netfilter (wymagane przez Docker networking)"
+pkgver=1.8.11
+description="Linux packet filtering and NAT tool"
 arch=x86_64
 license=GPL-2.0
-deps=glibc,libnftnl,libmnl,libnetfilter_conntrack
-makedeps=gcc,make,pkg-config,autoconf,automake,libtool
-source=https://netfilter.org/projects/iptables/files/iptables-1.8.10.tar.xz
-sha256=5cc255c189356e317d070755ce9371eb63a1b783c34498fb8c30264f3cc59c9c
+deps=glibc
+makedeps=gcc,make,pkg-config
+source=https://www.netfilter.org/projects/iptables/files/iptables-1.8.11.tar.xz
+sha256=
 
 build() {
-    ./configure --prefix=/usr \
-                --sbindir=/usr/sbin \
-                --disable-nftables
+    ./configure --prefix=/usr     \
+                --disable-nftables \
+                --enable-libipq
     make $MAKEFLAGS
 }
 
