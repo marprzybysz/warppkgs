@@ -1,0 +1,19 @@
+pkgname=libXmu
+pkgver=1.2.1
+description="X miscellaneous utility library"
+arch=x86_64
+license=MIT
+deps=glibc,libx11,libXt,libxext
+makedeps=gcc,make,pkg-config
+source=https://xorg.freedesktop.org/releases/individual/lib/libXmu-1.2.1.tar.xz
+sha256=fcb27793248a39e5fcc5b9c4aec40cc0734b3ca76aac3d7d1c264e7f7e14e8b2
+
+build() {
+    export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

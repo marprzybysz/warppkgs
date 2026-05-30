@@ -1,0 +1,23 @@
+pkgname=qt5compat
+pkgver=6.8.1
+description="Qt 6 module for Qt 5 compatibility APIs"
+arch=x86_64
+license=LGPL-3.0
+deps=glibc,qt6-base
+makedeps=gcc,cmake,ninja
+source=https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qt5compat-everywhere-src-6.8.1.tar.xz
+sha256=05c8c088b4cd8331fa8a9c8b7ff7c42a088cb112e673eae5708048d0131264fc
+
+build() {
+    ln -sf /usr/mkspecs /lib/cmake/mkspecs 2>/dev/null || true
+    cmake -GNinja \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DQT_MKSPECS_DIR=/usr/mkspecs \
+          -B build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

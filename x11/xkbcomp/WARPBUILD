@@ -1,0 +1,18 @@
+pkgname=xkbcomp
+pkgver=1.4.7
+description="X Keyboard description compiler"
+arch=x86_64
+license=MIT
+deps=glibc,libx11,libxkbfile
+makedeps=gcc,make,pkg-config
+source=https://xorg.freedesktop.org/releases/individual/app/xkbcomp-1.4.7.tar.xz
+sha256=0a288114e5f44e31987042c79aecff1ffad53a8154b8ec971c24a69a80f81f77
+
+build() {
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

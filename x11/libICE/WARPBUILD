@@ -1,0 +1,19 @@
+pkgname=libICE
+pkgver=1.1.1
+description="X11 Inter-Client Exchange library"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,make,pkg-config,xtrans
+source=https://xorg.freedesktop.org/releases/individual/lib/libICE-1.1.1.tar.xz
+sha256=03e77afaf72942c7ac02ccebb19034e6e20f456dcf8dddadfeb572aa5ad3e451
+
+build() {
+    export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

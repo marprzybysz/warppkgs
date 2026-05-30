@@ -1,0 +1,19 @@
+pkgname=libSM
+pkgver=1.2.4
+description="X11 Session Management library"
+arch=x86_64
+license=MIT
+deps=glibc,libICE
+makedeps=gcc,make,pkg-config,xtrans
+source=https://xorg.freedesktop.org/releases/individual/lib/libSM-1.2.4.tar.xz
+sha256=fdcbe51e4d1276b1183da77a8a4e74a137ca203e0bcfb20972dd5f3347e97b84
+
+build() {
+    export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

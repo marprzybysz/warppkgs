@@ -9,12 +9,14 @@ source=https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.26.2/libinpu
 sha256=5c1c4150f217fea1db2d1fd88e2607b2f1928cfde65c34da65a9f24dcfd69464
 
 build() {
+    export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
     meson setup build \
         --prefix=/usr \
         --buildtype=release \
         -Dtests=false \
         -Ddocumentation=false \
-        -Ddebug-gui=false
+        -Ddebug-gui=false \
+        -Dlibwacom=false
     ninja -C build $MAKEFLAGS
 }
 

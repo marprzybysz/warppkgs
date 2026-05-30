@@ -1,0 +1,19 @@
+pkgname=libxfont2
+pkgver=2.0.7
+description="X.Org font library"
+arch=x86_64
+license=MIT
+deps=glibc,freetype,libfontenc,zlib
+makedeps=gcc,make,pkg-config,xtrans,font-util
+source=https://xorg.freedesktop.org/releases/individual/lib/libXfont2-2.0.7.tar.xz
+sha256=8b7b82fdeba48769b69433e8e3fbb984a5f6bf368b0d5f47abeec49de3e58efb
+
+build() {
+    export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

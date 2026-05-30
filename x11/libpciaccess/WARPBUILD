@@ -1,0 +1,18 @@
+pkgname=libpciaccess
+pkgver=0.18.1
+description="PCI access library"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=gcc,meson,ninja,pkg-config
+source=https://xorg.freedesktop.org/releases/individual/lib/libpciaccess-0.18.1.tar.xz
+sha256=4af43444b38adb5545d0ed1c2ce46d9608cc47b31c2387fc5181656765a6fa76
+
+build() {
+    meson setup build --prefix=/usr
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

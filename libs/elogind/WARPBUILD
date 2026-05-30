@@ -17,9 +17,8 @@ build() {
         -Dpam=true \
         -Dacl=true \
         -Dsmack=false \
-        -Dselinux=false \
-        -Dman=false \
-        -Dhtmldocs=false
+        -Dselinux=disabled \
+        -Dman=disabled
     ninja -C build $MAKEFLAGS
 }
 

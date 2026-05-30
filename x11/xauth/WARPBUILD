@@ -1,0 +1,19 @@
+pkgname=xauth
+pkgver=1.1.3
+description="X.Org authorization utility"
+arch=x86_64
+license=MIT
+deps=glibc,libx11,libxau,libxdmcp
+makedeps=gcc,make,pkg-config
+source=https://xorg.freedesktop.org/releases/individual/app/xauth-1.1.3.tar.xz
+sha256=e7075498bae332f917f01d660f9b940c0752b2556a8da61ccb62a44d0ffe9d33
+
+build() {
+    export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    ./configure --prefix=/usr
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

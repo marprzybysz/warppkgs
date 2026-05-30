@@ -1,0 +1,19 @@
+pkgname=libXt
+pkgver=1.3.0
+description="X11 Toolkit Intrinsics library"
+arch=x86_64
+license=MIT
+deps=glibc,libx11
+makedeps=gcc,make,pkg-config
+source=https://xorg.freedesktop.org/releases/individual/lib/libXt-1.3.0.tar.xz
+sha256=52820b3cdb827d08dc90bdfd1b0022a3ad8919b57a39808b12591973b331bf91
+
+build() {
+    export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    ./configure --prefix=/usr --disable-static
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+}

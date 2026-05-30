@@ -9,15 +9,16 @@ source=https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-21.1
 sha256=8f2102cebdc4747d1656c1099ef610f5063c7422c24a177e300de569b354ee35
 
 build() {
+    export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
     meson setup build \
         --prefix=/usr \
         --buildtype=release \
-        -Dxwayland=false \
         -Dxephyr=false \
         -Dxvfb=true \
         -Dglamor=true \
         -Dudev=true \
-        -Dsystemd_logind=false
+        -Dsystemd_logind=false \
+        -Dsecure-rpc=false
     ninja -C build $MAKEFLAGS
 }
 
