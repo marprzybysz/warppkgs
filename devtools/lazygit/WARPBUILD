@@ -1,0 +1,19 @@
+pkgname=lazygit
+pkgver=0.62.1
+description="Terminalowy UI dla git — commity, branche, stash, rebase z klawiatury"
+arch=x86_64
+license=MIT
+deps=glibc
+makedeps=go
+source=https://github.com/jesseduffield/lazygit/archive/refs/tags/v0.62.1.tar.gz
+sha256=198602c75c0d971b56088d6d364aaf9b2fd52bcadcb0e6a8548df0ed43e4dac2
+
+build() {
+    # lazygit to czysty Go; wersja wstrzykiwana przez ldflag main.version.
+    # Zaleznosci modulow sciagane sa z sieci przy budowie (brak vendor/).
+    go build -ldflags="-s -w -X main.version=$pkgver" -o lazygit .
+}
+
+package() {
+    install -Dm755 lazygit "$DESTDIR/usr/bin/lazygit"
+}
