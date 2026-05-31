@@ -1,0 +1,17 @@
+pkgname=pfetch
+pkgver=0.6.0
+description="Prosty fetch info o systemie — zalezny wylacznie od POSIX sh"
+arch=any
+license=MIT
+deps=
+makedeps=
+source=https://github.com/dylanaraps/pfetch/archive/refs/tags/0.6.0.tar.gz
+sha256=d1f611e61c1f8ae55bd14f8f6054d06fcb9a2d973095367c1626842db66b3182
+
+build() {
+    : # czysty skrypt sh — nic do kompilacji
+}
+
+package() {
+    install -Dm755 pfetch "$DESTDIR/usr/bin/pfetch"
+}
