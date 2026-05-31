@@ -15,9 +15,9 @@ build() {
           -DBUILD_WITH_PCH=OFF \
           -DQT_MKSPECS_DIR=/usr/mkspecs \
           -B build
-    ninja -C build $MAKEFLAGS
+    ninja -C build -j1
 }
 
 package() {
-    DESTDIR="$DESTDIR" ninja -C build install
+    DESTDIR="$DESTDIR" ninja -C build -j1 install
 }

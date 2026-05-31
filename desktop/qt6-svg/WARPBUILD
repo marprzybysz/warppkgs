@@ -14,7 +14,7 @@ build() {
           -DCMAKE_BUILD_TYPE=Release \
           -DQT_BUILD_EXAMPLES=OFF \
           -DQT_BUILD_TESTS=OFF \
-          -DQT_MKSPECS_DIR=/usr/mkspecs \
+                    -DQT_MKSPECS_DIR=/usr/mkspecs \
           -DBUILD_WITH_PCH=OFF \
           -B build
     ninja -C build $MAKEFLAGS
