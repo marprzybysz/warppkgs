@@ -11,6 +11,11 @@ sha256=198602c75c0d971b56088d6d364aaf9b2fd52bcadcb0e6a8548df0ed43e4dac2
 build() {
     # lazygit to czysty Go; wersja wstrzykiwana przez ldflag main.version.
     # Zaleznosci modulow sciagane sa z sieci przy budowie (brak vendor/).
+    # CGO_ENABLED=0 -> binarka w pelni statyczna. WARP robi patchelf RUNPATH
+    # przez Library Nodes, a patchelf KORUMPUJE dynamiczne binarki Go
+    # (segfault w ld-linux przy starcie). Statyczna binarka nie ma sekcji
+    # dynamicznej, wiec patchelf nie ma czego zepsuc.
+    export CGO_ENABLED=0
     go build -ldflags="-s -w -X main.version=$pkgver" -o lazygit .
 }
 
