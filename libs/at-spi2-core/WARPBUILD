@@ -9,12 +9,12 @@ source=https://ftp.gnome.org/pub/gnome/sources/at-spi2-core/2.54/at-spi2-core-2.
 sha256=d7eee7e75beddcc272cedc2b60535600f3aae6e481589ebc667afc437c0a6079
 
 build() {
-    meson setup build \
+    export PKG_CONFIG_PATH=/usr/lib64/pkgconfig:/usr/lib/pkgconfig
+    meson setup --wrap-mode=nofallback build \
         --prefix=/usr \
         --buildtype=release \
         -Dintrospection=disabled \
-        -Ddocs=false \
-        -Dtests=false
+        -Ddocs=false
     ninja -C build $MAKEFLAGS
 }
 

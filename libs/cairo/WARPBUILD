@@ -9,7 +9,11 @@ source=https://www.cairographics.org/releases/cairo-1.18.2.tar.xz
 sha256=a62b9bb42425e844cc3d6ddde043ff39dbabedd1542eba57a2eb79f85889d45a
 
 build() {
-    meson setup --prefix=/usr --buildtype=release \
+    # PKG_CONFIG_PATH: bez tego meson nie znajduje systemowego pixmana i
+    # buduje wlasny subprojekt -> konflikt plikow z pakietem pixman przy install.
+    # --wrap-mode=nofallback: zakazuje fallbacku na subprojekty (wymusza systemowe).
+    export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    meson setup --prefix=/usr --buildtype=release --wrap-mode=nofallback \
         -Dxlib=enabled -Dxcb=enabled -Dtee=enabled build
     ninja -C build $MAKEFLAGS
 }

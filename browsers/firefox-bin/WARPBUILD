@@ -1,0 +1,44 @@
+pkgname=firefox-bin
+pkgver=151.0.2
+description="Firefox — oficjalna binarka Mozilli (prebuilt, bez kompilacji)"
+arch=x86_64
+license=MPL-2.0
+deps=glibc,gtk3,glib,pango,cairo,gdk-pixbuf,at-spi2-core,dbus,fontconfig,freetype,libx11,gcc-runtime
+makedeps=
+source=https://ftp.mozilla.org/pub/firefox/releases/151.0.2/linux-x86_64/en-US/firefox-151.0.2.tar.xz
+sha256=1f77a1aacc2a0ccbb36998875f04a9c22229103dc35cb4bbb89784f0809161e0
+
+build() {
+    : # prebuilt — nic do kompilacji, binarka gotowa od Mozilli
+}
+
+package() {
+    # cala binarka + prywatne liby (libxul itd.) do /usr/lib/firefox
+    install -d "$DESTDIR/usr/lib"
+    cp -a firefox "$DESTDIR/usr/lib/firefox"
+
+    # Wrapper: WARP (Library Nodes) nadpisuje RUNPATH binarki przez patchelf,
+    # wiec wymuszamy LD_LIBRARY_PATH na prywatne liby Firefoksa (ma priorytet
+    # nad RUNPATH). Dzieki temu firefox i libxul znajduja swoje sasiednie .so.
+    install -d "$DESTDIR/usr/bin"
+    cat > "$DESTDIR/usr/bin/firefox" <<'WRAP'
+#!/bin/sh
+export LD_LIBRARY_PATH=/usr/lib/firefox:/usr/lib64:/usr/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+exec /usr/lib/firefox/firefox "$@"
+WRAP
+    chmod 755 "$DESTDIR/usr/bin/firefox"
+
+    # wpis w menu
+    install -d "$DESTDIR/usr/share/applications"
+    cat > "$DESTDIR/usr/share/applications/firefox.desktop" <<'DESK'
+[Desktop Entry]
+Name=Firefox
+GenericName=Web Browser
+Exec=/usr/bin/firefox %u
+Icon=/usr/lib/firefox/browser/chrome/icons/default/default128.png
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+DESK
+}
