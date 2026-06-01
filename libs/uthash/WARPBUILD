@@ -1,0 +1,18 @@
+pkgname=uthash
+pkgver=2.3.0
+description="Makra hash/list/array dla C (header-only) — wymagane przez picom"
+arch=any
+license=BSD
+deps=
+makedeps=
+source=https://github.com/troydhanson/uthash/archive/refs/tags/v2.3.0.tar.gz
+sha256=e10382ab75518bad8319eb922ad04f907cb20cccb451a3aa980c9d005e661acc
+
+build() {
+    : # header-only, nic do kompilacji
+}
+
+package() {
+    install -d "$DESTDIR/usr/include"
+    install -m644 src/*.h "$DESTDIR/usr/include/"
+}

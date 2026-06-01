@@ -1,0 +1,19 @@
+pkgname=picom
+pkgver=11.2
+description="Lekki kompozytor X11 (cienie, przezroczystosc, vsync) — dla golych WM jak dwm"
+arch=x86_64
+license=MIT
+deps=glibc,libxcb,libx11,libxext,libepoxy,pixman,pcre2,libconfig,libev,dbus,mesa,xcb-util,xcb-util-image,xcb-util-renderutil
+makedeps=gcc,meson,ninja,pkgconf,uthash
+source=https://github.com/yshui/picom/archive/refs/tags/v11.2.tar.gz
+sha256=1c1063936faf09ed9bba726e7737a562564b7a5f8cdef79d48fcdaf3669a4df4
+
+build() {
+    export PKG_CONFIG_PATH=/usr/lib64/pkgconfig:/usr/lib/pkgconfig
+    meson setup --prefix=/usr --buildtype=release --wrap-mode=nofallback build
+    ninja -C build $MAKEFLAGS
+}
+
+package() {
+    DESTDIR="$DESTDIR" ninja -C build install
+}

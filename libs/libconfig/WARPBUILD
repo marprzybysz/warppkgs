@@ -1,0 +1,20 @@
+pkgname=libconfig
+pkgver=1.7.3
+description="Biblioteka do plikow konfiguracyjnych (parser configu picoma)"
+arch=x86_64
+license=LGPL-2.1
+deps=glibc
+makedeps=gcc,make
+source=https://github.com/hyperrealm/libconfig/releases/download/v1.7.3/libconfig-1.7.3.tar.gz
+sha256=545166d6cac037744381d1e9cc5a5405094e7bfad16a411699bcff40bbb31ee7
+
+build() {
+    ./configure --prefix=/usr --disable-static --disable-examples
+    make $MAKEFLAGS
+}
+
+package() {
+    make DESTDIR="$DESTDIR" install
+    # /usr/share/info/dir to wspolny indeks texinfo (nalezy do tar) — nie pakujemy
+    rm -f "$DESTDIR/usr/share/info/dir"
+}
