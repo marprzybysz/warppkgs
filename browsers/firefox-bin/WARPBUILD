@@ -9,33 +9,45 @@ source=https://ftp.mozilla.org/pub/firefox/releases/151.0.2/linux-x86_64/en-US/f
 sha256=1f77a1aacc2a0ccbb36998875f04a9c22229103dc35cb4bbb89784f0809161e0
 
 build() {
-    : # prebuilt — nic do kompilacji, binarka gotowa od Mozilli
+    : # prebuilt — nic do kompilacji
 }
 
 package() {
-    # cala binarka + prywatne liby (libxul itd.) do /usr/lib/firefox
-    install -d "$DESTDIR/usr/lib"
-    cp -a firefox "$DESTDIR/usr/lib/firefox"
+    # WARP rozpakowuje ze strip-components, wiec cwd = zawartosc firefox/.
+    # Kopiujemy CALY katalog (libxul.so, browser/, ikony), a nie sam plik "firefox".
+    install -d "$DESTDIR/usr/lib/firefox"
+    if [ -d firefox ] && [ -f firefox/libxul.so ]; then
+        cp -a firefox/. "$DESTDIR/usr/lib/firefox/"
+    else
+        cp -a ./. "$DESTDIR/usr/lib/firefox/"
+    fi
 
-    # Wrapper: WARP (Library Nodes) nadpisuje RUNPATH binarki przez patchelf,
-    # wiec wymuszamy LD_LIBRARY_PATH na prywatne liby Firefoksa (ma priorytet
-    # nad RUNPATH). Dzieki temu firefox i libxul znajduja swoje sasiednie .so.
+    # Wrapper z LD_LIBRARY_PATH na prywatne liby firefoksa. Binarki firefoksa
+    # leza w /usr/lib/firefox/ (podkatalog), wiec WARP NIE robi na nich patchelf
+    # (patchelf 0.18 korumpuje je -> segfault); same rozwiazuja liby przez ten
+    # LD_LIBRARY_PATH, a systemowe (gtk3 itd.) przez ldconfig.
     install -d "$DESTDIR/usr/bin"
-    cat > "$DESTDIR/usr/bin/firefox" <<'WRAP'
+    cat > "$DESTDIR/usr/bin/firefox" <<WRAP
 #!/bin/sh
-export LD_LIBRARY_PATH=/usr/lib/firefox:/usr/lib64:/usr/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-exec /usr/lib/firefox/firefox "$@"
+export LD_LIBRARY_PATH=/usr/lib/firefox:/usr/lib64:/usr/lib\${LD_LIBRARY_PATH:+:\$LD_LIBRARY_PATH}
+exec /usr/lib/firefox/firefox "\$@"
 WRAP
     chmod 755 "$DESTDIR/usr/bin/firefox"
 
-    # wpis w menu
+    # Ikona do motywu hicolor (KDE/menu znajduje po nazwie "firefox")
+    for s in 16 32 48 64 128; do
+        src="$DESTDIR/usr/lib/firefox/browser/chrome/icons/default/default${s}.png"
+        [ -f "$src" ] && install -Dm644 "$src" \
+            "$DESTDIR/usr/share/icons/hicolor/${s}x${s}/apps/firefox.png"
+    done
+
     install -d "$DESTDIR/usr/share/applications"
-    cat > "$DESTDIR/usr/share/applications/firefox.desktop" <<'DESK'
+    cat > "$DESTDIR/usr/share/applications/firefox.desktop" <<DESK
 [Desktop Entry]
 Name=Firefox
 GenericName=Web Browser
 Exec=/usr/bin/firefox %u
-Icon=/usr/lib/firefox/browser/chrome/icons/default/default128.png
+Icon=firefox
 Type=Application
 Categories=Network;WebBrowser;
 MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;
