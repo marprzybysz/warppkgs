@@ -9,8 +9,15 @@ source=https://www.alsa-project.org/files/pub/utils/alsa-utils-1.2.12.tar.bz2
 sha256=98bc6677d0c0074006679051822324a0ab0879aea558a8f68b511780d30cd924
 
 build() {
+    # --disable-bat: alsabat wymaga fftw (nie pakietujemy)
+    # --disable-xmlto: generator man-page nieobecny
+    # --with-systemdsystemunitdir=no: Flow to OpenRC, nie systemd
     ./configure --prefix=/usr \
-                --disable-alsaconf
+                --disable-alsaconf \
+                --disable-bat \
+                --disable-xmlto \
+                --with-systemdsystemunitdir=no \
+                --with-udev-rules-dir=/usr/lib/udev/rules.d
     make $MAKEFLAGS
 }
 
